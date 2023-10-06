@@ -7,7 +7,7 @@ const player = add([
     scale(proportion)
 ]);
 
-player.play("run");
+player.play("up");
 
 player.onCollide(() => {
     console.log("Collision !!!");
@@ -22,4 +22,7 @@ onClick(() => {
         volume: 0.5,
     });
     play('woosh2');
+    play('sonnette-velo', {
+        volume: 0.3
+    });
 })

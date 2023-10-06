@@ -92,3 +92,34 @@ function oneWayObstacle() {
         }
     }
 }
+
+function friend() {
+    // obstacle that moves only in one direction
+
+    // Can use local closed variables to store component state
+    const minWait = 1500;
+    const randomWait = 2500;
+    let speed = 0.5;
+    let moving = false
+    let moveAfterMs = minWait + Math.floor(Math.random() * randomWait);
+
+    return {
+
+        // The name of the component
+        id: "friend",
+        // If this component depend on any other components
+        require: ["pos", "area"],
+
+        add() {
+            this.pos.x = 40;
+            setTimeout(() => moving = true, moveAfterMs)
+        },
+
+        // Runs every frame as long as the host object exists
+        update() {
+            if (moving) {
+                this.pos.x -= speed;
+            }
+        }
+    }
+}
