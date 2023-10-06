@@ -3,9 +3,8 @@ let localWindowBottom;
 
 // Usage example:
 const weightedMovementPatterns = [
-    { value: regularObstacle, weight: 3 },
-    { value: randomObstacle, weight: 2 },
-    { value: oneWayObstacle, weight: 1 },
+    //{ value: randomObstacle, weight: 2 },
+    { value: oneWayObstacle, weight: 3 },
 ];
 
 let bottomMarker = add([
