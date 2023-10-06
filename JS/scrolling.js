@@ -10,7 +10,7 @@ loadSprite("terrain", "/assets/terrain.png");
 
 const background = add([
     sprite("terrain"),  // renders as a sprite
-    pos(innerWidth/2, innerHeight),    // position in world
+    pos(innerWidth / 2, innerHeight),    // position in world
     anchor("bot") // Set the anchor of the sprite on its bottom center
 ]);
 
@@ -29,6 +29,13 @@ background.onUpdate(() => {
         }
     }
     speed = speed + acceleration;
+
+    if (speed > maxSpeed) {
+        speed = maxSpeed;
+    } else if (speed < minSpeed) {
+        speed = minSpeed;
+    }
+
     let movement = vec2(0, speed);
     // .move() is provided by pos()
     background.move(movement);
@@ -49,7 +56,7 @@ onMousePress(() => {
     console.log("Mouse down");
 });
 
-onMouseRelease(()=> {
+onMouseRelease(() => {
     isMousePressed = false;
     console.log("Mouse up");
 });
