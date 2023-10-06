@@ -25,16 +25,22 @@ const partGround = background.add([
     pos(0,0),    // position in world
     anchor("bot"), // Set the anchor of the sprite on its bottom center
     //scale(proportion),
-    z(0)
 
 ]);
 
-const part = partGround.add([
+const part = background.add([
     sprite("anthropole"),  // renders as a sprite
     pos(0,0),    // position in world
     anchor("bot"), // Set the anchor of the sprite on its bottom center
     //scale(proportion),
-    z(10)
+]);
+
+const part2Ground = background.add([
+    sprite("anthropole_ground"),  // renders as a sprite
+    pos(0, -405),    // position in world
+    anchor("bot"), // Set the anchor of the sprite on its bottom center
+    //scale(proportion),
+
 ]);
 
 const part2 = background.add([
@@ -42,7 +48,6 @@ const part2 = background.add([
     pos(0, -405),    // position in world
     anchor("bot"), // Set the anchor of the sprite on its bottom center
     //scale(proportion),
-    z(0),
 
 ]);
 
