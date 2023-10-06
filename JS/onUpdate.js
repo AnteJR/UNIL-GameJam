@@ -28,5 +28,6 @@ onUpdate("background", (b) => {
 });
 
 onUpdate("jaugeIn", (e) => {
-    e.height = mapc(minSpeed, maxSpeed, 0, "jaugeOut".height)
+    let v = mapc(speed,minSpeed, maxSpeed, 0, jaugeOut.height)
+    console.log(v)
 })
