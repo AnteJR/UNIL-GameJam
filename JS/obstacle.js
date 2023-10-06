@@ -65,9 +65,11 @@ function oneWayObstacle() {
     // obstacle that moves only in one direction
 
     // Can use local closed variables to store component state
+    const minWait = 1500;
+    const randomWait = 2500;
     let speed = 0.5;
     let moving = false
-    let moveAfterMs = 1000 + Math.floor(Math.random() * 2000);
+    let moveAfterMs = minWait + Math.floor(Math.random() * randomWait);
 
     return {
 
