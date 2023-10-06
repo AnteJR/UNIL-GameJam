@@ -1,6 +1,10 @@
 onUpdate("background", (b) => {
     if (b.pos.y >= b.height*proportion) {
         b.pos.y = b.height*proportion;
+
+        // stop spawning obstacles
+        clearInterval(spawnInterval);
+
         return;
     }
     if (isMousePressed) {
@@ -15,7 +19,7 @@ onUpdate("background", (b) => {
             acceleration = -0.05;
         }
     }
-    console.log(acceleration)
+    //console.log(acceleration)
     speed = speed + acceleration;
 
     if (speed > maxSpeed) {

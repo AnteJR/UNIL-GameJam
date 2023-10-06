@@ -6,7 +6,7 @@ const maxSpeed = 5.5;
 let speed = minSpeed;
 let isMousePressed = false;
 
-loadSprite("terrain", "/assets/terrain.png");
+loadSprite("terrain", "/assets/images/terrain.png");
 
 const background = add([
     sprite("terrain"),  // renders as a sprite
