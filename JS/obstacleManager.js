@@ -28,7 +28,7 @@ const spawnInterval = setInterval(() => {
         pos(0, localWindowTop - 40),
         area(),
         anchor("center"),
-        randomObstacle(),
+        oneWayObstacle(),
         "obstacle"
     ]);
-}, 1000);
+}, 2000);
