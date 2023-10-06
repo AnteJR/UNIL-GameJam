@@ -8,6 +8,7 @@ onUpdate("background", (b) => {
         if(acceleration > 0.4){
             acceleration = 0.4
         }
+        shake(2)
     } else {
         acceleration += decelerationRate;
         if (acceleration < -0.05) {

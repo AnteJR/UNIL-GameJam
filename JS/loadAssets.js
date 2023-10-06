@@ -1,8 +1,17 @@
-// load Player
+// liste des assets
+// const liste_images = ["player"];
+// liste_images.forEach(a =>{
+//     loadSprite(a,`../assets/${a}.png`);
+// })
+
+// const liste_sons = ["son"];
+// liste_sons.forEach(a =>{
+//     loadSound(a,`../assets/${a}.mp3`);
+// })
+
+// ajout des animations
 loadSprite("player", "../assets/player.png", {
-	// The image contains 9 frames layed out horizontally, slice it into individual frames
 	sliceX: 4,
-	// Define animations
 	anims: {
 		"run": {
 			from: 0,
