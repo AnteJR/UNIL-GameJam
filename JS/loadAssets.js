@@ -1,11 +1,11 @@
 // chargement global des sons
 const liste_sons = ["bike-roll-snow"];
 liste_sons.forEach(a =>{
-    loadSound(a,`../assets/${a}.wav`);
+    loadSound(a,`../assets/sounds/${a}.wav`);
 })
 
 // ajout des animations
-loadSprite("player", "../assets/player.png", {
+loadSprite("player", "../assets/images/player.png", {
 	sliceX: 4,
 	anims: {
 		"run": {
