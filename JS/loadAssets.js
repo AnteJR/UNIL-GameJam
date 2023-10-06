@@ -1,9 +1,3 @@
-// liste des assets
-// const liste_images = ["player"];
-// liste_images.forEach(a =>{
-//     loadSprite(a,`../assets/${a}.png`);
-// })
-
 // const liste_sons = ["son"];
 // liste_sons.forEach(a =>{
 //     loadSound(a,`../assets/${a}.mp3`);
