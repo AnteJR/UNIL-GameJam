@@ -1,6 +1,10 @@
 onUpdate("background", (b) => {
     if (b.pos.y >= b.height*proportion) {
         b.pos.y = b.height*proportion;
+
+        // stop spawning obstacles
+        clearInterval(spawnInterval);
+
         return;
     }
     if (isMousePressed) {

@@ -4,14 +4,14 @@ let localWindowBottom;
 let bottomMarker = add([
     rect(innerWidth, 1),
     area(),
-    pos(innerWidth/2, innerHeight + 80),
+    pos(innerWidth/2, innerHeight + 200),
     anchor("center"),
     "bottomMarker"
 ]);
 
 onCollide("bottomMarker", "obstacle", (_, theObstacle) => {
     destroy(theObstacle);
-})
+});
 
 onUpdate(() => {
     /* Compute the top and bottom of the screen in local coordinates */
@@ -21,13 +21,14 @@ onUpdate(() => {
     localWindowBottom = localWindowTop - innerHeight;
 });
 
-setInterval(() => {
+const spawnInterval = setInterval(() => {
     let e = background.add([
         rect(16, 16),
         outline(1),
         pos(0, localWindowTop - 40),
         area(),
         anchor("center"),
-        obstacle()
+        randomObstacle(),
+        "obstacle"
     ]);
 }, 1000);
