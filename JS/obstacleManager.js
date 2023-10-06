@@ -6,6 +6,7 @@ const weightedMovementPatterns = [
     { value: regularObstacle, weight: 3 },
     { value: randomObstacle, weight: 2 },
     { value: oneWayObstacle, weight: 1 },
+    { value: friend, weight: 1 },
 ];
 
 let bottomMarker = add([
@@ -42,6 +43,18 @@ const spawnInterval = setInterval(() => {
     ]);
 
     e.play("walk")
+
+    let t = background.add([
+        sprite("friend"),
+        outline(1),
+        pos(0, localWindowTop - 80),
+        area(),
+        anchor("center"),
+        friend(),
+        "friend"
+    ]);
+
+    t.play("bring")
 
 }, 2000);
 
