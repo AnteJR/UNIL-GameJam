@@ -32,7 +32,7 @@ const spawnInterval = setInterval(() => {
     const selectedMovementPattern = weightedRandom(weightedMovementPatterns).value;
 
     let e = background.add([
-        rect(16, 16),
+        sprite("sprite_char_tel"),
         outline(1),
         pos(0, localWindowTop - 40),
         area(),
@@ -40,6 +40,9 @@ const spawnInterval = setInterval(() => {
         selectedMovementPattern(),
         "obstacle"
     ]);
+
+    e.play("walk")
+
 }, 2000);
 
 function weightedRandom(items) {
