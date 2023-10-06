@@ -1,7 +1,6 @@
 onUpdate("background", (b) => {
-    if (b.pos.y >= b.height) {
-        b.pos.y = b.height;
-        console.log("On est au bout !");
+    if (b.pos.y >= b.height*proportion) {
+        b.pos.y = b.height*proportion;
         return;
     }
     if (isMousePressed) {
@@ -20,11 +19,13 @@ onUpdate("background", (b) => {
         speed = minSpeed;
     }
 
-    let movement = vec2(0, speed);
+    b.pos.y += speed;
+
+    /*let movement = vec2(0, speed);
     // .move() is provided by pos()
-    b.move(movement);
+    b.move(movement);*/
 });
 
 onUpdate("jaugeIn", (e) => {
-    e.height = speed
+    e.height = mapc(minSpeed, maxSpeed, 0, "jaugeOut".height)
 })

@@ -1,6 +1,6 @@
 onTouchStart(() => {
     isMousePressed = true;
-    console.log("Touch start");
+    console.log(isMousePressed);
     jaugeIn.height
 });
 

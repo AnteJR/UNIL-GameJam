@@ -3,11 +3,12 @@ const jaugeOut = add([
     color(rgb(0, 0, 0)),
     pos(Math.floor(innerWidth/25*24),Math.floor(innerHeight/20)),
     scale(proportion),
-    anchor("top")
+    anchor("top"),
+    "jaugeOut"
 ]);
 
 const jaugeIn = add([
-    rect(3,50),
+    rect(3,mapc(minSpeed, maxSpeed, 0, "jaugeOut".height)),
     color(rgb(255, 0, 0)),
     pos(Math.floor(innerWidth/25*24),Math.floor(innerHeight/20)+(jaugeOut.height*proportion)),
     scale(proportion),
