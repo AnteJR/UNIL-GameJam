@@ -5,10 +5,13 @@ onUpdate("background", (b) => {
     }
     if (isMousePressed) {
         acceleration += accelerationRate;
+        if(acceleration < 0.5){
+            acceleration = 0.5
+        }
     } else {
         acceleration += decelerationRate;
-        if (acceleration < -1) {
-            acceleration = -1;
+        if (acceleration < -0.5) {
+            acceleration = -0.5;
         }
     }
     console.log(acceleration)
@@ -28,6 +31,6 @@ onUpdate("background", (b) => {
 });
 
 onUpdate("jaugeIn", (e) => {
-    let v = mapc(speed,minSpeed, maxSpeed, 0, jaugeOut.height)
-    console.log(v)
+    e.height = map(speed,minSpeed, maxSpeed, 5, 49)
+    //console.log("v", v)
 })
