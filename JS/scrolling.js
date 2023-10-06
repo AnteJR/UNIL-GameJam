@@ -56,8 +56,8 @@ const part3 = background.add([
 
 onUpdate("background", (b) => {
     console.log(b.pos.y, proportion)
-    if (b.pos.y >= (2048*10)*proportion) {
-        b.pos.y = (2048*10)*proportion;
+    if (b.pos.y >= (405*3)*proportion) {
+        b.pos.y = (405*3)*proportion;
         return;
     }
     
