@@ -35,4 +35,5 @@ onUpdate("jaugeIn", (e) => {
     e.height = mapc(speed,minSpeed, maxSpeed, 5, 49)
     // mise à jour de la vitesse de l'animation selon la vitesse
     player.animSpeed = mapc(speed,minSpeed, maxSpeed, 1, 2)
-})
+    if (playerSound) playerSound.speed = mapc(speed, minSpeed, maxSpeed, 1, 1.4);
+});

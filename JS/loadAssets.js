@@ -21,3 +21,5 @@ loadSprite("player", "../assets/player.png", {
 		},
 	},
 })
+
+loadSound('bike-roll-snow', '../assets/bike-roll-snow.wav');
