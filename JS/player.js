@@ -7,7 +7,7 @@ const player = add([
     scale(proportion)
 ]);
 
-player.play("run");
+player.play("up");
 
 player.onCollide(() => {
     console.log("Collision !!!");
