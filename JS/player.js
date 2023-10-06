@@ -19,5 +19,7 @@ onClick(() => {
     //FIXME: This should be played when starting the game
     if (!playerSound) playerSound = play('bike-roll-snow', {
         loop: true,
+        volume: 0.5,
     });
+    play('woosh2');
 })
