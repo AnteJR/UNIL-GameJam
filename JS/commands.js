@@ -18,3 +18,7 @@ onMouseRelease(() => {
     isMousePressed = false;
     console.log("Mouse up");
 });
+
+// onKeyPress("space", () => {
+
+// })
