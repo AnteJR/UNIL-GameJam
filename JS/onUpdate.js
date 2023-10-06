@@ -5,8 +5,8 @@ onUpdate("background", (b) => {
     }
     if (isMousePressed) {
         acceleration += accelerationRate;
-        if(acceleration < 0.02){
-            acceleration = 0.02
+        if(acceleration > 0.4){
+            acceleration = 0.4
         }
     } else {
         acceleration += decelerationRate;
@@ -31,6 +31,6 @@ onUpdate("background", (b) => {
 });
 
 onUpdate("jaugeIn", (e) => {
-    e.height = map(speed,minSpeed, maxSpeed, 5, 49)
+    e.height = mapc(speed,minSpeed, maxSpeed, 5, 49)
     //console.log("v", v)
 })
