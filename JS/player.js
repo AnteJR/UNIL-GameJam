@@ -22,4 +22,7 @@ onClick(() => {
         volume: 0.5,
     });
     play('woosh2');
+    play('sonnette-velo', {
+        volume: 0.3
+    });
 })
