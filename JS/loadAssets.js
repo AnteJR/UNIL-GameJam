@@ -1,5 +1,5 @@
 // chargement global des sons
-const liste_sons = ["bike-roll-snow", "woosh2"];
+const liste_sons = ["bike-roll-snow", "woosh2", "sonnette-velo"];
 liste_sons.forEach(a =>{
     loadSound(a,`../assets/sounds/${a}.wav`);
 })
