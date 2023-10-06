@@ -1,9 +1,9 @@
-let speed = 10;
+let speed = 2;
 let acceleration = 0;
-const accelerationRate = 1;
-const decelerationRate = 2;
-const minSpeed = 5;
-const maxSpeed = 20;
+const accelerationRate = 0.25;
+const decelerationRate = -0.5;
+const minSpeed = 0;
+const maxSpeed = 10;
 let isMousePressed = false;
 
 loadSprite("terrain", "/assets/terrain.png");

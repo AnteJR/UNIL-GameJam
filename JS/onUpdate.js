@@ -6,11 +6,12 @@ onUpdate("background", (b) => {
     if (isMousePressed) {
         acceleration += accelerationRate;
     } else {
-        acceleration -= decelerationRate;
-        if (acceleration < 0) {
-            acceleration = 0;
+        acceleration += decelerationRate;
+        if (acceleration < -1) {
+            acceleration = -1;
         }
     }
+    console.log(acceleration)
     speed = speed + acceleration;
 
     if (speed > maxSpeed) {
