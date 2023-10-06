@@ -32,5 +32,6 @@ onUpdate("background", (b) => {
 
 onUpdate("jaugeIn", (e) => {
     e.height = mapc(speed,minSpeed, maxSpeed, 5, 49)
-    //console.log("v", v)
+    // mise à jour de la vitesse de l'animation selon la vitesse
+    player.animSpeed = mapc(speed,minSpeed, maxSpeed, 1, 2)
 })
