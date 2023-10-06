@@ -5,13 +5,13 @@ onUpdate("background", (b) => {
     }
     if (isMousePressed) {
         acceleration += accelerationRate;
-        if(acceleration < 0.5){
-            acceleration = 0.5
+        if(acceleration < 0.02){
+            acceleration = 0.02
         }
     } else {
         acceleration += decelerationRate;
-        if (acceleration < -0.5) {
-            acceleration = -0.5;
+        if (acceleration < -0.05) {
+            acceleration = -0.05;
         }
     }
     console.log(acceleration)
