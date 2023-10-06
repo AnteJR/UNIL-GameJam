@@ -1,7 +1,7 @@
 const player = add([
     sprite("player"),
     outline(1),
-    pos(innerWidth/2, innerHeight - 270),
+    pos(innerWidth/2, innerHeight * 0.8),
     area(),
     anchor("center"),
     scale(proportion)

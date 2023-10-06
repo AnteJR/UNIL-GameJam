@@ -15,7 +15,7 @@ onUpdate("background", (b) => {
             acceleration = -0.05;
         }
     }
-    console.log(acceleration)
+    //console.log(acceleration)
     speed = speed + acceleration;
 
     if (speed > maxSpeed) {
