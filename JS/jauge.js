@@ -12,7 +12,7 @@ const jaugeIn = add([
     pos(Math.floor(innerWidth/25*24),Math.floor(innerHeight/20)+(jaugeOut.height*proportion)),
     scale(proportion),
     anchor("bot"),
-    "jauge-in"
+    "jaugeIn"
 ]);
 
 console.log(jaugeOut.width);

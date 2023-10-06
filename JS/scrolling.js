@@ -11,5 +11,7 @@ loadSprite("terrain", "/assets/terrain.png");
 const background = add([
     sprite("terrain"),  // renders as a sprite
     pos(innerWidth / 2, innerHeight),    // position in world
-    anchor("bot") // Set the anchor of the sprite on its bottom center
+    anchor("bot"), // Set the anchor of the sprite on its bottom center
+    scale(proportion),
+    "background"
 ]);

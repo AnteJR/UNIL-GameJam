@@ -1,6 +1,6 @@
-background.onUpdate(() => {
-    if (background.pos.y >= background.height) {
-        background.pos.y = background.height;
+onUpdate("background", (b) => {
+    if (b.pos.y >= b.height) {
+        b.pos.y = b.height;
         console.log("On est au bout !");
         return;
     }
@@ -22,9 +22,9 @@ background.onUpdate(() => {
 
     let movement = vec2(0, speed);
     // .move() is provided by pos()
-    background.move(movement);
+    b.move(movement);
 });
 
-onUpdate("jauge_in", (e) => {
-    e.height = 1 - (speed + 1);
+onUpdate("jaugeIn", (e) => {
+    e.height = speed
 })
