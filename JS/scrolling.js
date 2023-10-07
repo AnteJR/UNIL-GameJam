@@ -27,6 +27,7 @@ function addBackground() {
 function accelerate(b) {
     // on mouse press player accelerate
     if (isMousePressed) {
+        firstPress = true;
         acceleration += accelerationRate;
         if (acceleration > maxAccRate) {
             acceleration = maxAccRate
@@ -40,14 +41,15 @@ function accelerate(b) {
         }
     }
 
-    // Vary acceleration
-    speed = speed + acceleration;
-
     // Clamp speed
-    if (speed > maxSpeed) {
-        speed = maxSpeed;
-    } else if (speed < minSpeed) {
-        speed = minSpeed;
+    if (firstPress) {
+        // Vary acceleration
+        speed = speed + acceleration;
+        if (speed > maxSpeed) {
+            speed = maxSpeed;
+        } else if (speed < minSpeed) {
+            speed = minSpeed;
+        }
     }
 
     // Apply speed to screen scrolling

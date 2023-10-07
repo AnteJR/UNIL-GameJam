@@ -32,8 +32,8 @@ scene("game", (playerSound) => {
     
     
     onUpdate("background", (b) => {
-        if (b.pos.y >= (405 * listGroundAsset.length) * proportion) {
-            b.pos.y = (405 * listGroundAsset.length) * proportion;
+        if (b.pos.y >= (405 * (listGroundAsset.length + 1)) * proportion) {
+            b.pos.y = (405 * (listGroundAsset.length + 1)) * proportion;
             return;
         }
     
