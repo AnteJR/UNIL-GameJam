@@ -10,6 +10,8 @@ loadSprite("anthropole", "building_anthropole.png");
 loadSprite("anthropole_ground", "building_anthropole_ground.png");
 loadSprite("vortex", "building_vortex.png");
 loadSprite("vortex_ground", "building_vortex_ground.png");
+loadSprite("eng_btn", "UI_lang_ENG.png");
+loadSprite("fr_btn", "UI_lang_FR.png");
 
 // Il suffit juste d'ajouter les backgrounds + grounds aux listes
 // (dans l'ordre pour que le sol corresponde aux batiments)
