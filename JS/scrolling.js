@@ -1,9 +1,10 @@
-const accelerationRate = 0.01;
-const decelerationRate = -0.02;
-const minSpeed = 3;
-const maxSpeed = 5.5;
+const accelerationRate = 0.003 * proportion;
+const decelerationRate = -0.007 * proportion;
+const minSpeed = 1 * proportion;
+const maxSpeed = 2 * proportion;
 const minAcceleration = -0.01667;
 const maxAcceleration = 0.133;
+
 let acceleration = 0;
 let speed = minSpeed;
 
