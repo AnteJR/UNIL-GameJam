@@ -1,24 +1,30 @@
+let isMousePressed = false;
+
 onTouchStart(() => {
     isMousePressed = true;
-    console.log(isMousePressed);
+    //console.log(isMousePressed);
     jaugeIn.height
 });
 
 onTouchEnd(() => {
     isMousePressed = false
-    console.log("Touch end");
+    //console.log("Touch end");
 });
 
 onMousePress(() => {
     isMousePressed = true;
-    console.log("Mouse down");
+    //console.log("Mouse down");
 });
 
 onMouseRelease(() => {
     isMousePressed = false;
-    console.log("Mouse up");
+    //console.log("Mouse up");
 });
 
-// onKeyPress("space", () => {
+onKeyPress("space", () => {
+    isMousePressed = true;
+});
 
-// })
+onKeyRelease("space", () => {
+    isMousePressed = false;
+});

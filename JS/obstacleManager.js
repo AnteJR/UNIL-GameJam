@@ -1,11 +1,11 @@
 let localWindowTop;
-let localWindowBottom;
+//let localWindowBottom;
 
-// Usage example:
 const weightedMovementPatterns = [
+    //{ value: regularObstacle, weight: 3 },
     //{ value: randomObstacle, weight: 2 },
-    { value: oneWayObstacle, weight: 3 },
-    { value: friend, weight: 1 },
+    { value: oneWayObstacle, weight: 1 },
+    //{ value: friend, weight: 1 },
 ];
 
 let bottomMarker = add([
@@ -25,7 +25,7 @@ onUpdate(() => {
     const currentScrollPosition = background.pos.y
 
     localWindowTop = -currentScrollPosition / proportion;
-    localWindowBottom = localWindowTop - innerHeight;
+    //localWindowBottom = localWindowTop - innerHeight;
 });
 
 const spawnInterval = setInterval(() => {
