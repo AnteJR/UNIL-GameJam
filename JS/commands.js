@@ -19,6 +19,7 @@ onMousePress(() => {
 onMouseRelease(() => {
     isMousePressed = false;
     //console.log("Mouse up");
+    acceleration = 0; // makes the acceleration more rensponsive
 });
 
 onKeyPress("space", () => {

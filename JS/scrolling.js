@@ -1,85 +1,68 @@
-const accelerationRate = 0.003 * proportion;
-const decelerationRate = -0.007 * proportion;
-const minSpeed = 1 * proportion;
-const maxSpeed = 2 * proportion;
-const minAcceleration = -0.01667;
-const maxAcceleration = 0.133;
-
 let acceleration = 0;
-let speed = minSpeed;
+const accelerationRate = 0.005 * proportion;
+const decelerationRate = -0.01 * proportion;
+const maxAccRate = 0.133 * proportion;
+const maxDecRate = -0.01667 * proportion;
+const minSpeed = 0.5 * proportion;
+const maxSpeed = 2.5 * proportion;
+let speed = 0;
 
+
+// add all ground sprites from the list on the background parent
+function addGround() {
+    console.log(listGroundAsset)
+    for (let i = 0; i < listGroundAsset.length; i++) {
+        const groundPart = background.add([
+            sprite(listGroundAsset[i]),  // renders as a sprite
+            pos(0, i * (-135 * 3)),    // position in world
+            anchor("bot"), // Set the anchor of the sprite on its bottom center
+        
+        ]);
+        console.log(groundPart)
+    }
+}
+
+// add all backgrounds (buildings) sprites from the list to the background parent
+function addBackground() {
+    for (let i = 0; i < listAsset.length; i++) {
+        const bgPart = background.add([
+            sprite(listAsset[i]),  // renders as a sprite
+            pos(0, i * -135 * 3),    // position in world
+            anchor("bot"), // Set the anchor of the sprite on its bottom center
+            z(100)
+        ]);
+    }
+}
 
 const background = add([
-    //sprite("terrain"),  // renders as a sprite
     pos(innerWidth / 2, innerHeight),    // position in world
-    //anchor("bot"), // Set the anchor of the sprite on its bottom center
     scale(proportion),
-    //z(0),
     "background"
 ]);
 
 
-const partGround = background.add([
-    sprite("anthropole_ground"),  // renders as a sprite
-    pos(0, 0),    // position in world
-    anchor("bot"), // Set the anchor of the sprite on its bottom center
-]);
-
-const part = background.add([
-    sprite("anthropole"),  // renders as a sprite
-    pos(0, 0),    // position in world
-    anchor("bot"), // Set the anchor of the sprite on its bottom center
-    z(10)
-]);
-
-const part2Ground = background.add([
-    sprite("vortex_ground"),  // renders as a sprite
-    pos(0, -135 * 3),    // position in world
-    anchor("bot"), // Set the anchor of the sprite on its bottom center
-
-]);
-
-const part2 = background.add([
-    sprite("vortex"),  // renders as a sprite
-    pos(0, -135 * 3),    // position in world
-    anchor("bot"), // Set the anchor of the sprite on its bottom center
-    z(10)
-]);
-
-/*const part3 = background.add([
-    sprite("terrain"),  // renders as a sprite
-    pos(0, -405*2),    // position in world
-    anchor("bot"), // Set the anchor of the sprite on its bottom center
-
-]);*/
-
 onUpdate("background", (b) => {
-    // console.log(b.pos.y, proportion)
-    if (b.pos.y >= (405 * 3) * proportion) {
-        b.pos.y = (405 * 3) * proportion;
+    if (b.pos.y >= (405 * listGroundAsset.length) * proportion) {
+        b.pos.y = (405 * listGroundAsset.length) * proportion;
         return;
     }
 
     accelerate(b)
-    /*let movement = vec2(0, speed);
-    // .move() is provided by pos()
-    b.move(movement);*/
 });
 
-
-
 function accelerate(b) {
-    // Vary acceleration
+    // on mouse press player accelerate
     if (isMousePressed) {
         acceleration += accelerationRate;
-        if (acceleration > maxAcceleration) {
-            acceleration = maxAcceleration;
+        if (acceleration > maxAccRate) {
+            acceleration = maxAccRate
         }
         shake(2)
+    // automatically slows down
     } else {
         acceleration += decelerationRate;
-        if (acceleration < minAcceleration) {
-            acceleration = minAcceleration;
+        if (acceleration < maxDecRate) {
+            acceleration = maxDecRate;
         }
     }
 
@@ -93,6 +76,9 @@ function accelerate(b) {
         speed = minSpeed;
     }
 
-    // Apply speed
+    // Apply speed to screen scrolling
     b.pos.y += speed * 60 * dt();
 }
+
+addGround()
+addBackground()
