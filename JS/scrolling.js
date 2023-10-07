@@ -6,9 +6,12 @@ const maxSpeed = 5.5;
 let speed = minSpeed;
 let isMousePressed = false;
 
-loadSprite("anthropole", "/assets/images/anthropole.png");
-loadSprite("anthropole_ground", "/assets/images/anthropole_ground.png");
-loadSprite("terrain", "/assets/images/terrain.png");
+loadRoot("/assets/images/")
+loadSprite("anthropole", "building_anthropole.png");
+loadSprite("anthropole_ground", "building_anthropole_ground.png");
+loadSprite("vortex", "building_vortex.png");
+loadSprite("vortex_ground", "building_vortex_ground.png");
+// loadSprite("terrain", "/assets/images/terrain.png");
 
 const background = add([
     //sprite("terrain"),  // renders as a sprite
@@ -33,34 +36,35 @@ const part = background.add([
     pos(0,0),    // position in world
     anchor("bot"), // Set the anchor of the sprite on its bottom center
     //scale(proportion),
+    z(10)
 ]);
 
 const part2Ground = background.add([
-    sprite("anthropole_ground"),  // renders as a sprite
-    pos(0, -405),    // position in world
+    sprite("vortex_ground"),  // renders as a sprite
+    pos(0, -135*3),    // position in world
     anchor("bot"), // Set the anchor of the sprite on its bottom center
     //scale(proportion),
 
 ]);
 
 const part2 = background.add([
-    sprite("anthropole"),  // renders as a sprite
-    pos(0, -405),    // position in world
+    sprite("vortex"),  // renders as a sprite
+    pos(0, -135*3),    // position in world
     anchor("bot"), // Set the anchor of the sprite on its bottom center
     //scale(proportion),
-
+    z(10)
 ]);
 
-const part3 = background.add([
+/*const part3 = background.add([
     sprite("terrain"),  // renders as a sprite
     pos(0, -405*2),    // position in world
     anchor("bot"), // Set the anchor of the sprite on its bottom center
     //scale(proportion),
 
-]);
+]);*/
 
 onUpdate("background", (b) => {
-    console.log(b.pos.y, proportion)
+    // console.log(b.pos.y, proportion)
     if (b.pos.y >= (405*3)*proportion) {
         b.pos.y = (405*3)*proportion;
         return;

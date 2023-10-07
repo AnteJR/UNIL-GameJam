@@ -4,7 +4,8 @@ const player = add([
     pos(innerWidth/2, innerHeight * 0.8),
     area(),
     anchor("center"),
-    scale(proportion)
+    scale(proportion),
+    z(5)
 ]);
 
 player.play("up");
