@@ -2,7 +2,10 @@ const player = add([
     sprite("player"),
     outline(1),
     pos(innerWidth/2, innerHeight * 0.8),
-    area(),
+    area({
+        offset: vec2(0,-2),
+        shape: new Rect(vec2(0),4,7)
+    }),
     anchor("center"),
     scale(proportion),
     z(5)
