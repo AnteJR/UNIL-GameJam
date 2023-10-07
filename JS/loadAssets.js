@@ -12,7 +12,7 @@ loadSprite("vortex", "building_vortex.png");
 loadSprite("vortex_ground", "building_vortex_ground.png");
 
 // ajout des animations et personnages
-loadSprite("player", "sprite_char_velo.png", {
+loadSprite("player", "character_sheepy.png", {
 	sliceX: 4,
 	anims: {
 		"up": {
@@ -24,7 +24,7 @@ loadSprite("player", "sprite_char_velo.png", {
 	},
 });
 
-loadSprite("sprite_char_tel", "sprite_char_tel.png", {
+loadSprite("sprite_char_tel", "character_tel.png", {
 	sliceX: 7,
 	anims: {
 		"walk": {
@@ -37,7 +37,7 @@ loadSprite("sprite_char_tel", "sprite_char_tel.png", {
 });
 
 // ajout des animations
-loadSprite("friend", "sprite_sheep_lettre.png", {
+loadSprite("friend", "character_friendly_sheep.png", {
 	sliceX: 4,
 	anims: {
 		"bring": {
