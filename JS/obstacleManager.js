@@ -1,5 +1,6 @@
+let localWindowTop;
+
 function setEntities() {
-    let localWindowTop;
 
     const terrainStart = background.children[0].pos.y; // Should be 0
     const terrainEnd = backgroundSize * listAsset.length;
@@ -79,6 +80,7 @@ function setEntities() {
                 area(),
                 anchor("center"),
                 //z(9999999), // debug
+                z(50),
                 selectedMovementPattern(),
                 "obstacle"
             ]).play("walk");

@@ -1,27 +1,5 @@
 scene("game", (playerSound) => {
     /*-----------------------------------------------
-        PLAYER CHARACTER AND INTERACTIONS HERE
-    ------------------------------------------------*/
-    player = add([
-        sprite("player"),
-        outline(1),
-        pos(innerWidth/2, innerHeight * 0.8),
-        area({
-            offset: vec2(0,-2),
-            shape: new Rect(vec2(0),4,7)
-        }),
-        anchor("center"),
-        scale(proportion),
-        z(5)
-    ]);
-    
-    player.play("up");
-    
-    player.onCollide(() => {
-        console.log("Collision !!!");
-    });
-
-    /*-----------------------------------------------
         BACKGROUND HERE
     ------------------------------------------------*/
     background = add([
@@ -42,6 +20,33 @@ scene("game", (playerSound) => {
 
     addGround();
     addBackground();
+
+    /*-----------------------------------------------
+        PLAYER CHARACTER AND INTERACTIONS HERE
+    ------------------------------------------------*/
+    player = background.add([
+        sprite("player"),
+        pos(0, -50),
+        area({
+            offset: vec2(0,-2),
+            shape: new Rect(vec2(0),4,7)
+        }),
+        anchor("center"),
+        //scale(proportion),
+        z(50)
+    ]);
+    
+    player.play("up");
+    
+    player.onCollide(() => {
+        console.log("Collision !!!");
+    });
+
+    // Move the player each frame so that it stays at the same
+    // spot on the screen, while being rendered below decor and above ground.
+    player.onUpdate(() => {
+        player.moveTo(0, localWindowTop + (innerHeight * 0.8) / proportion)
+    })
     
     /*-----------------------------------------------
         ENTITIES SPAWN HERE

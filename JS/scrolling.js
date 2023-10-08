@@ -9,6 +9,7 @@ function addGround() {
             sprite(listGroundAsset[i]),  // renders as a sprite
             pos(0, i * backgroundSize),    // position in world
             anchor("bot"), // Set the anchor of the sprite on its bottom center
+            z(0)
         ]);
         //console.log(groundPart);
     }
