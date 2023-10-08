@@ -1,14 +1,15 @@
+const backgroundSize = -135 * 3; // Flo: Is it what this value is ? plz don't use magic numbers, use named constants !
+
 // add all ground sprites from the list on the background parent
 function addGround() {
     console.log(listGroundAsset)
     for (let i = 0; i < listGroundAsset.length; i++) {
         const groundPart = background.add([
             sprite(listGroundAsset[i]),  // renders as a sprite
-            pos(0, i * (-135 * 3)),    // position in world
+            pos(0, i * backgroundSize),    // position in world
             anchor("bot"), // Set the anchor of the sprite on its bottom center
-        
         ]);
-        console.log(groundPart)
+        //console.log(groundPart);
     }
 }
 
@@ -17,7 +18,7 @@ function addBackground() {
     for (let i = 0; i < listAsset.length; i++) {
         const bgPart = background.add([
             sprite(listAsset[i]),  // renders as a sprite
-            pos(0, i * -135 * 3),    // position in world
+            pos(0, i * backgroundSize),    // position in world
             anchor("bot"), // Set the anchor of the sprite on its bottom center
             z(100)
         ]);
@@ -25,26 +26,26 @@ function addBackground() {
 }
 
 function accelerate(b) {
-    // on mouse press player accelerate
     if (isMousePressed) {
+        // on mouse press player accelerate
         firstPress = true;
         acceleration += accelerationRate;
         if (acceleration > maxAccRate) {
-            acceleration = maxAccRate
+            acceleration = maxAccRate;
         }
-        shake(2)
-    // automatically slows down
+        shake(2);
     } else {
+        // automatically slows down
         acceleration += decelerationRate;
         if (acceleration < maxDecRate) {
             acceleration = maxDecRate;
         }
     }
 
-    // Clamp speed
     if (firstPress) {
-        // Vary acceleration
+        // Vary speed
         speed = speed + acceleration;
+        // Clamp speed
         if (speed > maxSpeed) {
             speed = maxSpeed;
         } else if (speed < minSpeed) {
@@ -53,5 +54,5 @@ function accelerate(b) {
     }
 
     // Apply speed to screen scrolling
-    b.pos.y += speed * 60 * dt();
+    b.pos.y += speed * 60 * dt(); // use dt for framerate invariant speed !
 }

@@ -1,6 +1,17 @@
-function setEntities(){
+function setEntities() {
     let localWindowTop;
-    //let localWindowBottom;
+
+    const terrainStart = background.children[0].pos.y; // Should be 0
+    const terrainEnd = backgroundSize * listAsset.length;
+    // used to make the obstacles spawn just out of the screen
+    const spawnMargin = 40;
+    const distanceMultiplier = 0.9;
+    let distanceToNextObstacle = -180;
+    // Set the first obstacle just above the top of the screen
+    let nextObstaclePosition = -innerHeight / proportion - 20;
+
+    console.log(distanceToNextObstacle);
+
 
     const weightedMovementPatterns = [
         //{ value: regularObstacle, weight: 3 },
@@ -22,57 +33,62 @@ function setEntities(){
     });
 
     onUpdate(() => {
-        /* Compute the top and bottom of the screen in local coordinates */
+        /* Compute the top of the screen in local coordinates */
         const currentScrollPosition = background.pos.y
-
         localWindowTop = -currentScrollPosition / proportion;
-        //localWindowBottom = localWindowTop - innerHeight;
-    });
 
-    const spawnInterval = setInterval(() => {
-        const selectedMovementPattern = weightedRandom(weightedMovementPatterns).value;
+        // Second try at entity placement: position based spawn (as opposed to
+        // time based spawn)
 
-        let e = background.add([
-            sprite("sprite_char_tel"),
-            outline(1),
-            pos(0, localWindowTop - 40),
-            area(),
-            anchor("center"),
-            selectedMovementPattern(),
-            "obstacle"
-        ]);
+        // TODO: Place friendlies
 
-        e.play("walk")
+        // let t = background.add([
+        //     sprite("friend"),
+        //     outline(1),
+        //     pos(0, localWindowTop - 80),
+        //     area(),
+        //     anchor("center"),
+        //     friend(),
+        //     "friend"
+        // ]);
 
-        let t = background.add([
-            sprite("friend"),
-            outline(1),
-            pos(0, localWindowTop - 80),
-            area(),
-            anchor("center"),
-            friend(),
-            "friend"
-        ]);
+        // t.play("bring")
 
-        t.play("bring")
+        // Don't spawn obstacles after the end of the terrain
+        if (localWindowTop < terrainEnd) return;
 
-    }, 2000);
+        // Spawn obstacles
+        if (localWindowTop - spawnMargin < nextObstaclePosition) {
+            //console.log("Spawn" + nextObstaclePosition, distanceToNextObstacle);
+            background.add([
+                sprite("sprite_char_tel"),
+                outline(1),
+                pos(0, nextObstaclePosition),
+                area(),
+                anchor("center"),
+                oneWayObstacle(),
+                "obstacle"
+            ]).play("walk");
 
-    function weightedRandom(items) {
-        const totalWeight = items.reduce((sum, item) => sum + item.weight, 0);
-        const randomValue = Math.random() * totalWeight;
-
-        let cumulativeWeight = 0;
-
-        for (const item of items) {
-            cumulativeWeight += item.weight;
-            if (randomValue <= cumulativeWeight) {
-                return item;
-            }
+            nextObstaclePosition += distanceToNextObstacle;
+            distanceToNextObstacle *= distanceMultiplier;
         }
+    });
+}
 
-        // This should not happen unless all weights are zero.
-        return null;
+function weightedRandom(items) {
+    const totalWeight = items.reduce((sum, item) => sum + item.weight, 0);
+    const randomValue = Math.random() * totalWeight;
+
+    let cumulativeWeight = 0;
+
+    for (const item of items) {
+        cumulativeWeight += item.weight;
+        if (randomValue <= cumulativeWeight) {
+            return item;
+        }
     }
 
+    // This should not happen unless all weights are zero.
+    return null;
 }

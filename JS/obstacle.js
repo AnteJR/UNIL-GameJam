@@ -1,4 +1,4 @@
-function regularObstacle() {
+function waveObstacle() {
     // obstacle that oscillates
 
     let speed = 1; // change this to have slow or fast obstacles
@@ -8,7 +8,7 @@ function regularObstacle() {
     return {
 
         // The name of the component
-        id: "regularObstacle",
+        id: "waveObstacle",
         // If this component depend on any other components
         require: ["pos", "area"],
 
@@ -60,8 +60,8 @@ function randomObstacle() {
 function oneWayObstacle() {
     // obstacle that moves only in one direction
 
-    const minWait = 1500;
-    const randomWait = 2500;
+    const minWait = 1000;
+    const randomWait = 1000;
     const side = Math.sign(Math.random() - 0.5);
     let speed = 0.5;
     let moveAfterMs = minWait + Math.floor(Math.random() * randomWait);
