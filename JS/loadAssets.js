@@ -34,6 +34,21 @@ loadSprite("fr_btn", "UI_lang_FR.png");
 const listGroundAsset = ["anthropole_ground", "vortex_ground", "metro_ground"];
 const listAsset = ["anthropole", "vortex", "metro"];
 
+// Liste des zones où aucune entité ne peut spawner, par asset
+const assetDeadZones = {
+    // Le nom de l'asset qui contient une deadzone
+    "vortex": [
+        {
+            start: -112, // position y du début de la deadzone (y=0 en bas de l'image)
+            end: -275 // position y de la fin de la deadzone
+        },
+        {
+            start: -596,
+            end: -768
+        }
+    ]
+}
+
 loadRoot("../assets/images/characters/");
 // ajout des animations et personnages
 loadSprite("player", "character_sheepy.png", {

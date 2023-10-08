@@ -6,11 +6,9 @@ function setEntities() {
     // used to make the obstacles spawn just out of the screen
     const spawnMargin = 40;
     const distanceMultiplier = 0.9;
-    let distanceToNextObstacle = -180;
+    let distanceToNextObstacle = -100;
     // Set the first obstacle just above the top of the screen
     let nextObstaclePosition = -innerHeight / proportion - 20;
-
-    console.log(distanceToNextObstacle);
 
 
     const weightedMovementPatterns = [
@@ -54,19 +52,23 @@ function setEntities() {
 
         // t.play("bring")
 
+        const spawnPosition = localWindowTop - spawnMargin;
+
         // Don't spawn obstacles after the end of the terrain
-        if (localWindowTop < terrainEnd) return;
+        if (spawnPosition < terrainEnd || isWithinDeadZone(spawnPosition)) return;
 
         // Spawn obstacles
-        if (localWindowTop - spawnMargin < nextObstaclePosition) {
+        if (spawnPosition < nextObstaclePosition) {
             //console.log("Spawn" + nextObstaclePosition, distanceToNextObstacle);
+            const selectedMovementPattern = weightedRandom(weightedMovementPatterns).value;
+
             background.add([
                 sprite("sprite_char_tel"),
                 outline(1),
                 pos(0, nextObstaclePosition),
                 area(),
                 anchor("center"),
-                oneWayObstacle(),
+                selectedMovementPattern(),
                 "obstacle"
             ]).play("walk");
 
@@ -91,4 +93,12 @@ function weightedRandom(items) {
 
     // This should not happen unless all weights are zero.
     return null;
+}
+
+function isWithinDeadZone(position) {
+    for (zone of deadZones) {
+        if (Math.abs(position) > Math.abs(zone.start) && Math.abs(position) < Math.abs(zone.end)) {
+            return true;
+        }
+    }
 }
