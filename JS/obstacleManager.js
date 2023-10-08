@@ -9,16 +9,42 @@ function setEntities() {
     const distanceMultiplier = 0.95;
     let distanceToNextObstacle = -100;
     // Set the first obstacle just above the top of the screen
-    let nextObstaclePosition = -innerHeight / proportion - 20;
+    let nextObstaclePosition = -innerHeight / proportion - 40;
 
 
-    const weightedMovementPatterns = [
-        //{ value: regularObstacle, weight: 3 },
-        //{ value: randomObstacle, weight: 2 },
-        { value: oneWayObstacle, weight: 1 },
-        //{ value: friend, weight: 1 },
+    // TODO: Vary weights based on distance
+    const weightedObstacleTypes = [
+        { // Slow obstacle
+            pattern: oneWayObstacle,
+            sprite: "sprite_char_tel",
+            speed:0.5,
+            minWait: 0,
+            randomWait: 1000,
+            weight: 3
+        },
+        { // Fast obstacle
+            pattern: oneWayObstacle,
+            sprite: "sprite_char_tel",
+            speed:1,
+            minWait: 500,
+            randomWait: 1500,
+            weight: 2
+        },
+        { // Random obstacle
+            pattern: randomObstacle,
+            sprite: "sprite_char_tel",
+            speed: 1,
+            minWait: 0,
+            randomWait: 1500,
+            weight: 1
+        }
     ];
 
+    /*-----------------------------------------------
+        DESTROY OBSTACLES
+    ------------------------------------------------*/
+
+    // We use a marker to catch obstacles that leave the screen from the bottom
     let bottomMarker = add([
         rect(innerWidth, 1),
         area(),
@@ -70,18 +96,21 @@ function setEntities() {
                 return;
             }
 
-            //console.log("Spawn" + nextObstaclePosition, distanceToNextObstacle);
-            const selectedMovementPattern = weightedRandom(weightedMovementPatterns).value;
+            // Select the type of obstacle to spawn
+            const selectedObstacle = weightedRandom(weightedObstacleTypes);
 
+            // Configure and spawn the obstacle
             background.add([
-                sprite("sprite_char_tel"),
+                sprite(selectedObstacle.sprite),
                 outline(1),
                 pos(0, nextObstaclePosition),
                 area(),
                 anchor("center"),
-                //z(9999999), // debug
                 z(50),
-                selectedMovementPattern(),
+                selectedObstacle.pattern(
+                    selectedObstacle.speed,
+                    selectedObstacle.minWait,
+                    selectedObstacle.randomWait),
                 "obstacle"
             ]).play("walk");
 

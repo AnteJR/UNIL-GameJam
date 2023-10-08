@@ -1,33 +1,12 @@
-function waveObstacle() {
-    // obstacle that oscillates
 
-    let speed = 1; // change this to have slow or fast obstacles
-    let margin = 200;
-    const offset = Math.random() * 5
 
-    return {
+function randomObstacle(speed = 1, minWait = 1000, randomWait = 1500) {
+    // obstacle that speeds up and slows down randomly
 
-        // The name of the component
-        id: "waveObstacle",
-        // If this component depend on any other components
-        require: ["pos", "area"],
-
-        // Runs every frame as long as the host object exists
-        update() {
-            let x = wave(margin / proportion, (innerWidth - margin) / proportion, (time() + offset) * speed)
-            this.moveTo(x - (innerWidth / 2) / proportion, this.pos.y);
-        }
-    }
-}
-
-function randomObstacle() {
-    // obstacle that stops and starts randomly
-
-    let speed = 1;
-    let margin = 200 / proportion;
-    let offset = Math.random() * 5
-    let _moving = true
-    let _stopInterval = null;
+    const side = Math.sign(Math.random() - 0.5);
+    const offset = Math.random() * 8;
+    let moveAfterMs = minWait + Math.floor(Math.random() * randomWait);
+    let _moving = false;
     let _t = 0;
 
     return {
@@ -36,44 +15,36 @@ function randomObstacle() {
         require: ["pos", "area"],
 
         add() {
-            _stopInterval = setInterval(() => {
-                if (Math.abs(this.pos.x) > 20) {
-                    _moving = Math.random() < 0.5 ? !_moving : _moving;
-                }
-            }, 1000);
+            // Make the sprite look in the direction of movement
+            this.flipX = side > 0;
+            // Set the original position, to the left or to the right of the road
+            this.pos.x = side * 40;
+            setTimeout(() => _moving = true, moveAfterMs)
         },
 
         update() {
             if (_moving) {
-                let x = wave(margin / proportion, (innerWidth - margin) / proportion, (_t + offset) * speed)
-                this.moveTo(x - (innerWidth / 2) / proportion, this.pos.y);
-                _t += dt();
+                this.pos.x -= side * (0.5 + perlin.get(time()*4, offset)/2) * speed;
             }
-        },
-
-        destroy() {
-            clearInterval(_stopInterval);
         }
     }
 }
 
-function oneWayObstacle() {
+function oneWayObstacle(speed = 0.5, minWait = 500, randomWait = 1500) {
     // obstacle that moves only in one direction
-
-    const minWait = 1000;
-    const randomWait = 1000;
     const side = Math.sign(Math.random() - 0.5);
-    let speed = 0.5;
     let moveAfterMs = minWait + Math.floor(Math.random() * randomWait);
     let _moving = false
 
     return {
 
         id: "oneWayObstacle",
-        require: ["pos", "area", "sprite"],
+        require: ["pos", "area"],
 
         add() {
-            //this.flipX = side > 0;
+            // Make the sprite look in the direction of movement
+            this.flipX = side > 0;
+            // Set the original position, to the left or to the right of the road
             this.pos.x = side * 40;
             setTimeout(() => _moving = true, moveAfterMs)
         },
