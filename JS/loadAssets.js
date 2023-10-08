@@ -36,7 +36,7 @@ const listAsset = ["anthropole", "vortex", "metro"];
 
 // Liste des zones où aucune entité ne peut spawner, par asset
 const assetDeadZones = {
-    // Le nom de l'asset qui contient une deadzone
+    // Le nom de l'asset (de la listAsset) qui contient une deadzone
     "vortex": [
         {
             start: -112, // position y du début de la deadzone (y=0 en bas de l'image)

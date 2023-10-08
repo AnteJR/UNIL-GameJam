@@ -5,7 +5,7 @@ function setEntities() {
     const terrainEnd = backgroundSize * listAsset.length;
     // used to make the obstacles spawn just out of the screen
     const spawnMargin = 40;
-    const distanceMultiplier = 0.9;
+    const distanceMultiplier = 0.95;
     let distanceToNextObstacle = -100;
     // Set the first obstacle just above the top of the screen
     let nextObstaclePosition = -innerHeight / proportion - 20;
@@ -55,10 +55,20 @@ function setEntities() {
         const spawnPosition = localWindowTop - spawnMargin;
 
         // Don't spawn obstacles after the end of the terrain
-        if (spawnPosition < terrainEnd || isWithinDeadZone(spawnPosition)) return;
+        if (spawnPosition < terrainEnd) return;
 
         // Spawn obstacles
         if (spawnPosition < nextObstaclePosition) {
+            const currentDeadZone = getDeadZoneAtPosition(spawnPosition);
+
+            // if we're in a dead zone
+            if (currentDeadZone) {
+                // push the next obstacle to after the deadzone
+                const randomDistance = Math.floor(Math.random() * distanceToNextObstacle + spawnMargin);
+                nextObstaclePosition = currentDeadZone.end - randomDistance;
+                return;
+            }
+
             //console.log("Spawn" + nextObstaclePosition, distanceToNextObstacle);
             const selectedMovementPattern = weightedRandom(weightedMovementPatterns).value;
 
@@ -68,6 +78,7 @@ function setEntities() {
                 pos(0, nextObstaclePosition),
                 area(),
                 anchor("center"),
+                //z(9999999), // debug
                 selectedMovementPattern(),
                 "obstacle"
             ]).play("walk");
@@ -95,10 +106,13 @@ function weightedRandom(items) {
     return null;
 }
 
-function isWithinDeadZone(position) {
+function getDeadZoneAtPosition(position) {
     for (zone of deadZones) {
-        if (Math.abs(position) > Math.abs(zone.start) && Math.abs(position) < Math.abs(zone.end)) {
-            return true;
+        if (position < zone.end) continue;
+        //if (Math.abs(position) > Math.abs(zone.start) && Math.abs(position) < Math.abs(zone.end)) {
+        if (position < zone.start && position > zone.end) {
+            return zone;
         }
     }
+    return null;
 }
