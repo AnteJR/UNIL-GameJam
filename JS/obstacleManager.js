@@ -24,7 +24,7 @@ function setEntities() {
         },
         { // Fast obstacle
             pattern: oneWayObstacle,
-            sprite: "sprite_char_tel",
+            sprite: "luge",
             speed:1,
             minWait: 500,
             randomWait: 1500,

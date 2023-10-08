@@ -75,6 +75,18 @@ loadSprite("sprite_char_tel", "character_tel.png", {
 	},
 });
 
+loadSprite("luge", "character_luge.png", {
+	sliceX: 6,
+	anims: {
+		"walk": {
+			from: 0,
+			to: 5,
+			speed: 5,
+			loop: true,
+		},
+	},
+});
+
 // ajout des animations
 loadSprite("friend", "character_friendly_sheep.png", {
 	sliceX: 6,
