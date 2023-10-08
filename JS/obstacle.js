@@ -1,6 +1,6 @@
 
 
-function randomObstacle(speed = 1, minWait = 1000, randomWait = 1500) {
+function randomObstacle(speed = 1, minWait = 0, randomWait = 0) {
     // obstacle that speeds up and slows down randomly
 
     const side = Math.sign(Math.random() - 0.5);
@@ -30,7 +30,7 @@ function randomObstacle(speed = 1, minWait = 1000, randomWait = 1500) {
     }
 }
 
-function oneWayObstacle(speed = 0.5, minWait = 500, randomWait = 1500) {
+function oneWayObstacle(speed = 0.5, minWait = 0, randomWait = 0) {
     // obstacle that moves only in one direction
     const side = Math.sign(Math.random() - 0.5);
     let moveAfterMs = minWait + Math.floor(Math.random() * randomWait);

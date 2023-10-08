@@ -1,4 +1,5 @@
 let localWindowTop;
+let currentScrollPosition;
 
 function setEntities() {
 
@@ -12,7 +13,6 @@ function setEntities() {
     let nextObstaclePosition = -innerHeight / proportion - 40;
 
 
-    // TODO: Vary weights based on distance
     const weightedObstacleTypes = [
         { // Slow obstacle
             pattern: oneWayObstacle,
@@ -20,7 +20,7 @@ function setEntities() {
             speed:0.5,
             minWait: 0,
             randomWait: 1000,
-            weight: 3
+            weight: () => map(currentScrollPosition/terrainEnd, terrainStart, terrainEnd, 4, 1)
         },
         { // Fast obstacle
             pattern: oneWayObstacle,
@@ -28,7 +28,7 @@ function setEntities() {
             speed:1,
             minWait: 500,
             randomWait: 1500,
-            weight: 2
+            weight: () => map(currentScrollPosition/terrainEnd, terrainStart, terrainEnd, 2, 3)
         },
         { // Random obstacle
             pattern: randomObstacle,
@@ -36,7 +36,7 @@ function setEntities() {
             speed: 1,
             minWait: 0,
             randomWait: 1500,
-            weight: 1
+            weight: () => map(currentScrollPosition/terrainEnd, terrainStart, terrainEnd, 1, 3)
         }
     ];
 
@@ -59,7 +59,7 @@ function setEntities() {
 
     onUpdate(() => {
         /* Compute the top of the screen in local coordinates */
-        const currentScrollPosition = background.pos.y
+        currentScrollPosition = background.pos.y
         localWindowTop = -currentScrollPosition / proportion;
 
         // Second try at entity placement: position based spawn (as opposed to
@@ -121,13 +121,13 @@ function setEntities() {
 }
 
 function weightedRandom(items) {
-    const totalWeight = items.reduce((sum, item) => sum + item.weight, 0);
+    const totalWeight = items.reduce((sum, item) => sum + item.weight(), 0);
     const randomValue = Math.random() * totalWeight;
 
     let cumulativeWeight = 0;
 
     for (const item of items) {
-        cumulativeWeight += item.weight;
+        cumulativeWeight += item.weight();
         if (randomValue <= cumulativeWeight) {
             return item;
         }
