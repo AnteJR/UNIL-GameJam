@@ -1,8 +1,15 @@
-// chargement global des sons
+/*---------------------------
+SONS ET MUSIQUES
+---------------------------*/
 const liste_sons = ["bike-roll-snow", "woosh2", "sonnette-velo"];
 liste_sons.forEach(a => {
 	loadSound(a, `../assets/sounds/${a}.wav`);
 });
+
+/*---------------------------
+POLICES D'ÉCRITURE
+---------------------------*/
+loadFont("pixelFont", "../assets/fonts/RetroGaming.ttf")
 
 /*---------------------------
 BATIMENTS/DECORS
