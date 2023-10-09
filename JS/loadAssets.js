@@ -113,5 +113,33 @@ loadSprite("friend", "character_friendly_sheep.png", {
 UI/BOUTONS
 ---------------------------*/
 loadRoot("../assets/images/");
-loadSprite("eng_btn", "UI_lang_ENG.png");
-loadSprite("fr_btn", "UI_lang_FR.png");
+loadSprite("eng_btn", "UI_lang_ENG.png", {
+	sliceX: 3,
+	anims: {
+		"clicked": {
+			from: 0,
+			to: 2,
+			speed: 10,
+			loop: false
+		},
+		"default": {
+			from: 0,
+			to: 0
+		}
+	}
+});
+loadSprite("fr_btn", "UI_lang_FR.png", {
+	sliceX: 3,
+	anims: {
+		"clicked": {
+			from: 0,
+			to: 2,
+			speed: 10,
+			loop: false
+		},
+		"default": {
+			from: 0,
+			to: 0
+		}
+	}
+});

@@ -1,6 +1,6 @@
 scene("homeScreen", () => {
     const flagFR = add([
-        sprite("fr_btn"),
+        sprite("fr_btn", { anim: "default" }),
         anchor("top"),
         pos(innerWidth / 2, innerHeight / 10),
         scale(proportion),
@@ -11,7 +11,7 @@ scene("homeScreen", () => {
     ]);
 
     const flagENG = add([
-        sprite("eng_btn"),
+        sprite("eng_btn", { anim: "default" }),
         anchor("top"),
         pos(innerWidth / 2, innerHeight / 2),
         scale(proportion),
@@ -21,20 +21,28 @@ scene("homeScreen", () => {
         "startButton"
     ]);
 
-    onClick("startButton", (e) => {
-        if (e.value == "fr") LANG = "FR";
-        else if (e.value == "eng") LANG = "ENG";
+    onClick("startButton", (e) => launch(e));
+    onTouchStart((i, p) => {
+        if (flagENG.hasPoint(i)) launch(flagENG);
+        else if (flagFR.hasPoint(i)) launch(flagFR);
+    });
+});
 
-        console.log(LANG)
+function launch(e) {
+    if (e.value == "fr") LANG = "FR";
+    else if (e.value == "eng") LANG = "ENG";
 
+    e.play("clicked")
+
+    setTimeout(() => {
         const playerSound = play('bike-roll-snow', {
             loop: true,
             volume: 0.5,
         });
 
         go("game", { playerSound: playerSound });
-    })
-});
+    }, 250)
+}
 
 function initGame() {
     go("homeScreen");
