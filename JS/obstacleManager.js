@@ -7,9 +7,9 @@ function setEntities() {
     const terrainEnd = terrainLength;
     console.log(terrainEnd)
     // used to make the obstacles spawn just out of the screen
-    const spawnMargin = 40;
+    const spawnMargin = 70;
     const distanceMultiplier = 0.95;
-    let distanceToNextObstacle = -100;
+    let distanceToNextObstacle = -250;
     // Set the first obstacle just above the top of the screen
     let nextObstaclePosition = -innerHeight / proportion - 40;
 
@@ -18,25 +18,25 @@ function setEntities() {
         { // Slow obstacle
             pattern: oneWayObstacle,
             sprite: "sprite_char_tel",
-            speed: 0.5,
+            speed: 0.6,
             minWait: 0,
-            randomWait: 1000,
+            randomWait: 50,
             weight: () => map(currentScrollPosition / terrainEnd, terrainStart, terrainEnd, 4, 1)
         },
         { // Fast obstacle
             pattern: oneWayObstacle,
             sprite: "luge",
             speed: 1,
-            minWait: 500,
-            randomWait: 1500,
+            minWait: 10,
+            randomWait: 100,
             weight: () => map(currentScrollPosition / terrainEnd, terrainStart, terrainEnd, 2, 3)
         },
         { // Random obstacle
             pattern: randomObstacle,
             sprite: "sprite_char_tel",
-            speed: 1,
+            speed: 0.7,
             minWait: 0,
-            randomWait: 1500,
+            randomWait: 70,
             weight: () => map(currentScrollPosition / terrainEnd, terrainStart, terrainEnd, 1, 3)
         }
     ];
