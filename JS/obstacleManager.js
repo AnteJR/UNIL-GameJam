@@ -4,15 +4,21 @@ let currentScrollPosition;
 function setEntities() {
 
     const terrainStart = background.children[0].pos.y; // Should be 0
-    const terrainEnd = terrainLength;
-    console.log(terrainEnd)
-    // used to make the obstacles spawn just out of the screen
+    // used to make the obstacles spawn just out of the screen: number of
+    // pixels above the top of the screen
     const spawnMargin = 70;
+
+    // Obstacles
     const distanceMultiplier = 0.95;
+    const minDistanceBetweenObstacles = -100;
     let distanceToNextObstacle = -250;
     // Set the first obstacle just above the top of the screen
     let nextObstaclePosition = -innerHeight / proportion - 40;
 
+    // Friends
+    const numFriends = 10;
+    const distanceBetweenFriends = terrainLength / numFriends;
+    let nextFriendPosition = -distanceBetweenFriends;
 
     const weightedObstacleTypes = [
         { // Slow obstacle
@@ -21,7 +27,7 @@ function setEntities() {
             speed: 0.6,
             minWait: 0,
             randomWait: 50,
-            weight: () => map(currentScrollPosition / terrainEnd, terrainStart, terrainEnd, 4, 1)
+            weight: () => map(currentScrollPosition / terrainLength, terrainStart, terrainLength, 4, 1)
         },
         { // Fast obstacle
             pattern: oneWayObstacle,
@@ -29,7 +35,7 @@ function setEntities() {
             speed: 1,
             minWait: 10,
             randomWait: 100,
-            weight: () => map(currentScrollPosition / terrainEnd, terrainStart, terrainEnd, 2, 3)
+            weight: () => map(currentScrollPosition / terrainLength, terrainStart, terrainLength, 2, 3)
         },
         { // Random obstacle
             pattern: randomObstacle,
@@ -37,7 +43,7 @@ function setEntities() {
             speed: 0.7,
             minWait: 0,
             randomWait: 70,
-            weight: () => map(currentScrollPosition / terrainEnd, terrainStart, terrainEnd, 1, 3)
+            weight: () => map(currentScrollPosition / terrainLength, terrainStart, terrainLength, 1, 3)
         }
     ];
 
@@ -65,28 +71,35 @@ function setEntities() {
 
         // Second try at entity placement: position based spawn (as opposed to
         // time based spawn)
-
-        // TODO: Place friendlies
-
-        // let t = background.add([
-        //     sprite("friend"),
-        //     outline(1),
-        //     pos(0, localWindowTop - 80),
-        //     area(),
-        //     anchor("center"),
-        //     friend(),
-        //     "friend"
-        // ]);
-
-        // t.play("bring")
-
         const spawnPosition = localWindowTop - spawnMargin;
 
         // Don't spawn obstacles after the end of the terrain
-        if (spawnPosition < terrainEnd) return;
+        if (spawnPosition < terrainLength) return;
+
+        if (spawnPosition < -nextFriendPosition) {
+            background.add([
+                sprite("friend"),
+                outline(1),
+                pos(0, localWindowTop - 80),
+                area(),
+                anchor("center"),
+                friend(),
+                "friend"
+            ]).play("bring");
+
+            nextFriendPosition -= distanceBetweenFriends;
+
+            // if we also were supposed to place an obstacle at that position
+            // if (spawnPosition < nextObstaclePosition) {
+            //     // push the next obstacle further
+            //     nextObstaclePosition = getNextObstaclePosition();
+            //     return;
+            // }
+        }
 
         // Spawn obstacles
         if (spawnPosition < nextObstaclePosition) {
+            console.log(nextObstaclePosition, spawnPosition);
             const currentDeadZone = getDeadZoneAtPosition(spawnPosition);
 
             // if we're in a dead zone
@@ -99,6 +112,7 @@ function setEntities() {
 
             // Select the type of obstacle to spawn
             const selectedObstacle = weightedRandom(weightedObstacleTypes);
+            //console.log(weightedObstacleTypes[0].weight(), weightedObstacleTypes[1].weight(), weightedObstacleTypes[2].weight())
 
             // Configure and spawn the obstacle
             background.add([
@@ -115,11 +129,20 @@ function setEntities() {
                 "obstacle"
             ]).play("walk");
 
-            nextObstaclePosition += distanceToNextObstacle;
-            distanceToNextObstacle *= distanceMultiplier;
+            nextObstaclePosition = getNextObstaclePosition();
         }
     });
+
+    function getNextObstaclePosition() {
+        let nextPosition = nextObstaclePosition + distanceToNextObstacle;
+        distanceToNextObstacle *= distanceMultiplier;
+        if (distanceToNextObstacle < minDistanceBetweenObstacles){
+            distanceToNextObstacle = minDistanceBetweenObstacles;
+        }
+        return nextPosition;
+    }
 }
+
 
 function weightedRandom(items) {
     const totalWeight = items.reduce((sum, item) => sum + item.weight(), 0);
