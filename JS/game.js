@@ -21,6 +21,13 @@ scene("game", (playerSound) => {
     addBackground();
 
     /*-----------------------------------------------
+        DEBUG MODE HERE
+    ------------------------------------------------*/
+    if(debugOn){
+        launchDebug();
+    }
+
+    /*-----------------------------------------------
         PLAYER CHARACTER AND INTERACTIONS HERE
     ------------------------------------------------*/
     player = background.add([
@@ -92,10 +99,6 @@ scene("game", (playerSound) => {
     onKeyRelease("space", () => {
         isMousePressed = false;
     });
-
-    onKeyPress("d", () => {
-        debugOn === true ? debugOn = false : debugOn = true;
-    })
 
     function playerSounds() {
         play('woosh2');

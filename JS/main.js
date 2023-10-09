@@ -3,7 +3,7 @@ const innerWidth = window.innerWidth,
     innerHeight = window.innerHeight;
 
 let LANG = "ENG";
-let debugOn = false;
+let debugOn = true;
 
 let scale_incomplete = innerWidth / 135;
 const proportion = Math.floor(scale_incomplete) + 1;
