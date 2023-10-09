@@ -32,9 +32,9 @@ function setEntities() {
         { // Fast obstacle
             pattern: oneWayObstacle,
             sprite: "luge",
-            speed: 1,
-            minWait: 10,
-            randomWait: 100,
+            speed: 0.9,
+            minWait: 500,
+            randomWait: 2000,
             weight: () => map(currentScrollPosition / terrainLength, terrainStart, terrainLength, 2, 3)
         },
         { // Random obstacle

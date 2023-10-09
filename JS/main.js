@@ -23,9 +23,9 @@ let acceleration = 0,
 const accelerationRate = 0.005 * proportion,
     decelerationRate = -0.01 * proportion,
     maxAccRate = 0.133 * proportion,
-    maxDecRate = -0.01667 * proportion,
+    maxDecRate = -0.025 * proportion,
     minSpeed = 0.5 * proportion,
-    maxSpeed = 2.5 * proportion;
+    maxSpeed = 2 * proportion;
 
 const dazeDurationSeconds = 1;
 

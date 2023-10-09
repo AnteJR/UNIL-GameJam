@@ -49,7 +49,7 @@ scene("game", (playerSound) => {
 
     onCollide("player", "obstacle", () => {
         // ADDA A COLLISION EFFECT
-        shake(30)
+        shake(30);
         dazeTimer += dazeDurationSeconds;
     });
 
@@ -60,6 +60,7 @@ scene("game", (playerSound) => {
         } else {
             // HAPPY FACE
             greetingsCaught += 1;
+            shake(8);
             console.log("Greeting caught !");
         }
     });
