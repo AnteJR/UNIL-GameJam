@@ -27,6 +27,8 @@ const accelerationRate = 0.005 * proportion,
     minSpeed = 0.5 * proportion,
     maxSpeed = 2.5 * proportion;
 
+const dazeDurationSeconds = 1;
+
 // GAME ELEMENTS
 let background,
     player,

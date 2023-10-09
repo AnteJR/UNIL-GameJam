@@ -99,7 +99,6 @@ function setEntities() {
 
         // Spawn obstacles
         if (spawnPosition < nextObstaclePosition) {
-            console.log(nextObstaclePosition, spawnPosition);
             const currentDeadZone = getDeadZoneAtPosition(spawnPosition);
 
             // if we're in a dead zone
