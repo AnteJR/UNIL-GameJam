@@ -31,19 +31,41 @@ scene("game", (playerSound) => {
             shape: new Rect(vec2(0), 4, 7)
         }),
         anchor("center"),
-        z(50)
+        z(50),
+        "player"
     ]);
+
+    let dazeTimer = 0;
+    let greetingsCaught = 0;
 
     player.play("up");
 
-    player.onCollide(() => {
-        console.log("Collision !!!");
+    onCollide("player", "obstacle", () => {
+        dazeTimer += dazeDurationSeconds;
+    });
+
+    onCollide("player", "friend", () => {
+        if (dazeTimer > 0) {
+            // SAD FACE
+            console.log("Greeting NOT caught !");
+        } else {
+            // HAPPY FACE
+            greetingsCaught += 1;
+            console.log("Greeting caught !");
+        }
     });
 
     // Move the player each frame so that it stays at the same
     // spot on the screen, while being rendered below decor and above ground.
     player.onUpdate(() => {
         player.moveTo(0, localWindowTop + (innerHeight * 0.8) / proportion);
+
+        if (dazeTimer > 0) {
+            dazeTimer -= dt();
+            if (dazeTimer < 0) {
+                dazeTimer = 0;
+            }
+        }
     })
 
     /*-----------------------------------------------
