@@ -115,6 +115,10 @@ scene("game", (playerSound) => {
         isMousePressed = false;
     });
 
+    onKeyPress("d", () => {
+        debugOn === true ? debugOn = false : debugOn = true;
+    })
+
     function playerSounds() {
         play('woosh2');
         play('sonnette-velo', {
