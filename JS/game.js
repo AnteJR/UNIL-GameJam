@@ -48,6 +48,8 @@ scene("game", (playerSound) => {
     player.play("up");
 
     onCollide("player", "obstacle", () => {
+        // ADDA A COLLISION EFFECT
+        shake(30)
         dazeTimer += dazeDurationSeconds;
     });
 
