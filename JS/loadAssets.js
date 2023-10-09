@@ -10,9 +10,9 @@ BATIMENTS/DECORS
 loadRoot("../assets/images/buildings/");
 loadSprite("start", "building_start.png", { sliceX: 4, anims: { "default": { from: 0, to: 3, speed: 5, loop: true, } } });
 loadSprite("start_ground", "building_start_ground.png");
-loadSprite("anthropole", "building_anthropole.png", { anims: { sliceX: 0, "default": { from: 0, to: 0 } } });
+loadSprite("anthropole", "building_anthropole.png", { anims: { "default": { from: 0, to: 0 } } });
 loadSprite("anthropole_ground", "building_anthropole_ground.png");
-loadSprite("vortex", "building_vortex.png", { anims: { sliceX: 0, "default": { from: 0, to: 0 } } });
+loadSprite("vortex", "building_vortex.png", { anims: { "default": { from: 0, to: 0 } } });
 loadSprite("vortex_ground", "building_vortex_ground.png");
 loadSprite("metro", "building_metro.png", { sliceX: 5, anims: { "default": { from: 0, to: 4, speed: 10, loop: true, } } });
 loadSprite("metro_ground", "building_metro_ground.png");
