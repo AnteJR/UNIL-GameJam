@@ -4,7 +4,7 @@ const innerWidth = window.innerWidth,
 
 let LANG = "ENG";
 
-let scale_incomplete = innerWidth/135;
+let scale_incomplete = innerWidth / 135;
 const proportion = Math.floor(scale_incomplete) + 1;
 
 kaboom({
@@ -13,7 +13,7 @@ kaboom({
     clearColor: [0, 0, 0]
 });
 
-// SPEED AND ITERACTION
+// SPEED AND INTERACTIONS
 let acceleration = 0,
     speed = 0,
     isMousePressed = false;

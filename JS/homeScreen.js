@@ -2,7 +2,7 @@ scene("homeScreen", () => {
     const flagFR = add([
         sprite("fr_btn"),
         anchor("top"),
-        pos(innerWidth/2, innerHeight/10),
+        pos(innerWidth / 2, innerHeight / 10),
         scale(proportion),
         area(),
         { value: "fr" },
@@ -13,7 +13,7 @@ scene("homeScreen", () => {
     const flagENG = add([
         sprite("eng_btn"),
         anchor("top"),
-        pos(innerWidth/2, innerHeight/2),
+        pos(innerWidth / 2, innerHeight / 2),
         scale(proportion),
         area(),
         { value: "eng" },
@@ -22,7 +22,7 @@ scene("homeScreen", () => {
     ]);
 
     onClick("startButton", (e) => {
-        if(e.value == "fr") LANG = "FR";
+        if (e.value == "fr") LANG = "FR";
         else if (e.value == "eng") LANG = "ENG";
 
         console.log(LANG)
@@ -32,11 +32,11 @@ scene("homeScreen", () => {
             volume: 0.5,
         });
 
-        go("game", {playerSound:playerSound});
+        go("game", { playerSound: playerSound });
     })
 });
 
-function initGame () {
+function initGame() {
     go("homeScreen");
 }
 

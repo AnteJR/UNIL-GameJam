@@ -4,7 +4,8 @@ let currentScrollPosition;
 function setEntities() {
 
     const terrainStart = background.children[0].pos.y; // Should be 0
-    const terrainEnd = backgroundSize * listAsset.length;
+    const terrainEnd = terrainLength;
+    console.log(terrainEnd)
     // used to make the obstacles spawn just out of the screen
     const spawnMargin = 40;
     const distanceMultiplier = 0.95;
@@ -17,18 +18,18 @@ function setEntities() {
         { // Slow obstacle
             pattern: oneWayObstacle,
             sprite: "sprite_char_tel",
-            speed:0.5,
+            speed: 0.5,
             minWait: 0,
             randomWait: 1000,
-            weight: () => map(currentScrollPosition/terrainEnd, terrainStart, terrainEnd, 4, 1)
+            weight: () => map(currentScrollPosition / terrainEnd, terrainStart, terrainEnd, 4, 1)
         },
         { // Fast obstacle
             pattern: oneWayObstacle,
             sprite: "luge",
-            speed:1,
+            speed: 1,
             minWait: 500,
             randomWait: 1500,
-            weight: () => map(currentScrollPosition/terrainEnd, terrainStart, terrainEnd, 2, 3)
+            weight: () => map(currentScrollPosition / terrainEnd, terrainStart, terrainEnd, 2, 3)
         },
         { // Random obstacle
             pattern: randomObstacle,
@@ -36,7 +37,7 @@ function setEntities() {
             speed: 1,
             minWait: 0,
             randomWait: 1500,
-            weight: () => map(currentScrollPosition/terrainEnd, terrainStart, terrainEnd, 1, 3)
+            weight: () => map(currentScrollPosition / terrainEnd, terrainStart, terrainEnd, 1, 3)
         }
     ];
 

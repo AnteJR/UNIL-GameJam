@@ -24,7 +24,7 @@ function randomObstacle(speed = 1, minWait = 0, randomWait = 0) {
 
         update() {
             if (_moving) {
-                this.pos.x -= side * (0.5 + perlin.get(time()*4, offset)/2) * speed;
+                this.pos.x -= side * (0.5 + perlin.get(time() * 4, offset) / 2) * speed;
             }
         }
     }
