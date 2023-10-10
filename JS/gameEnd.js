@@ -83,11 +83,6 @@ function endMenu(e) {
     setTimeout(() => {
         if (e.role == "home") window.open("https://unil.ch/voeux", "_blank"); // change link if needed
         else if (e.role == "replay") {
-            const playerSound = play('bike-roll-snow', {
-                loop: true,
-                volume: 0.5,
-            });
-
             firstPress = false;
             speed = 0;
             acceleration = 0;
