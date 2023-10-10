@@ -49,14 +49,14 @@ let background,
 const texte = {
     FR: {
         final: "Récolte terminée !",
-        finalSmall: "L'UNIL vous souhaite de belles fêtes et une bonne année 2024 !",
+        finalSmall: "L'Université de Lausanne vous souhaite de belles fêtes et une bonne année 2024 !",
         scoring: "Vous avez récupéré ",
         objectif: " voeux de fin d'année !"
     },
     ENG: {
-        final: "Gathering complete!",
-        finalSmall: "UNIL wishes you wonderful holidays and a happy new year!",
+        final: "Gathering completed!",
+        finalSmall: "The University of Lausanne wishes you a wonderful holiday season and a happy new year!",
         scoring: "You managed to grab ",
-        objectif: " holiday wishes!"
+        objectif: " holiday greetings cards!"
     }
 }
