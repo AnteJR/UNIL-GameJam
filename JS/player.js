@@ -21,7 +21,7 @@ function setPlayer() {
         // ADDA A COLLISION EFFECT
         shake(30);
         player.dazeTimer += dazeDurationSeconds;
-        speed = minSpeed;
+        speed = dazeSpeed;
         acceleration = 0;
     });
 

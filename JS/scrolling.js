@@ -47,7 +47,7 @@ function accelerate(b) {
         }
     }
 
-    if (firstPress) {
+    if (firstPress && player.dazeTimer == 0) {
         // Vary speed
         speed = speed + acceleration;
         // Clamp speed

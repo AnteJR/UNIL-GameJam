@@ -30,6 +30,7 @@ const accelerationRate = 0.005 * proportion,
     maxDecRate = -0.025 * proportion,
     minSpeed = 0.5 * proportion,
     maxSpeed = 2 * proportion;
+    dazeSpeed = 0.75 * proportion;
 
 const dazeDurationSeconds = 1;
 
