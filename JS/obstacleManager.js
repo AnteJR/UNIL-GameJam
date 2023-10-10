@@ -39,7 +39,7 @@ function setEntities() {
         },
         { // Random obstacle
             pattern: randomObstacle,
-            sprite: "sprite_char_tel",
+            sprite: "scientist",
             speed: 0.7,
             minWait: 0,
             randomWait: 70,

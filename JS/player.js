@@ -17,12 +17,13 @@ function setPlayer() {
     /*--------------------------
         OBSTACLE COLLIDING
     --------------------------*/
-    onCollide("player", "obstacle", () => {
+    onCollide("player", "obstacle", (p) => {
         // ADDA A COLLISION EFFECT
         shake(30);
         player.dazeTimer += dazeDurationSeconds;
         speed = dazeSpeed;
         acceleration = 0;
+        p.use(sprite('player_daze', { anim: 'daze'}))
     });
 
     /*--------------------------
@@ -51,6 +52,7 @@ function setPlayer() {
         if (player.dazeTimer > 0) {
             player.dazeTimer -= dt();
             if (player.dazeTimer < 0) {
+                player.use(sprite("player", { anim: "up" }));
                 player.dazeTimer = 0;
             }
         }

@@ -68,6 +68,18 @@ loadSprite("player", "character_sheepy.png", {
 	},
 });
 
+loadSprite("player_daze", "sprite_char_velo.png", {
+	sliceX: 8,
+	anims: {
+		"daze": {
+			from: 0,
+			to: 7,
+			speed: 10,
+			loop: true,
+		},
+	},
+});
+
 loadSprite("sprite_char_tel", "character_tel.png", {
 	sliceX: 7,
 	anims: {
