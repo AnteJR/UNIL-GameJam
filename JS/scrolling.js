@@ -38,7 +38,7 @@ function accelerate(b) {
         if (acceleration > maxAccRate) {
             acceleration = maxAccRate;
         }
-        shake(2);
+        shake(1.5);
     } else {
         // automatically slows down
         acceleration += decelerationRate;

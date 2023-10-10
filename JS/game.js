@@ -51,6 +51,9 @@ scene("game", (playerSound) => {
         // ADDA A COLLISION EFFECT
         shake(30);
         dazeTimer += dazeDurationSeconds;
+        speed = minSpeed;
+        acceleration = 0;
+        
     });
 
     onCollide("player", "friend", () => {
