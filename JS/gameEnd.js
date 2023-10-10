@@ -88,6 +88,10 @@ function endMenu(e) {
                 volume: 0.5,
             });
 
+            firstPress = false;
+            speed = 0;
+            acceleration = 0;
+            isMousePressed = false;
             go("game", { playerSound: playerSound });
         }
     }, 250);
