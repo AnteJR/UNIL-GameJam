@@ -52,9 +52,9 @@ function setPlayer() {
         // the dazeTimer decreases over time, and is clamped at 0
         if (player.dazeTimer > 0) {
             player.dazeTimer -= dt();
-            if (player.dazeTimer < 0) {
+            if (player.dazeTimer < 0.18) {
                 player.dazeTimer = 0;
-                player.play("up");
+                player.play("up");  
             }
         }
     });
