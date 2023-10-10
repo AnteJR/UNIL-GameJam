@@ -33,7 +33,6 @@ function addBackground() {
 function accelerate(b) {
     if (isMousePressed) {
         // on mouse press player accelerate
-        firstPress = true;
         acceleration += accelerationRate;
         if (acceleration > maxAccRate) {
             acceleration = maxAccRate;

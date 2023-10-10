@@ -64,20 +64,18 @@ PERSONNAGES
 ---------------------------*/
 loadRoot("../assets/images/characters/");
 loadSprite("player", "character_sheepy.png", {
-	sliceX: 4,
+	sliceX: 8,
 	anims: {
+		"idle": {
+			from: 0,
+			to: 0
+		},
 		"up": {
 			from: 0,
 			to: 3,
 			speed: 10,
 			loop: true,
 		},
-	},
-});
-
-loadSprite("player_daze", "sprite_char_velo.png", {
-	sliceX: 8,
-	anims: {
 		"daze": {
 			from: 0,
 			to: 7,

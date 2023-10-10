@@ -2,7 +2,7 @@ scene("game", () => {
     /*-----------------------
         MUSIC AND SOUNDS
     -----------------------*/
-    playerSound.volume = 0.5;
+    // ADD MUSIC AND SOUNDS HERE (if they need to be triggered on scene load)
 
     /*----------------
         BACKGROUND
@@ -53,6 +53,7 @@ scene("game", () => {
         COMMANDS GO HERE
     ------------------------------------------------*/
     onTouchStart(() => {
+        if(!firstPress) gameStartNow();
         isMousePressed = true;
         playerSounds()
     });
@@ -62,6 +63,7 @@ scene("game", () => {
     });
 
     onMousePress(() => {
+        if(!firstPress) gameStartNow();
         isMousePressed = true;
         playerSounds()
     });
@@ -72,6 +74,7 @@ scene("game", () => {
     });
 
     onKeyPress("space", () => {
+        if(!firstPress) gameStartNow();
         isMousePressed = true;
         playerSounds()
     });
@@ -79,11 +82,17 @@ scene("game", () => {
     onKeyRelease("space", () => {
         isMousePressed = false;
     });
-
-    function playerSounds() {
-        play('woosh2');
-        play('sonnette-velo', {
-            volume: 0.3
-        });
-    }
 });
+
+function playerSounds() {
+    play('woosh2');
+    play('sonnette-velo', {
+        volume: 0.3
+    });
+}
+
+function gameStartNow() {
+    firstPress = true;
+    player.play("up");
+    playerSound.volume = 0.5;
+}

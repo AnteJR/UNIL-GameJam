@@ -1,13 +1,13 @@
 function setPlayer() {
     player = background.add([
-        sprite("player", { anim: "up" }),
+        sprite("player", { anim: "idle" }),
         pos(0, -50),
         area({
             offset: vec2(0, -2),
             shape: new Rect(vec2(0), 4, 7)
         }),
         anchor("center"),
-        z(50),
+        z(80),
         { dazeTimer: 0 },
         { greetingsCaught: 0 },
         "player",
@@ -23,7 +23,7 @@ function setPlayer() {
         player.dazeTimer += dazeDurationSeconds;
         speed = dazeSpeed;
         acceleration = 0;
-        p.use(sprite('player_daze', { anim: 'daze'}))
+        p.play("daze");
     });
 
     /*--------------------------
@@ -52,7 +52,7 @@ function setPlayer() {
         if (player.dazeTimer > 0) {
             player.dazeTimer -= dt();
             if (player.dazeTimer < 0) {
-                player.use(sprite("player", { anim: "up" }));
+                player.play("up");
                 player.dazeTimer = 0;
             }
         }
