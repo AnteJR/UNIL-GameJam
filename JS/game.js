@@ -60,6 +60,7 @@ scene("game", () => {
 
     onTouchEnd(() => {
         isMousePressed = false
+        acceleration = 0.1;
     });
 
     onMousePress(() => {
@@ -70,7 +71,7 @@ scene("game", () => {
 
     onMouseRelease(() => {
         isMousePressed = false;
-        acceleration = 0; // makes the acceleration more rensponsive
+        acceleration = 0.1;
     });
 
     onKeyPress("space", () => {
@@ -81,6 +82,7 @@ scene("game", () => {
 
     onKeyRelease("space", () => {
         isMousePressed = false;
+        acceleration = 0.1;
     });
 });
 
