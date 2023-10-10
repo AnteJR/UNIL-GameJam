@@ -104,10 +104,22 @@ loadSprite("scientist", "character_epr.png", {
 	},
 });
 
-loadSprite("friend", "character_friendly_sheep.png", {
+loadSprite("friend", "character_friendly_sheep-wletter.png", {
 	sliceX: 6,
 	anims: {
 		"bring": {
+			from: 0,
+			to: 5,
+			speed: 5,
+			loop: true,
+		},
+	},
+});
+
+loadSprite("friend_no_letter", "character_friendly_sheep-woletter.png", {
+	sliceX: 6,
+	anims: {
+		"delivered": {
 			from: 0,
 			to: 5,
 			speed: 5,

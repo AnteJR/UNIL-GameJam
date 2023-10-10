@@ -39,7 +39,8 @@ const dazeDurationSeconds = 1;
 let background,
     player,
     jaugeOut,
-    jaugeIn;
+    jaugeIn,
+    fiendlySheep;
 
 /*--------------
     TEXTES

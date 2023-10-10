@@ -28,15 +28,14 @@ function setPlayer() {
     /*--------------------------
         GREETINGS COLLECTION
     --------------------------*/
-    onCollide("player", "friend", () => {
+    onCollide("player", "friend", (p, f) => {
         if (player.dazeTimer > 0) {
             // SAD FACE
-            console.log("Greeting NOT caught !");
         } else {
             // HAPPY FACE
             player.greetingsCaught += 1;
             shake(8);
-            console.log("Greeting caught !");
+            f.use(sprite('friend_no_letter', { anim: "delivered" }));
         }
     });
 

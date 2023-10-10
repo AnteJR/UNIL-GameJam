@@ -77,7 +77,7 @@ function setEntities() {
         if (spawnPosition < terrainLength) return;
 
         if (spawnPosition < -nextFriendPosition) {
-            background.add([
+            fiendlySheep = background.add([
                 sprite("friend"),
                 outline(1),
                 pos(0, localWindowTop - 80),
