@@ -25,7 +25,7 @@ scene("game", (playerSound) => {
     /*-----------------------------------------------
         DEBUG MODE HERE
     ------------------------------------------------*/
-    if(debugOn){
+    if (debugOn) {
         launchDebug();
     }
 

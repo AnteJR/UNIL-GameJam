@@ -11,7 +11,7 @@ scene("endScreen", ({ score }) => {
             font: "pixelFont",
             align: "center",
             size: proportion < 6 ? 10 * proportion : (proportion < 15 ? 8 * proportion : 6 * proportion),
-            width: Math.floor(innerWidth / 10 * 6),
+            width: (130 * proportion),
         }),
         pos(Math.floor(innerWidth / 2), Math.floor(innerHeight / 50)),
         anchor("top")
@@ -22,7 +22,7 @@ scene("endScreen", ({ score }) => {
             font: "pixelFont",
             align: "center",
             size: proportion < 6 ? 8 * proportion : (proportion < 15 ? 6 * proportion : 3 * proportion),
-            width: Math.floor(innerWidth / 10 * 7),
+            width: 130 * proportion,
         }),
         pos(Math.floor(innerWidth / 2), Math.floor(innerHeight / 50 * 3) + victoryTxt.height),
         anchor("top")
@@ -33,7 +33,7 @@ scene("endScreen", ({ score }) => {
             font: "pixelFont",
             align: "center",
             size: proportion < 6 ? 8 * proportion : (proportion < 15 ? 6 * proportion : 3 * proportion),
-            width: Math.floor(innerWidth / 10 * 7),
+            width: 130 * proportion,
         }),
         pos(Math.floor(innerWidth / 2), Math.floor(innerHeight / 50 * 5) + victoryTxt.height + smallVictoryTxt.height),
         anchor("top")

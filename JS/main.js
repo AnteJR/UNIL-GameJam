@@ -8,7 +8,7 @@ let LANG = "ENG";
 let debugOn = true;
 
 let scale_incomplete = innerWidth / 135;
-const proportion = Math.floor(scale_incomplete) + 1;
+const proportion = Math.floor(scale_incomplete) >= 7 ? 8 : Math.floor(scale_incomplete) + 1;
 
 kaboom({
     width: innerWidth,
