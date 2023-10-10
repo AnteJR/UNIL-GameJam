@@ -3,30 +3,9 @@ scene("homeScreen", () => {
         // custom background here
     ]);
 
-    console.log(proportion)
-
-    const flagFR = add([
-        sprite("fr_btn", { anim: "default" }),
-        anchor("bot"),
-        pos(innerWidth / 2, proportion < 6 ? innerHeight / 5 : innerHeight / 4),
-        scale(proportion < 6 ? proportion : 7),
-        area(),
-        { value: "fr" },
-        "french",
-        "startButton"
-    ]);
-
-    const flagENG = add([
-        sprite("eng_btn", { anim: "default" }),
-        anchor("bot"),
-        pos(innerWidth / 2, (innerHeight / 10) * 7),
-        scale(proportion < 6 ? proportion : 7),
-        area(),
-        { value: "eng" },
-        "english",
-        "startButton"
-    ]);
-
+    /*-------------------------------
+        TEXTES ÉCRAN ACCUEIL
+    -------------------------------*/
     const txtFR = add([
         text("[wavy]Aide Sheepy à collecter les voeux de la communauté UNIL ![/wavy]", {
             font: "pixelFont",
@@ -59,6 +38,34 @@ scene("homeScreen", () => {
         anchor("top")
     ]);
 
+    /*-------------------------------
+        BOUTONS ÉCRAN ACCUEIL
+    -------------------------------*/
+    const flagFR = add([
+        sprite("fr_btn", { anim: "default" }),
+        anchor("bot"),
+        pos(innerWidth / 2, proportion < 6 ? innerHeight / 5 : innerHeight / 4),
+        scale(proportion < 6 ? proportion : 7),
+        area(),
+        { value: "fr" },
+        "french",
+        "startButton"
+    ]);
+
+    const flagENG = add([
+        sprite("eng_btn", { anim: "default" }),
+        anchor("bot"),
+        pos(innerWidth / 2, (innerHeight / 10) * 7),
+        scale(proportion < 6 ? proportion : 7),
+        area(),
+        { value: "eng" },
+        "english",
+        "startButton"
+    ]);
+
+    /*-------------------------------
+        ONCLICK ET ONTOUCH
+    -------------------------------*/
     onClick("startButton", (e) => launch(e));
     onTouchStart((i, p) => {
         if (flagENG.hasPoint(i)) launch(flagENG);
@@ -66,9 +73,11 @@ scene("homeScreen", () => {
     });
 });
 
+/*-------------------------------
+    GAME LAUNCH
+-------------------------------*/
 function launch(e) {
-    if (e.value == "fr") LANG = "FR";
-    else if (e.value == "eng") LANG = "ENG";
+    LANG = e.value.toUpperCase();
 
     e.play("clicked")
 
@@ -79,9 +88,12 @@ function launch(e) {
         });
 
         go("game", { playerSound: playerSound });
-    }, 250)
+    }, 250);
 }
 
+/*-------------------------------
+    GAME INITIALIZATION
+-------------------------------*/
 function initGame() {
     go("homeScreen");
 }

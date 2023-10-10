@@ -119,7 +119,7 @@ loadSprite("friend", "character_friendly_sheep.png", {
 /*---------------------------
 UI/BOUTONS
 ---------------------------*/
-loadRoot("../assets/images/");
+loadRoot("../assets/images/UI/");
 loadSprite("eng_btn", "UI_lang_ENG.png", {
 	sliceX: 3,
 	anims: {
@@ -136,6 +136,36 @@ loadSprite("eng_btn", "UI_lang_ENG.png", {
 	}
 });
 loadSprite("fr_btn", "UI_lang_FR.png", {
+	sliceX: 3,
+	anims: {
+		"clicked": {
+			from: 0,
+			to: 2,
+			speed: 10,
+			loop: false
+		},
+		"default": {
+			from: 0,
+			to: 0
+		}
+	}
+});
+loadSprite("home_btn", "UI_home_button.png", {
+	sliceX: 3,
+	anims: {
+		"clicked": {
+			from: 0,
+			to: 2,
+			speed: 10,
+			loop: false
+		},
+		"default": {
+			from: 0,
+			to: 0
+		}
+	}
+});
+loadSprite("replay_btn", "UI_replay_button.png", {
 	sliceX: 3,
 	anims: {
 		"clicked": {
