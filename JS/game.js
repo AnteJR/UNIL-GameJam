@@ -1,7 +1,12 @@
-scene("game", (playerSound) => {
-    /*-----------------------------------------------
-        BACKGROUND HERE
-    ------------------------------------------------*/
+scene("game", () => {
+    /*-----------------------
+        MUSIC AND SOUNDS
+    -----------------------*/
+    playerSound.volume = 0.5;
+
+    /*----------------
+        BACKGROUND
+    -----------------*/
     background = add([
         pos(innerWidth / 2, innerHeight),
         scale(proportion),
@@ -13,7 +18,7 @@ scene("game", (playerSound) => {
         if (b.pos.y >= (terrainLength * (-1)) * proportion) {
             b.pos.y = (terrainLength * (-1)) * proportion;
 
-            playerSound.paused = true;
+            playerSound.volume = 0;
             go("endScreen", { score: player.greetingsCaught });
         }
 

@@ -6,6 +6,11 @@ liste_sons.forEach(a => {
 	loadSound(a, `../assets/sounds/${a}.wav`);
 });
 
+const playerSound = play('bike-roll-snow', {
+	loop: true,
+	volume: 0,
+});
+
 /*---------------------------
 POLICES D'ÉCRITURE
 ---------------------------*/
@@ -25,14 +30,16 @@ loadSprite("metro", "building_metro.png", { sliceX: 5, anims: { "default": { fro
 loadSprite("metro_ground", "building_metro_ground.png");
 loadSprite("forest", "building_forest.png", { sliceX: 4, anims: { "default": { from: 0, to: 3, speed: 5, loop: true, } } });
 loadSprite("forest_ground", "building_forest_ground.png");
+loadSprite("river", "building_river.png", { sliceX: 5, anims: { "default": { from: 0, to: 4, speed: 10, loop: true, } } });
+loadSprite("river_ground", "building_river_ground.png");
 
 // CONSTANTES POUR LES BACKGROUNDS :
 // 1. listGroundAsset et listAsset listent le nom des textures des assets
 // 2. assetLength liste la taille (en multiple de 135), des assets, afin de les placer correctement.
 // 3. terrainLength vaut la somme des valeurs de assetLength * -135, pour avoir la longueur totale du terrain de jeu.
-const listGroundAsset = ["start_ground", "anthropole_ground", "vortex_ground", "metro_ground", "forest_ground"];
-const listAsset = ["start", "anthropole", "vortex", "metro", "forest"];
-const assetLength = [1, 3, 6, 3, 3];
+const listGroundAsset = ["start_ground", "anthropole_ground", "vortex_ground", "metro_ground", "forest_ground", "river_ground"];
+const listAsset = ["start", "anthropole", "vortex", "metro", "forest", "river"];
+const assetLength = [1, 3, 6, 3, 3, 3];
 let totalLength = 0;
 assetLength.forEach((e) => { totalLength += e });
 const terrainLength = totalLength * -135;
@@ -74,8 +81,8 @@ loadSprite("player_daze", "sprite_char_velo.png", {
 		"daze": {
 			from: 0,
 			to: 7,
-			speed: 10,
-			loop: true,
+			speed: 20,
+			loop: false,
 		},
 	},
 });

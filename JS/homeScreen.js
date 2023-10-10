@@ -82,12 +82,7 @@ function launch(e) {
     e.play("clicked")
 
     setTimeout(() => {
-        const playerSound = play('bike-roll-snow', {
-            loop: true,
-            volume: 0.5,
-        });
-
-        go("game", { playerSound: playerSound });
+        go("game");
     }, 250);
 }
 
