@@ -10,7 +10,7 @@ scene("homeScreen", () => {
         text("[wavy]Aide Sheepy à collecter les voeux de la communauté UNIL ![/wavy]", {
             font: "pixelFont",
             size: proportion < 6 ? 8 * proportion : (proportion < 15 ? 6 * proportion : 3 * proportion),
-            width: proportion < 6 ? Math.floor((innerWidth / 5) * 4) : Math.floor(innerWidth / 2),
+            width: Math.floor(scale_incomplete) < proportion ? 130 * (proportion - 1) : 130 * proportion,
             align: "center",
             styles: {
                 "wavy": (idx, ch) => ({
@@ -26,7 +26,7 @@ scene("homeScreen", () => {
         text("[wavy]Help Sheepy collect holiday greetings cards![/wavy]", {
             font: "pixelFont",
             size: proportion < 6 ? 8 * proportion : (proportion < 15 ? 6 * proportion : 3 * proportion),
-            width: proportion < 6 ? Math.floor((innerWidth / 5) * 4) : Math.floor(innerWidth / 2),
+            width: Math.floor(scale_incomplete) < proportion ? 130 * (proportion - 1) : 130 * proportion,
             align: "center",
             styles: {
                 "wavy": (idx, ch) => ({
