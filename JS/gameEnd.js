@@ -1,10 +1,9 @@
 scene("endScreen", ({ score }) => {
     const bgEndScreen = add([
-        sprite("computer_background"),
-        fixed(),
-        scale(4),
-        z(-100)
-    ])
+        // custom background here
+        rect(innerWidth, innerHeight),
+        color(116, 183, 237)
+    ]);
 
     /*-------------------------------
         TEXTES ÉCRAN FINAL

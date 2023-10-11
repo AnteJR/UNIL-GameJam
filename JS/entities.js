@@ -6,14 +6,14 @@ function randomObstacle(speed = 1, minWait = 0, randomWait = 0) {
     const side = Math.sign(Math.random() - 0.5);
     const perlinOffset = Math.random() * 8;
     let moveAfterMs = minWait + Math.floor(Math.random() * randomWait);
-    const isStartOffset = Math.random() - 0.5 > 0;
+    const isStartOffset = Math.random() - 0.8 > 0;
     let isMoving = false;
 
 
     return {
 
         id: "randomObstacle",
-        require: ["pos", "area"],
+        require: ["pos"],
 
         add() {
             // Make the sprite look in the direction of movement
@@ -24,7 +24,9 @@ function randomObstacle(speed = 1, minWait = 0, randomWait = 0) {
                 offset *= Math.random();
                 isMoving = true;
             }
+
             this.pos.x = side * Math.random() * 40;
+
             if (!isStartOffset) {
                 setTimeout(() => isMoving = true, moveAfterMs);
             }
@@ -43,12 +45,12 @@ function oneWayObstacle(speed = 0.5, minWait = 0, randomWait = 0) {
     const side = Math.sign(Math.random() - 0.5);
     let moveAfterMs = minWait + Math.floor(Math.random() * randomWait);
     let isMoving = false;
-    const isStartOffset = Math.random() - 0.5 > 0;
+    const isStartOffset = Math.random() - 0.7 > 0;
 
     return {
 
         id: "oneWayObstacle",
-        require: ["pos", "area"],
+        require: ["pos"],
 
         add() {
             // Make the sprite look in the direction of movement
@@ -59,7 +61,9 @@ function oneWayObstacle(speed = 0.5, minWait = 0, randomWait = 0) {
                 offset *= Math.random();
                 isMoving = true;
             }
-            this.pos.x = side * offset ;
+
+            this.pos.x = side * offset;
+
             if (!isStartOffset) {
                 setTimeout(() => isMoving = true, moveAfterMs)
             }
@@ -74,28 +78,21 @@ function oneWayObstacle(speed = 0.5, minWait = 0, randomWait = 0) {
 }
 
 function friend() {
-    // obstacle that moves only in one direction
+    // moves from right to left
 
-    const minWait = 1500;
-    const randomWait = 2500;
-    let speed = 0.5;
-    let moveAfterMs = minWait + Math.floor(Math.random() * randomWait);
-    let isMoving = false;
+    const speed = 0.7 - Math.random() * 0.5;
 
     return {
 
-        id: "friend",
-        require: ["pos", "area"],
+        id: "friend_behavior",
+        require: ["pos"],
 
         add() {
-            this.pos.x = 40;
-            setTimeout(() => isMoving = true, moveAfterMs)
+            this.pos.x = -50;
         },
 
         update() {
-            if (isMoving) {
-                this.pos.x -= speed;
-            }
+            this.pos.x += speed;
         }
     }
 }
