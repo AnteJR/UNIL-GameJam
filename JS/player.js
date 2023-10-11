@@ -10,6 +10,7 @@ function setPlayer() {
         z(80),
         { dazeTimer: 0 },
         { greetingsCaught: 0 },
+        { isDazed: false },
         "player",
         "sheepy"
     ]);
@@ -20,6 +21,7 @@ function setPlayer() {
     onCollide("player", "obstacle", (p) => {
         // ADDA A COLLISION EFFECT
         shake(30);
+        player.isDazed = true;
         player.dazeTimer += dazeDurationSeconds;
         speed = dazeSpeed;
         acceleration = 0;
@@ -47,15 +49,14 @@ function setPlayer() {
         // Move the player each frame so that it stays at the same
         // spot on the screen, while being rendered below decor and above ground.
         player.moveTo(0, localWindowTop + (innerHeight * 0.8) / proportion);
-        console.log(player.dazeTimer)
 
         // the dazeTimer decreases over time, and is clamped at 0
         if (player.dazeTimer > 0) {
             player.dazeTimer -= dt();
-            if (player.dazeTimer < 0.18) {
-                player.dazeTimer = 0;
-                player.play("up");  
-            }
+        } else if (player.isDazed) {
+            player.play("up");
+            player.isDazed = false;
+            player.dazeTimer = 0;
         }
     });
 }
