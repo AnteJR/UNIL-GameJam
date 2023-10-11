@@ -51,7 +51,7 @@ function setPlayer() {
         player.moveTo(0, localWindowTop + (innerHeight * 0.8) / proportion);
 
         // the dazeTimer decreases over time, and is clamped at 0
-        if (player.dazeTimer > 0) {
+        if (player.dazeTimer > 0.18) {
             player.dazeTimer -= dt();
         } else if (player.isDazed) {
             player.play("up");
