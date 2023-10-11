@@ -50,8 +50,10 @@ scene("game", () => {
     speedOMeter();
 
     /*-----------------------------------------------
-        COMMANDS GO HERE
+        CONTROLS GO HERE
     ------------------------------------------------*/
+    addControls();
+
     onTouchStart(() => {
         if(!firstPress) gameStartNow();
         isMousePressed = true;
