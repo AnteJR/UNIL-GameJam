@@ -99,13 +99,16 @@ function setEntities() {
 
         if (spawnPosition < -nextFriendPosition) {
             fiendlySheep = background.add([
-                sprite("friend"),
+                sprite("friend", { anim: "bring"}),
                 pos(0, spawnPosition),
-                area(),
+                area({
+                    offset: vec2(-4, 0),
+                    shape: new Rect(vec2(0), 12, 7)
+                }),
                 anchor("center"),
                 friend(),
                 "friend"
-            ]).play("bring");
+            ]);
 
             nextFriendPosition -= distanceBetweenFriends;
         }
