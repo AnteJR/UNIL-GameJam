@@ -9,7 +9,6 @@ function setEntities() {
     const spawnMargin = 70;
 
     // Obstacles
-    const distanceMultiplier = 0.95;
     const minDistanceBetweenObstacles = -100;
     const maxDistanceBetweenObstacles = -250;
     const placementEasingFunction = easings.easeInOutCubic; // see https://easings.net/
@@ -19,7 +18,11 @@ function setEntities() {
 
     // Friends
     const numFriends = 10;
-    const distanceBetweenFriends = terrainLength / numFriends;
+    const distanceBetweenFriends = terrainLength / (numFriends + 1);
+    // Relative distances below and over the friend where no obstacle
+    // can spawn
+    const friendSafeZoneStart = 20; // number of pixels below the friend
+    const friendSafeZoneEnd = 40; // number of pixels above the friend
     let nextFriendPosition = -distanceBetweenFriends;
 
     const weightedObstacleTypes = [
@@ -74,7 +77,7 @@ function setEntities() {
 
     onUpdate(() => {
         /* Compute the top of the screen in local coordinates */
-        currentScrollPosition = background.pos.y
+        currentScrollPosition = background.pos.y;
         localWindowTop = -currentScrollPosition / proportion;
 
         // Second try at entity placement: position based spawn (as opposed to
@@ -83,6 +86,15 @@ function setEntities() {
 
         // Don't spawn obstacles after the end of the terrain
         if (spawnPosition < terrainLength) return;
+
+        const isAfterStartOfSafeZone = nextObstaclePosition < -nextFriendPosition + friendSafeZoneStart;
+        const isBeforeEndOfSafeZone = nextObstaclePosition > -nextFriendPosition - friendSafeZoneEnd;
+        //if we also were supposed to place an obstacle close to that position
+        if (isAfterStartOfSafeZone && isBeforeEndOfSafeZone) {
+            // push the next obstacle further
+            nextObstaclePosition = -nextFriendPosition - friendSafeZoneEnd;
+            return;
+        }
 
         if (spawnPosition < -nextFriendPosition) {
             fiendlySheep = background.add([
@@ -95,13 +107,6 @@ function setEntities() {
             ]).play("bring");
 
             nextFriendPosition -= distanceBetweenFriends;
-
-            // if we also were supposed to place an obstacle at that position
-            // if (spawnPosition < nextObstaclePosition) {
-            //     // push the next obstacle further
-            //     nextObstaclePosition = getNextObstaclePosition();
-            //     return;
-            // }
         }
 
         // Spawn obstacles
