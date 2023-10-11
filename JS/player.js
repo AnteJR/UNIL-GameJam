@@ -34,8 +34,8 @@ function setPlayer() {
             // SAD FACE
         } else {
             // HAPPY FACE
+            play("sheep_bleat");
             player.greetingsCaught += 1;
-            shake(8);
             f.use(sprite('friend_no_letter', { anim: "delivered" }));
         }
     });

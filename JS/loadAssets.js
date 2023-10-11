@@ -1,7 +1,7 @@
 /*---------------------------
 SONS ET MUSIQUES
 ---------------------------*/
-const liste_sons = ["bike-roll-snow", "woosh2", "sonnette-velo"];
+const liste_sons = ["bike-roll-snow", "woosh2", "sonnette-velo","sheep_bleat"];
 liste_sons.forEach(a => {
 	loadSound(a, `../assets/sounds/${a}.wav`);
 });
