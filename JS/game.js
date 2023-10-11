@@ -19,7 +19,6 @@ scene("game", () => {
         "background"
     ]);
 
-
     onUpdate("background", (b) => {
         if (b.pos.y >= (terrainLength * (-1)) * proportion) {
             b.pos.y = (terrainLength * (-1)) * proportion;

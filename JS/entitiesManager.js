@@ -134,6 +134,8 @@ function setEntities() {
                 pos(0, nextObstaclePosition),
                 area(),
                 anchor("center"),
+                // code à activer pour déclencher la suppression hors-écran
+                // offscreen({ destroy: true }),
                 z(50),
                 selectedObstacle.pattern(
                     selectedObstacle.speed,
