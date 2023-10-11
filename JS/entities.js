@@ -24,7 +24,9 @@ function randomObstacle(speed = 1, minWait = 0, randomWait = 0) {
                 offset *= Math.random();
                 isMoving = true;
             }
+
             this.pos.x = side * Math.random() * 40;
+
             if (!isStartOffset) {
                 setTimeout(() => isMoving = true, moveAfterMs);
             }
@@ -43,7 +45,7 @@ function oneWayObstacle(speed = 0.5, minWait = 0, randomWait = 0) {
     const side = Math.sign(Math.random() - 0.5);
     let moveAfterMs = minWait + Math.floor(Math.random() * randomWait);
     let isMoving = false;
-    const isStartOffset = Math.random() - 0.66 > 0;
+    const isStartOffset = Math.random() - 0.7 > 0;
 
     return {
 
@@ -59,7 +61,9 @@ function oneWayObstacle(speed = 0.5, minWait = 0, randomWait = 0) {
                 offset *= Math.random();
                 isMoving = true;
             }
+
             this.pos.x = side * offset;
+
             if (!isStartOffset) {
                 setTimeout(() => isMoving = true, moveAfterMs)
             }
@@ -76,7 +80,7 @@ function oneWayObstacle(speed = 0.5, minWait = 0, randomWait = 0) {
 function friend() {
     // moves from right to left
 
-    const speed = 0.7 - Math.random() * 0.3;
+    const speed = 0.7 - Math.random() * 0.5;
 
     return {
 
