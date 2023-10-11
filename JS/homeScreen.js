@@ -1,6 +1,8 @@
 scene("homeScreen", () => {
     const bg = add([
         // custom background here
+        rect(innerWidth, innerHeight),
+        color(116, 183, 237)
     ]);
 
     /*-------------------------------

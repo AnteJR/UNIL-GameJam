@@ -1,6 +1,8 @@
 scene("endScreen", ({ score }) => {
     const bgEndScreen = add([
         // custom background here
+        rect(innerWidth, innerHeight),
+        color(116, 183, 237)
     ]);
 
     /*-------------------------------
