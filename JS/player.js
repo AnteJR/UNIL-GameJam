@@ -21,6 +21,7 @@ function setPlayer() {
     onCollide("player", "obstacle", (p) => {
         // ADDA A COLLISION EFFECT
         shake(30);
+        play("daze_fear",{volume: 0.6});
         player.isDazed = true;
         player.dazeTimer += dazeDurationSeconds;
         speed = dazeSpeed;
