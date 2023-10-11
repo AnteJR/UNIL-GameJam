@@ -45,8 +45,8 @@ const listGroundAsset = ["start_ground", "anthropole_ground", "busstop_ground", 
 const listAsset = ["start", "anthropole", "busstop", "vortex", "busstop_right", "forest", "river", "metro"];
 const assetLength = [1, 3, 2, 6, 2, 3, 2, 3];
 let totalLength = 0;
-assetLength.forEach((e) => { totalLength += e });
-const terrainLength = totalLength * -135;
+assetLength.forEach((e) => { totalLength += e }); // 22
+const terrainLength = totalLength * - 135;
 
 // Liste des zones où aucune entité ne peut spawner, par asset
 const assetDeadZones = {
@@ -86,7 +86,7 @@ loadSprite("player", "character_sheepy.png", {
 			from: 4,
 			to: 12,
 			speed: 10,
-			loop: false,
+			loop: true,
 		},
 	},
 });
