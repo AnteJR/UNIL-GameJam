@@ -27,7 +27,9 @@ function setEntities() {
             speed: 0.6,
             minWait: 0,
             randomWait: 50,
-            weight: () => map(currentScrollPosition / terrainLength, terrainStart, terrainLength, 4, 1)
+            weight: () => map(currentScrollPosition / proportion,
+                                terrainStart, -terrainLength,
+                                4, 1)
         },
         { // Fast obstacle
             pattern: oneWayObstacle,
@@ -35,7 +37,9 @@ function setEntities() {
             speed: 0.9,
             minWait: 500,
             randomWait: 2000,
-            weight: () => map(currentScrollPosition / terrainLength, terrainStart, terrainLength, 2, 3)
+            weight: () => map(currentScrollPosition / proportion,
+                                terrainStart, -terrainLength,
+                                2, 3)
         },
         { // Random obstacle
             pattern: randomObstacle,
@@ -43,7 +47,9 @@ function setEntities() {
             speed: 0.7,
             minWait: 0,
             randomWait: 70,
-            weight: () => map(currentScrollPosition / terrainLength, terrainStart, terrainLength, 1, 3)
+            weight: () => map(currentScrollPosition / proportion,
+                                terrainStart, -terrainLength,
+                                1, 3)
         }
     ];
 
@@ -79,8 +85,7 @@ function setEntities() {
         if (spawnPosition < -nextFriendPosition) {
             fiendlySheep = background.add([
                 sprite("friend"),
-                outline(1),
-                pos(0, localWindowTop - 80),
+                pos(0, spawnPosition),
                 area(),
                 anchor("center"),
                 friend(),
@@ -111,7 +116,6 @@ function setEntities() {
 
             // Select the type of obstacle to spawn
             const selectedObstacle = weightedRandom(weightedObstacleTypes);
-            //console.log(weightedObstacleTypes[0].weight(), weightedObstacleTypes[1].weight(), weightedObstacleTypes[2].weight())
 
             // Configure and spawn the obstacle
             background.add([
