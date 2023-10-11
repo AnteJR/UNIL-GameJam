@@ -11,7 +11,8 @@ function setEntities() {
     // Obstacles
     const minDistanceBetweenObstacles = -100;
     const maxDistanceBetweenObstacles = -250;
-    const placementEasingFunction = easings.easeInOutCubic; // see https://easings.net/
+    // see https://kaboomjs.com/#easings and https://easings.net/
+    const placementEasingFunction = easings.easeInOutCubic;
     let distanceToNextObstacle = maxDistanceBetweenObstacles;
     // Set the first obstacle just above the top of the screen
     let nextObstaclePosition = -innerHeight / proportion - 40;
@@ -32,9 +33,9 @@ function setEntities() {
             speed: 0.6,
             minWait: 0,
             randomWait: 50,
-            weight: () => map(currentScrollPosition / proportion,
-                                terrainStart, -terrainLength,
-                                4, 1)
+            weight: () => map(localWindowTop,
+                terrainStart, -terrainLength,
+                4, 1)
         },
         { // Fast obstacle
             pattern: oneWayObstacle,
@@ -42,9 +43,9 @@ function setEntities() {
             speed: 0.9,
             minWait: 500,
             randomWait: 2000,
-            weight: () => map(currentScrollPosition / proportion,
-                                terrainStart, -terrainLength,
-                                2, 3)
+            weight: () => map(localWindowTop,
+                terrainStart, -terrainLength,
+                2, 3)
         },
         { // Random obstacle
             pattern: randomObstacle,
@@ -52,9 +53,9 @@ function setEntities() {
             speed: 0.7,
             minWait: 0,
             randomWait: 70,
-            weight: () => map(currentScrollPosition / proportion,
-                                terrainStart, -terrainLength,
-                                1, 3)
+            weight: () => map(localWindowTop,
+                terrainStart, -terrainLength,
+                1, 3)
         }
     ];
 
@@ -63,7 +64,7 @@ function setEntities() {
     ------------------------------------------------*/
 
     // We use a marker to catch obstacles that leave the screen from the bottom
-    let bottomMarker = add([
+    add([
         rect(innerWidth, 1),
         area(),
         pos(innerWidth / 2, innerHeight + 200),
@@ -127,7 +128,6 @@ function setEntities() {
             // Configure and spawn the obstacle
             background.add([
                 sprite(selectedObstacle.sprite),
-                outline(1),
                 pos(0, nextObstaclePosition),
                 area(),
                 anchor("center"),
@@ -149,9 +149,9 @@ function setEntities() {
         // Here we use an easing function to have a non linear progression
         // while having a min and max distance between obstacles. The easing
         // function can be defined at the top.
-        distanceToNextObstacle = map(placementEasingFunction((currentScrollPosition / proportion)/-terrainLength) * -terrainLength,
-                                    terrainStart, -terrainLength,
-                                    maxDistanceBetweenObstacles, minDistanceBetweenObstacles)
+        distanceToNextObstacle = map(placementEasingFunction(localWindowTop / -terrainLength) * -terrainLength,
+            terrainStart, -terrainLength,
+            maxDistanceBetweenObstacles, minDistanceBetweenObstacles)
 
         return nextPosition;
     }
