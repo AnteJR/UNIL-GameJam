@@ -11,7 +11,9 @@ function setEntities() {
     // Obstacles
     const distanceMultiplier = 0.95;
     const minDistanceBetweenObstacles = -100;
-    let distanceToNextObstacle = -250;
+    const maxDistanceBetweenObstacles = -250;
+    const placementEasingFunction = easings.easeInOutCubic; // see https://easings.net/
+    let distanceToNextObstacle = maxDistanceBetweenObstacles;
     // Set the first obstacle just above the top of the screen
     let nextObstaclePosition = -innerHeight / proportion - 40;
 
@@ -138,10 +140,14 @@ function setEntities() {
 
     function getNextObstaclePosition() {
         let nextPosition = nextObstaclePosition + distanceToNextObstacle;
-        distanceToNextObstacle *= distanceMultiplier;
-        if (distanceToNextObstacle < minDistanceBetweenObstacles){
-            distanceToNextObstacle = minDistanceBetweenObstacles;
-        }
+
+        // Here we use an easing function to have a non linear progression
+        // while having a min and max distance between obstacles. The easing
+        // function can be defined at the top.
+        distanceToNextObstacle = map(placementEasingFunction((currentScrollPosition / proportion)/-terrainLength) * -terrainLength,
+                                    terrainStart, -terrainLength,
+                                    maxDistanceBetweenObstacles, minDistanceBetweenObstacles)
+
         return nextPosition;
     }
 }
