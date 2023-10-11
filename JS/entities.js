@@ -13,7 +13,7 @@ function randomObstacle(speed = 1, minWait = 0, randomWait = 0) {
     return {
 
         id: "randomObstacle",
-        require: ["pos", "area"],
+        require: ["pos"],
 
         add() {
             // Make the sprite look in the direction of movement
@@ -48,7 +48,7 @@ function oneWayObstacle(speed = 0.5, minWait = 0, randomWait = 0) {
     return {
 
         id: "oneWayObstacle",
-        require: ["pos", "area"],
+        require: ["pos"],
 
         add() {
             // Make the sprite look in the direction of movement
@@ -76,24 +76,19 @@ function oneWayObstacle(speed = 0.5, minWait = 0, randomWait = 0) {
 function friend() {
     // moves from right to left
 
-    // FIXME
-    console.log("Reached");
-    const speed = 1 - Math.random() * 0.5;
+    const speed = 0.7 - Math.random() * 0.3;
 
     return {
 
-        id: "friend",
-        require: ["pos", "area"],
+        id: "friend_behavior",
+        require: ["pos"],
 
         add() {
-            // Why ???
-            console.log("Never reached");
-            this.pos.x = 50;
+            this.pos.x = -50;
         },
 
         update() {
-            console.log("Never reached");
-            this.pos.x -= speed;
+            this.pos.x += speed;
         }
     }
 }

@@ -1,5 +1,5 @@
-let localWindowTop;
-let currentScrollPosition;
+let localWindowTop = 0;
+let currentScrollPosition = 0;
 
 function setEntities() {
 
@@ -9,10 +9,10 @@ function setEntities() {
     const spawnMargin = 70;
 
     // Obstacles
-    const minDistanceBetweenObstacles = -100;
-    const maxDistanceBetweenObstacles = -250;
+    const minDistanceBetweenObstacles = -80;
+    const maxDistanceBetweenObstacles = -200;
     // see https://kaboomjs.com/#easings and https://easings.net/
-    const placementEasingFunction = easings.easeInOutCubic;
+    const placementEasingFunction = easings.easeInOutQuad;
     let distanceToNextObstacle = maxDistanceBetweenObstacles;
     // Set the first obstacle just above the top of the screen
     let nextObstaclePosition = -innerHeight / proportion - 40;
@@ -149,10 +149,9 @@ function setEntities() {
         // Here we use an easing function to have a non linear progression
         // while having a min and max distance between obstacles. The easing
         // function can be defined at the top.
-        distanceToNextObstacle = map(placementEasingFunction(localWindowTop / -terrainLength) * -terrainLength,
+        distanceToNextObstacle = map(placementEasingFunction(localWindowTop / terrainLength) * -terrainLength,
             terrainStart, -terrainLength,
             maxDistanceBetweenObstacles, minDistanceBetweenObstacles)
-
         return nextPosition;
     }
 }
