@@ -7,6 +7,12 @@ scene("game", () => {
     /*----------------
         BACKGROUND
     -----------------*/
+    // background for desktop overflow
+    const bg = add([
+        rect(innerWidth, innerHeight),
+        color(116, 183, 237)
+    ]);
+
     background = add([
         pos(innerWidth / 2, innerHeight),
         scale(proportion),
