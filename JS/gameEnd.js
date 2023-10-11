@@ -11,7 +11,7 @@ scene("endScreen", ({ score }) => {
             font: "pixelFont",
             align: "center",
             size: proportion < 6 ? 10 * proportion : (proportion < 15 ? 8 * proportion : 6 * proportion),
-            width: (130 * proportion),
+            width: proportion == 8 ? 130 * proportion : 130 * (proportion -1),
         }),
         pos(Math.floor(innerWidth / 2), Math.floor(innerHeight / 50)),
         anchor("top")
@@ -22,7 +22,7 @@ scene("endScreen", ({ score }) => {
             font: "pixelFont",
             align: "center",
             size: proportion < 6 ? 8 * proportion : (proportion < 15 ? 6 * proportion : 3 * proportion),
-            width: 130 * proportion,
+            width: proportion == 8 ? 130 * proportion : 130 * (proportion -1),
         }),
         pos(Math.floor(innerWidth / 2), Math.floor(innerHeight / 50 * 3) + victoryTxt.height),
         anchor("top")
@@ -33,7 +33,7 @@ scene("endScreen", ({ score }) => {
             font: "pixelFont",
             align: "center",
             size: proportion < 6 ? 8 * proportion : (proportion < 15 ? 6 * proportion : 3 * proportion),
-            width: 130 * proportion,
+            width: proportion == 8 ? 130 * proportion : 130 * (proportion -1),
         }),
         pos(Math.floor(innerWidth / 2), Math.floor(innerHeight / 50 * 5) + victoryTxt.height + smallVictoryTxt.height),
         anchor("top")
@@ -45,7 +45,7 @@ scene("endScreen", ({ score }) => {
     const replayBtn = add([
         sprite("replay_btn", { anim: "default" }),
         anchor("botright"),
-        pos(Math.floor(innerWidth / 2 - innerWidth / 100), Math.floor(innerHeight / 50 * 48)),
+        pos(Math.floor(innerWidth / 2 - innerWidth / 100), Math.floor(innerHeight / 50 * 47)),
         scale(proportion),
         area(),
         { role: "replay" },
@@ -56,7 +56,7 @@ scene("endScreen", ({ score }) => {
     const homeBtn = add([
         sprite("home_btn", { anim: "default" }),
         anchor("botleft"),
-        pos(Math.floor(innerWidth / 2 + innerWidth / 100), Math.floor(innerHeight / 50 * 48)),
+        pos(Math.floor(innerWidth / 2 + innerWidth / 100), Math.floor(innerHeight / 50 * 47)),
         scale(proportion),
         area(),
         { role: "home" },
