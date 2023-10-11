@@ -1,7 +1,10 @@
 scene("homeScreen", () => {
     const bg = add([
-        // custom background here
-    ]);
+        sprite("computer_background"),
+        fixed(),
+        scale(4),
+        z(-100)
+    ])
 
     /*-------------------------------
         TEXTES ÉCRAN ACCUEIL

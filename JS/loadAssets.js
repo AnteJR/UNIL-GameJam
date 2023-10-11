@@ -16,6 +16,14 @@ POLICES D'ÉCRITURE
 ---------------------------*/
 loadFont("pixelFont", "../assets/fonts/RetroGaming.ttf")
 
+
+/*---------------------------
+IMAGES DE FOND
+---------------------------*/
+
+// fond durant la scène de jeu
+loadSprite("computer_background", "../assets/images/UI/computer_background.png");
+
 /*---------------------------
 BATIMENTS/DECORS
 ---------------------------*/
