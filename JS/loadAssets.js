@@ -275,4 +275,6 @@ loadSprite("phone_control", "UI_control_phone.png", {
 		}
 	}
 });
+loadSprite("txtFR", "UI_text_FR.png");
+loadSprite("txtENG", "UI_text_ENG.png");
 loadSprite("mainBG", "computer_background.png");

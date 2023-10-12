@@ -1,8 +1,8 @@
 scene("homeScreen", () => {
-    console.log(actualProportion)
+    console.log(proportion)
     const bg = add([
         sprite("mainBG"),
-        scale(actualProportion / 6),
+        scale(Math.floor(actualProportion / 6)),
         pos(innerWidth / 2, 0),
         anchor("top")
 
@@ -12,30 +12,19 @@ scene("homeScreen", () => {
         TEXTES ÉCRAN ACCUEIL
     -------------------------------*/
     const txtFR = add([
-        text("Aide Sheepy à collecter les voeux de la communauté UNIL !", {
-            font: "pixelFont",
-            size: proportion < 6 ? 8 * proportion : (proportion < 15 ? 6 * proportion : 3 * proportion),
-            width: Math.floor(scale_incomplete) < proportion ? 130 * (proportion - 1) : 130 * proportion,
-            align: "center",
-            styles: {
-                "wavy": (idx, ch) => ({
-                    pos: vec2(0, wave(-1, 1, time() + idx * 0.1)),
-                }),
-            }
-        }),
-        pos(innerWidth / 2, proportion < 6 ? Math.floor(innerHeight / 5 + innerHeight / 50) : Math.floor(innerHeight / 4 + innerHeight / 50)),
-        anchor("top")
+        sprite("txtFR"),
+        pos(innerWidth / 2, proportion < 6 ? Math.floor(innerHeight / 5 + innerHeight / 100) : Math.floor(innerHeight / 4 + innerHeight / 50)),
+        anchor("top"),
+        scale(proportion < 5 ? proportion - 1 : (proportion < 7 ? 3 : 4))
     ]);
 
+    console.log(txtFR.scale)
+
     const txtENG = add([
-        text("Help Sheepy collect holiday greetings cards!", {
-            font: "pixelFont",
-            size: proportion < 6 ? 8 * proportion : (proportion < 15 ? 6 * proportion : 3 * proportion),
-            width: Math.floor(scale_incomplete) < proportion ? 130 * (proportion - 1) : 130 * proportion,
-            align: "center",
-        }),
+        sprite("txtENG"),
         pos(innerWidth / 2, proportion < 6 ? Math.floor((innerHeight / 10) * 7 + innerHeight / 50) : Math.floor((innerHeight / 10) * 7 + innerHeight / 50)),
-        anchor("top")
+        anchor("top"),
+        scale(proportion < 5 ? proportion - 1 : (proportion < 7 ? 3 : 4))
     ]);
 
     /*-------------------------------
