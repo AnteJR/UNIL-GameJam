@@ -88,6 +88,16 @@ const assetDeadZones = {
 			start: -25, // position y du début de la deadzone (y=0 en bas de l'image)
 			end: -47 // position y de la fin de la deadzone
 		}
+	],
+	"forest": [
+		{
+			start: -170,
+			end: -237
+		},
+		{
+			start: -300,
+			end: -386
+		}
 	]
 }
 
