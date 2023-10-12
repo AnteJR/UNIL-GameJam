@@ -24,7 +24,10 @@ scene("game", () => {
             b.pos.y = (terrainLength * (-1)) * proportion;
 
             playerSound.volume = 0;
-            go("endScreen", { score: player.greetingsCaught });
+            
+            wait(3, () => {
+                go("endScreen", { score: player.greetingsCaught });
+            })
         }
 
         accelerate(b);
