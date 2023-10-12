@@ -36,11 +36,11 @@ let acceleration = 0,
     isMousePressed = false;
     firstPress = false;
 
-const accelerationRate = 0.005 * proportion,
-    decelerationRate = -0.01 * proportion,
-    maxAccRate = 0.133 * proportion,
-    maxDecRate = -0.025 * proportion,
-    minSpeed = 0.5 * proportion,
+const accelerationRate = 0.015 * proportion,
+    decelerationRate = -0.025 * proportion,
+    maxAccRate = 0.15 * proportion,
+    maxDecRate = -0.07 * proportion,
+    minSpeed = 0.35 * proportion,
     maxSpeed = 2 * proportion,
     dazeSpeed = 0.75 * proportion;
 
