@@ -67,7 +67,7 @@ const listAsset = [
 	"fbm", "fin"];
 const assetLength = [1, 3, 2, 6, 2, 3, 2, 3, 1, 5, 3];
 let totalLength = 0;
-assetLength.forEach((e) => { totalLength += e }); // 22
+assetLength.forEach((e) => { totalLength += e }); // 31
 const terrainLength = totalLength * - 135;
 
 // Liste des zones où aucune entité ne peut spawner, par asset
@@ -81,6 +81,12 @@ const assetDeadZones = {
 		{
 			start: -596,
 			end: -768
+		}
+	],
+	"busstop": [
+		{
+			start: -25, // position y du début de la deadzone (y=0 en bas de l'image)
+			end: -47 // position y de la fin de la deadzone
 		}
 	]
 }
