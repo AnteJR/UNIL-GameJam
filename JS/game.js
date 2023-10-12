@@ -29,6 +29,8 @@ scene("game", () => {
 
             playerSound.volume = 0;
             player.play("idle");
+            jaugeIn.destroy();
+            jaugeOut.destroy();
 
             wait(8, () => {
                 go("endScreen", { score: player.greetingsCaught });
