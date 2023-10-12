@@ -267,22 +267,22 @@ loadSprite("replay_btn", "UI_replay_button.png", {
 	}
 });
 loadSprite("mouse_control", "UI_control_mouse.png", {
-	sliceX: 6,
+	sliceX: 13,
 	anims: {
 		"tutorial": {
 			from: 0,
-			to: 5,
+			to: 12,
 			speed: 10,
 			loop: true
 		}
 	}
 });
 loadSprite("phone_control", "UI_control_phone.png", {
-	sliceX: 6,
+	sliceX: 15,
 	anims: {
 		"tutorial": {
 			from: 0,
-			to: 5,
+			to: 14,
 			speed: 10,
 			loop: true
 		}
