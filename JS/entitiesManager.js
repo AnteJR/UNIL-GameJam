@@ -39,7 +39,9 @@ function setEntities() {
             randomWait: 2000,
             weight: () => map(localWindowTop,
                 terrainStart, -terrainLength,
-                4, 1)
+                4, 1),
+            offset: vec2(0, 5),
+            shape: new Rect(vec2(0), 8, 5)
         },
         { // Fast obstacle
             pattern: oneWayObstacle,
@@ -49,7 +51,9 @@ function setEntities() {
             randomWait: 4000,
             weight: () => map(localWindowTop,
                 terrainStart, -terrainLength,
-                2, 3)
+                2, 3),
+            offset: vec2(0, 5),
+            shape: new Rect(vec2(0), 10, 5)
         },
         { // Random obstacle
             pattern: randomObstacle,
@@ -59,7 +63,9 @@ function setEntities() {
             randomWait: 1000,
             weight: () => map(localWindowTop,
                 terrainStart, -terrainLength,
-                1, 3)
+                1, 3),
+            offset: vec2(0, 5),
+            shape: new Rect(vec2(0), 10, 5)
         }
     ];
 
@@ -144,7 +150,10 @@ function setEntities() {
             background.add([
                 sprite(selectedObstacle.sprite, { anim: "walk" }),
                 pos(0, nextObstaclePosition),
-                area(),
+                area({
+                    offset: selectedObstacle.offset,
+                    shape: selectedObstacle.shape
+                }),
                 anchor("center"),
                 lifespan(8), // destroy après 8 sec
                 z(50),
