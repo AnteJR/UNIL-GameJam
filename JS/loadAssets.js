@@ -265,3 +265,4 @@ loadSprite("phone_control", "UI_control_phone.png", {
 		}
 	}
 });
+loadSprite("mainBG", "computer_background.png");
