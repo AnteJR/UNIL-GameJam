@@ -21,9 +21,10 @@ scene("game", () => {
     ]);
 
     onUpdate("background", (b) => {
-        if (b.pos.y >= (terrainLength * (-1)) * proportion) {
-            b.pos.y = (terrainLength * (-1)) * proportion;
+        if (b.pos.y >= -terrainLength * proportion) {
+            b.pos.y = -terrainLength * proportion;
 
+            isGameOver = true;
             playerSound.volume = 0;
             player.play("idle");
             jaugeIn.destroy();
@@ -74,42 +75,27 @@ scene("game", () => {
     ------------------------------------------------*/
     addControls();
 
-    onTouchStart(() => {
-        if(!firstPress) gameStartNow();
+    onTouchStart(actionPressed);
+    onTouchEnd(actionReleased);
+    onMousePress(actionPressed);
+    onMouseRelease(actionReleased);
+    onKeyPress("space", actionPressed);
+    onKeyRelease("space", actionReleased);
+
+    function actionPressed() {
+        if (!firstPress) gameStartNow();
         isMousePressed = true;
         playerSounds()
-    });
-
-    onTouchEnd(() => {
-        isMousePressed = false
-        acceleration = 0.1;
-    });
-
-    onMousePress(() => {
-        if(!firstPress) gameStartNow();
-        isMousePressed = true;
-        playerSounds()
-    });
-
-    onMouseRelease(() => {
+    }
+    
+    function actionReleased() {
         isMousePressed = false;
         acceleration = 0.1;
-    });
-
-    onKeyPress("space", () => {
-        if(!firstPress) gameStartNow();
-        isMousePressed = true;
-        playerSounds()
-    });
-
-    onKeyRelease("space", () => {
-        isMousePressed = false;
-        acceleration = 0.1;
-    });
+    }
 });
 
 function playerSounds() {
-    play('woosh2');
+    if (!isGameOver) play('woosh2');
     play('sonnette-velo', {
         volume: 0.3
     });

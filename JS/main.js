@@ -35,7 +35,8 @@ kaboom({
 let acceleration = 0,
     speed = 0,
     isMousePressed = false;
-    firstPress = false;
+    firstPress = false,
+    isGameOver = false;
 
 const accelerationRate = 0.015 * proportion,
     decelerationRate = -0.025 * proportion,
