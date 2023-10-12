@@ -77,11 +77,12 @@ function registerDeadZone(assetName, backgroundPartPosition) {
 
         // debug: visualize deadzones
         /*let zoneHeight = Math.abs(zone.end) - Math.abs(zone.start);
-        let zoneWidth = terrainDeadZone.area;
+        let zoneWidth = zone.side == "both" ? innerWidth : (zone.side == "right" || zone.side == "left" ? innerWidth / 2 : null);
+        let posX = zone.side == "both" || zone.side == "left" ? -innerWidth/2 : (zone.side == "right" ? 0 : null);
         //console.log(zoneWidth);
         background.add([
             rect(zoneWidth, zoneHeight),
-            pos(terrainDeadZone.startX, terrainDeadZone.end),
+            pos(posX, terrainDeadZone.end),
             color(255, 0, 0),
             z(999)
         ]);*/

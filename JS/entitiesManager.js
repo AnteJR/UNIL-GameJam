@@ -111,6 +111,19 @@ function setEntities() {
         }
 
         if (spawnPosition < -nextFriendPosition) {
+            const currentDeadZone = getDeadZoneAtPosition(spawnPosition);
+            // if we're in a dead zone
+            if (currentDeadZone) {
+                // Don't care about right-sided deadzones, since friends always
+                // go left to right
+                if (currentDeadZone.side != "right"){
+                    // push the next friend to after the deadzone
+                    const randomDistance = Math.floor(100 + Math.random() * spawnMargin);
+                    nextFriendPosition = currentDeadZone.end - randomDistance;
+                    return;
+                }
+            }
+
             let isEasy = friendsPlaced < numEasyFriends;
 
             fiendlySheep = background.add([
@@ -129,16 +142,6 @@ function setEntities() {
 
             friendsPlaced += 1;
             nextFriendPosition = -distanceBetweenFriends * (friendsPlaced + 1);
-
-            const currentDeadZone = getDeadZoneAtPosition(nextFriendPosition);
-
-            // if we're in a dead zone
-            if (currentDeadZone) {
-                // push the next friend to after the deadzone
-                const randomDistance = Math.floor(100 + Math.random() * spawnMargin);
-                nextFriendPosition = currentDeadZone.end - randomDistance;
-                return;
-            }
         }
 
         // Spawn obstacles
@@ -150,14 +153,14 @@ function setEntities() {
             const currentDeadZone = getDeadZoneAtPosition(spawnPosition);
 
             if (currentDeadZone) {
-                // side=1  -->
-                // side=-1 <--
                 if (currentDeadZone.side == "both") {
                     const randomDistance = Math.floor(Math.random() * distanceToNextObstacle + spawnMargin);
                     nextObstaclePosition = currentDeadZone.end - randomDistance;
                     return;
                 };
+                // side=-1 --->
                 if (currentDeadZone.side == "right") side = -1;
+                // side=1  <---
                 if (currentDeadZone.side == "left") side = 1;
             }
 
@@ -196,7 +199,7 @@ function setEntities() {
         // function can be defined at the top.
         distanceToNextObstacle = map(difficultyCurve(localWindowTop / terrainLength) * terrainLength,
             terrainStart, terrainLength,
-            maxDistanceBetweenObstacles, minDistanceBetweenObstacles)
+            maxDistanceBetweenObstacles, minDistanceBetweenObstacles);
         return nextPosition;
     }
 }
