@@ -1,5 +1,3 @@
-
-
 function randomObstacle(speed = 1, minWait = 0, randomWait = 0) {
     // obstacle that speeds up and slows down randomly
 

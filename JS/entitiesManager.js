@@ -105,7 +105,6 @@ function setEntities() {
         }
 
         if (spawnPosition < -nextFriendPosition) {
-
             let isEasy = friendsPlaced < numEasyFriends;
 
             fiendlySheep = background.add([
@@ -122,23 +121,22 @@ function setEntities() {
                 "entity"
             ]);
 
-            nextFriendPosition -= distanceBetweenFriends;
-
             friendsPlaced += 1;
+            nextFriendPosition = -distanceBetweenFriends * (friendsPlaced + 1);
+
+            const currentDeadZone = getDeadZoneAtPosition(nextFriendPosition);
+
+            // if we're in a dead zone
+            if (currentDeadZone) {
+                // push the next friend to after the deadzone
+                const randomDistance = Math.floor(100 + Math.random() * spawnMargin);
+                nextFriendPosition = currentDeadZone.end - randomDistance;
+                return;
+            }
         }
 
         // Spawn obstacles
         if (spawnPosition < nextObstaclePosition) {
-            const currentDeadZone = getDeadZoneAtPosition(spawnPosition);
-
-            // if we're in a dead zone
-            if (currentDeadZone) {
-                // push the next obstacle to after the deadzone
-                const randomDistance = Math.floor(Math.random() * distanceToNextObstacle + spawnMargin);
-                nextObstaclePosition = currentDeadZone.end - randomDistance;
-                return;
-            }
-
             // Select the type of obstacle to spawn
             const selectedObstacle = weightedRandom(weightedObstacleTypes);
 
@@ -159,6 +157,16 @@ function setEntities() {
             ]);
 
             nextObstaclePosition = getNextObstaclePosition();
+
+            const currentDeadZone = getDeadZoneAtPosition(nextObstaclePosition);
+
+            // if we're in a dead zone
+            if (currentDeadZone) {
+                // push the next obstacle to after the deadzone
+                const randomDistance = Math.floor(Math.random() * distanceToNextObstacle + spawnMargin);
+                nextObstaclePosition = currentDeadZone.end - randomDistance;
+                return;
+            }
 
             obstaclesPlaced += 1;
         }

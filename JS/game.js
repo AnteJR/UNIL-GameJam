@@ -1,4 +1,8 @@
 scene("game", () => {
+
+    // reinitialize global variables
+    friendsPlaced = 0;
+    obstaclesPlaced = 0;
     /*-----------------------
         MUSIC AND SOUNDS
     -----------------------*/
