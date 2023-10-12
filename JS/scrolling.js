@@ -1,5 +1,3 @@
-const deadZones = [];
-
 // add all ground sprites from the list on the background parent
 function addBackground() {
     for (let i = 0; i < listGroundAsset.length; i++) {
@@ -69,18 +67,24 @@ function registerDeadZone(assetName, backgroundPartPosition) {
     for (const zone of deadZone) {
         terrainDeadZone = {
             start: backgroundPartPosition + zone.start,
-            end: backgroundPartPosition + zone.end
+            end: backgroundPartPosition + zone.end,
+            area: zone.side == "both" ? innerWidth : (zone.side == "right" || zone.side == "left" ? innerWidth / 2 : null),
+            startX: zone.side == "both" ? -innerWidth / 2 : (zone.side == "right" ? 0 : (zone.side == "left" ? -innerWidth / 2 : null)),
         }
+
+        if (terrainDeadZone.area == null) continue;
 
         deadZones.push(terrainDeadZone);
 
         // debug: visualize deadzones
-        /* let zoneHeight = Math.abs(zone.end) - Math.abs(zone.start);
+        /*let zoneHeight = Math.abs(zone.end) - Math.abs(zone.start);
+        let zoneWidth = terrainDeadZone.area;
+        //console.log(zoneWidth);
         background.add([
-            rect(innerWidth, zoneHeight),
-            pos(-innerWidth / 2, terrainDeadZone.end),
+            rect(zoneWidth, zoneHeight),
+            pos(terrainDeadZone.startX, terrainDeadZone.end),
             color(255, 0, 0),
             z(999)
-        ]) */
+        ]);*/
     }
 }

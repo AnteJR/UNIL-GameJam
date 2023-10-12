@@ -44,9 +44,9 @@ const accelerationRate = 0.015 * proportion,
     maxDecRate = -0.07 * proportion,
     minSpeed = 0.35 * proportion,
     maxSpeed = 2 * proportion,
-    dazeSpeed = 0.75 * proportion;
-
-const dazeDurationSeconds = 1;
+    dazeSpeed = 0.75 * proportion,
+    dazeDurationSeconds = 1,
+    deadZones = [];
 
 /*----------------------------
     ÉLÉMENTS DU JEU

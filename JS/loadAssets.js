@@ -77,39 +77,46 @@ const assetDeadZones = {
 	"vortex": [
 		{
 			start: -112, // position y du début de la deadzone (y=0 en bas de l'image)
-			end: -285 // position y de la fin de la deadzone
+			end: -285, // position y de la fin de la deadzone
+			side: "both", // côté de la deadzone
 		},
 		{
 			start: -596,
-			end: -775
+			end: -775,
+			side: "both",
 		}
 	],
 	"busstop": [
 		{
-			start: -25, // position y du début de la deadzone (y=0 en bas de l'image)
-			end: -47 // position y de la fin de la deadzone
+			start: -25,
+			end: -47,
+			side: "both",
 		}
 	],
 	"forest": [
 		{
 			start: -170,
-			end: -237
+			end: -237,
+			side: "both",
 		},
 		{
 			start: -300,
-			end: -386
+			end: -386,
+			side: "both",
 		}
 	],
 	"fin": [
 		{
 			start: 0,
-			end: -405
+			end: -405,
+			side: "both",
 		}
 	],
 	"fbm": [
 		{
 			start: -74,
-			end: -571
+			end: -571,
+			side: "right",
 		}
 	]
 }

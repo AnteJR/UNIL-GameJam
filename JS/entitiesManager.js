@@ -147,7 +147,7 @@ function setEntities() {
             const selectedObstacle = weightedRandom(weightedObstacleTypes);
 
             // Configure and spawn the obstacle
-            background.add([
+            const monEnnemi = background.add([
                 sprite(selectedObstacle.sprite, { anim: "walk" }),
                 pos(0, nextObstaclePosition),
                 area({
@@ -167,7 +167,21 @@ function setEntities() {
 
             nextObstaclePosition = getNextObstaclePosition();
 
-            const currentDeadZone = getDeadZoneAtPosition(nextObstaclePosition);
+            // TEST : deadzone basée sur les côtés, et sur l'obstacle actuel, non pas le suivant.
+            const currentDeadZone = getDeadZoneAtPosition(monEnnemi.pos.y);
+
+            if (currentDeadZone) {
+                if (currentDeadZone.area == innerWidth) monEnnemi.destroy();
+                else {
+                    if (currentDeadZone.startX == 0 && monEnnemi.pos.x > 0) monEnnemi.destroy();
+                    else if (currentDeadZone.startX < 0 && monEnnemi.pos.x < 0) monEnnemi.destroy();
+                }
+
+                return;
+            }
+
+            // code original
+            /*const currentDeadZone = getDeadZoneAtPosition(nextObstaclePosition);
 
             // if we're in a dead zone
             if (currentDeadZone) {
@@ -175,7 +189,7 @@ function setEntities() {
                 const randomDistance = Math.floor(Math.random() * distanceToNextObstacle + spawnMargin);
                 nextObstaclePosition = currentDeadZone.end - randomDistance;
                 return;
-            }
+            } */
 
             obstaclesPlaced += 1;
         }
