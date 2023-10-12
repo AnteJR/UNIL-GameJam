@@ -10,11 +10,10 @@ function setEntities() {
 
     // Obstacles
     const minDistanceBetweenObstacles = -80;
-    const maxDistanceBetweenObstacles = -200;
+    const maxDistanceBetweenObstacles = -150;
     // see https://kaboomjs.com/#easings and https://easings.net/
     const difficultyCurve = easings.easeInOutQuad;
 
-    let obstaclesPlaced = 0;
     let distanceToNextObstacle = maxDistanceBetweenObstacles;
     // Set the first obstacle just above the top of the screen
     let nextObstaclePosition = -innerHeight / proportion - 40;
@@ -23,22 +22,21 @@ function setEntities() {
     const numFriends = 10;
     const distanceBetweenFriends = terrainLength / (numFriends + 1);
     // Number of friends which don't move at the start of the round
-    const numEasyFriends = 1;
+    const numEasyFriends = 3;
     // Relative distances below and over the friend where no obstacle
     // can spawn
     const friendSafeZoneStart = 20; // number of pixels below the friend
     const friendSafeZoneEnd = 40; // number of pixels above the friend
 
-    let friendsPlaced = 0;
     let nextFriendPosition = -distanceBetweenFriends;
 
     const weightedObstacleTypes = [
         { // Slow obstacle
             pattern: oneWayObstacle,
             sprite: "sprite_char_tel",
-            speed: 0.6,
+            speed: 0.5,
             minWait: 500,
-            randomWait: 4000,
+            randomWait: 2000,
             weight: () => map(localWindowTop,
                 terrainStart, -terrainLength,
                 4, 1)
@@ -48,7 +46,7 @@ function setEntities() {
             sprite: "luge",
             speed: 0.9,
             minWait: 500,
-            randomWait: 2000,
+            randomWait: 4000,
             weight: () => map(localWindowTop,
                 terrainStart, -terrainLength,
                 2, 3)
@@ -58,7 +56,7 @@ function setEntities() {
             sprite: "scientist",
             speed: 0.7,
             minWait: 0,
-            randomWait: 70,
+            randomWait: 1000,
             weight: () => map(localWindowTop,
                 terrainStart, -terrainLength,
                 1, 3)
@@ -81,6 +79,7 @@ function setEntities() {
     onCollide("bottomMarker", "entity", (_, theEntity) => {
         destroy(theEntity);
     });
+
 
     onUpdate(() => {
         /* Compute the top of the screen in local coordinates */
@@ -117,7 +116,7 @@ function setEntities() {
                     shape: new Rect(vec2(0), 14, 12)
                 }),
                 anchor("center"),
-                lifespan(8),
+                lifespan(9),
                 friend(isEasy),
                 "friend",
                 "entity"
