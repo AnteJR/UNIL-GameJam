@@ -56,17 +56,17 @@ loadSprite("fin_ground", "building_fin_ground.png", { sliceX: 6, anims: { "defau
 // 2. assetLength liste la taille (en multiple de 135), des assets, afin de les placer correctement.
 // 3. terrainLength vaut la somme des valeurs de assetLength * -135, pour avoir la longueur totale du terrain de jeu.
 const listGroundAsset = [
-	"start_ground", "anthropole_ground", "busstop_ground",
+	"start_ground", "fbm_ground", "anthropole_ground", "busstop_ground",
 	"vortex_ground", "busstop_right_ground", "forest_ground",
 	"river_ground", "metro_ground", "playing_ground",
-	"fbm_ground", "fin_ground"
+	"fin_ground"
 ];
 const listAsset = [
-	"start", "anthropole", "busstop",
+	"start", "fbm", "anthropole", "busstop",
 	"vortex", "busstop_right", "forest",
 	"river", "metro", "playing",
-	"fbm", "fin"];
-const assetLength = [1, 3, 2, 6, 2, 3, 2, 3, 1, 5, 3];
+	 "fin"];
+const assetLength = [1, 5, 3, 2, 6, 2, 3, 2, 3, 1, 3];
 let totalLength = 0;
 assetLength.forEach((e) => { totalLength += e }); // 31
 const terrainLength = totalLength * - 135;
@@ -77,11 +77,11 @@ const assetDeadZones = {
 	"vortex": [
 		{
 			start: -112, // position y du début de la deadzone (y=0 en bas de l'image)
-			end: -275 // position y de la fin de la deadzone
+			end: -285 // position y de la fin de la deadzone
 		},
 		{
 			start: -596,
-			end: -768
+			end: -775
 		}
 	],
 	"busstop": [
@@ -104,6 +104,12 @@ const assetDeadZones = {
 		{
 			start: 0,
 			end: -405
+		}
+	],
+	"fbm": [
+		{
+			start: 0,
+			end: -640
 		}
 	]
 }
