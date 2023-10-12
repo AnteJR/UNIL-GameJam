@@ -12,7 +12,9 @@ function setEntities() {
     const minDistanceBetweenObstacles = -80;
     const maxDistanceBetweenObstacles = -200;
     // see https://kaboomjs.com/#easings and https://easings.net/
-    const placementEasingFunction = easings.easeInOutQuad;
+    const difficultyCurve = easings.easeInOutQuad;
+
+    let obstaclesPlaced = 0;
     let distanceToNextObstacle = maxDistanceBetweenObstacles;
     // Set the first obstacle just above the top of the screen
     let nextObstaclePosition = -innerHeight / proportion - 40;
@@ -20,10 +22,14 @@ function setEntities() {
     // Friends
     const numFriends = 10;
     const distanceBetweenFriends = terrainLength / (numFriends + 1);
+    // Number of friends which don't move at the start of the round
+    const numEasyFriends = 1;
     // Relative distances below and over the friend where no obstacle
     // can spawn
     const friendSafeZoneStart = 20; // number of pixels below the friend
     const friendSafeZoneEnd = 40; // number of pixels above the friend
+
+    let friendsPlaced = 0;
     let nextFriendPosition = -distanceBetweenFriends;
 
     const weightedObstacleTypes = [
@@ -31,8 +37,8 @@ function setEntities() {
             pattern: oneWayObstacle,
             sprite: "sprite_char_tel",
             speed: 0.6,
-            minWait: 0,
-            randomWait: 50,
+            minWait: 500,
+            randomWait: 4000,
             weight: () => map(localWindowTop,
                 terrainStart, -terrainLength,
                 4, 1)
@@ -72,8 +78,8 @@ function setEntities() {
         "bottomMarker"
     ]);
 
-    onCollide("bottomMarker", "obstacle", (_, theObstacle) => {
-        destroy(theObstacle);
+    onCollide("bottomMarker", "entity", (_, theEntity) => {
+        destroy(theEntity);
     });
 
     onUpdate(() => {
@@ -90,7 +96,9 @@ function setEntities() {
 
         const isAfterStartOfSafeZone = nextObstaclePosition < -nextFriendPosition + friendSafeZoneStart;
         const isBeforeEndOfSafeZone = nextObstaclePosition > -nextFriendPosition - friendSafeZoneEnd;
-        //if we also were supposed to place an obstacle close to that position
+        // If we are supposed to place a friend within a margin defined by the
+        // two conditions above, and we're also supposed to place an obstacle
+        // close to that position
         if (isAfterStartOfSafeZone && isBeforeEndOfSafeZone) {
             // push the next obstacle further
             nextObstaclePosition = -nextFriendPosition - friendSafeZoneEnd;
@@ -98,8 +106,11 @@ function setEntities() {
         }
 
         if (spawnPosition < -nextFriendPosition) {
+
+            let isEasy = friendsPlaced < numEasyFriends;
+
             fiendlySheep = background.add([
-                sprite("friend", { anim: "bring"}),
+                sprite("friend", { anim: "bring" }),
                 pos(0, spawnPosition),
                 area({
                     offset: vec2(-4, 0),
@@ -107,11 +118,14 @@ function setEntities() {
                 }),
                 anchor("center"),
                 lifespan(8),
-                friend(),
-                "friend"
+                friend(isEasy),
+                "friend",
+                "entity"
             ]);
 
             nextFriendPosition -= distanceBetweenFriends;
+
+            friendsPlaced += 1;
         }
 
         // Spawn obstacles
@@ -131,7 +145,7 @@ function setEntities() {
 
             // Configure and spawn the obstacle
             background.add([
-                sprite(selectedObstacle.sprite),
+                sprite(selectedObstacle.sprite, { anim: "walk" }),
                 pos(0, nextObstaclePosition),
                 area(),
                 anchor("center"),
@@ -141,10 +155,13 @@ function setEntities() {
                     selectedObstacle.speed,
                     selectedObstacle.minWait,
                     selectedObstacle.randomWait),
-                "obstacle"
-            ]).play("walk");
+                "obstacle",
+                "entity"
+            ]);
 
             nextObstaclePosition = getNextObstaclePosition();
+
+            obstaclesPlaced += 1;
         }
     });
 
@@ -154,7 +171,7 @@ function setEntities() {
         // Here we use an easing function to have a non linear progression
         // while having a min and max distance between obstacles. The easing
         // function can be defined at the top.
-        distanceToNextObstacle = map(placementEasingFunction(localWindowTop / terrainLength) * -terrainLength,
+        distanceToNextObstacle = map(difficultyCurve(localWindowTop / terrainLength) * -terrainLength,
             terrainStart, -terrainLength,
             maxDistanceBetweenObstacles, minDistanceBetweenObstacles)
         return nextPosition;

@@ -77,7 +77,7 @@ function oneWayObstacle(speed = 0.5, minWait = 0, randomWait = 0) {
     }
 }
 
-function friend() {
+function friend(isEasy) {
     // moves from right to left
 
     const speed = 0.65 - Math.random() * 0.35;
@@ -88,10 +88,12 @@ function friend() {
         require: ["pos"],
 
         add() {
+            if (isEasy) return;
             this.pos.x = -50;
         },
 
         update() {
+            if (isEasy) return;
             this.pos.x += speed;
         }
     }
