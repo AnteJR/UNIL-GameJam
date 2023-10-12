@@ -80,7 +80,7 @@ function oneWayObstacle(speed = 0.5, minWait = 0, randomWait = 0) {
 function friend() {
     // moves from right to left
 
-    const speed = 0.7 - Math.random() * 0.5;
+    const speed = 0.65 - Math.random() * 0.35;
 
     return {
 

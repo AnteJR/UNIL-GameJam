@@ -103,9 +103,10 @@ function setEntities() {
                 pos(0, spawnPosition),
                 area({
                     offset: vec2(-4, 0),
-                    shape: new Rect(vec2(0), 12, 7)
+                    shape: new Rect(vec2(0), 14, 12)
                 }),
                 anchor("center"),
+                lifespan(8),
                 friend(),
                 "friend"
             ]);
@@ -134,8 +135,7 @@ function setEntities() {
                 pos(0, nextObstaclePosition),
                 area(),
                 anchor("center"),
-                // code à activer pour déclencher la suppression hors-écran
-                // offscreen({ destroy: true }),
+                lifespan(8), // destroy après 8 sec
                 z(50),
                 selectedObstacle.pattern(
                     selectedObstacle.speed,
