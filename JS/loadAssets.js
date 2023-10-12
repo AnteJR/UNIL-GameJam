@@ -44,6 +44,8 @@ loadSprite("busstop", "building_busstop.png", { sliceX: 2, anims: { "default": {
 loadSprite("busstop_ground", "building_busstop_ground.png");
 loadSprite("busstop_right", "building_busstop_right.png", { sliceX: 2, anims: { "default": { from: 0, to: 1, speed: 1, loop: true, } } });
 loadSprite("busstop_right_ground", "building_busstop_right_ground.png");
+loadSprite("playing", "building_playing.png", { sliceX: 2, anims: { "default": { from: 0, to: 1, speed: 1, loop: true, } } });
+loadSprite("playing_ground", "building_playing_ground.png");
 loadSprite("fbm", "building_FBM.png", { anims: { "default": { from: 0, to: 0 } } });
 loadSprite("fbm_ground", "building_FBM_ground.png");
 loadSprite("fin", "WIP_building_fin.png", { anims: { "default": { from: 0, to: 0 } } });
@@ -55,15 +57,15 @@ loadSprite("fin", "WIP_building_fin.png", { anims: { "default": { from: 0, to: 0
 const listGroundAsset = [
 	"start_ground", "anthropole_ground", "busstop_ground",
 	"vortex_ground", "busstop_right_ground", "forest_ground",
-	"river_ground", "metro_ground", "fbm_ground",
-	"anthropole_ground"
+	"river_ground", "metro_ground", "playing_ground",
+	"fbm_ground", "anthropole_ground"
 ];
 const listAsset = [
 	"start", "anthropole", "busstop",
 	"vortex", "busstop_right", "forest",
-	"river", "metro", "fbm",
-	"fin"];
-const assetLength = [1, 3, 2, 6, 2, 3, 2, 3, 5, 3];
+	"river", "metro", "playing",
+	"fbm", "fin"];
+const assetLength = [1, 3, 2, 6, 2, 3, 2, 3, 1, 5, 3];
 let totalLength = 0;
 assetLength.forEach((e) => { totalLength += e }); // 22
 const terrainLength = totalLength * - 135;
