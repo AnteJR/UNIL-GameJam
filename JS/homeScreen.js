@@ -1,7 +1,7 @@
 scene("homeScreen", () => {
     const bg = add([
         sprite("mainBG"),
-        scale(Math.floor(actualProportion / 6)),
+        scale(Math.floor(proportion / 2)),
         pos(innerWidth / 2, 0),
         anchor("top")
 
@@ -31,7 +31,7 @@ scene("homeScreen", () => {
         sprite("fr_btn", { anim: "default" }),
         anchor("bot"),
         pos(innerWidth / 2, proportion < 6 ? innerHeight / 5 : innerHeight / 4),
-        scale(proportion < 6 ? proportion : 4),
+        scale(proportion < 6 ? (proportion - 1) : 4),
         area(),
         { value: "fr" },
         "french",
@@ -42,7 +42,7 @@ scene("homeScreen", () => {
         sprite("eng_btn", { anim: "default" }),
         anchor("bot"),
         pos(innerWidth / 2, (innerHeight / 10) * 7),
-        scale(proportion < 6 ? proportion : 4),
+        scale(proportion < 6 ? (proportion - 1) : 4),
         area(),
         { value: "eng" },
         "english",
