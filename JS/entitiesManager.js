@@ -9,8 +9,8 @@ function setEntities() {
     const spawnMargin = 70;
 
     // Obstacles
-    const minDistanceBetweenObstacles = -80;
-    const maxDistanceBetweenObstacles = -150;
+    const minDistanceBetweenObstacles = -60;
+    const maxDistanceBetweenObstacles = -120;
     // see https://kaboomjs.com/#easings and https://easings.net/
     const difficultyCurve = easings.easeInOutQuad;
 
@@ -38,7 +38,7 @@ function setEntities() {
             minWait: 500,
             randomWait: 2000,
             weight: () => map(localWindowTop,
-                terrainStart, -terrainLength,
+                terrainStart, terrainLength,
                 4, 1),
             offset: vec2(0, 5),
             shape: new Rect(vec2(0), 8, 5)
@@ -50,8 +50,8 @@ function setEntities() {
             minWait: 500,
             randomWait: 4000,
             weight: () => map(localWindowTop,
-                terrainStart, -terrainLength,
-                2, 3),
+                terrainStart, terrainLength,
+                2, 6),
             offset: vec2(0, 5),
             shape: new Rect(vec2(0), 10, 5)
         },
@@ -62,8 +62,8 @@ function setEntities() {
             minWait: 0,
             randomWait: 1000,
             weight: () => map(localWindowTop,
-                terrainStart, -terrainLength,
-                1, 3),
+                terrainStart, terrainLength,
+                1, 4),
             offset: vec2(0, 5),
             shape: new Rect(vec2(0), 10, 5)
         }
@@ -182,13 +182,14 @@ function setEntities() {
     });
 
     function getNextObstaclePosition() {
-        let nextPosition = nextObstaclePosition + distanceToNextObstacle;
+        let randomDistance = Math.floor(Math.random() * 200 - 100);
+        let nextPosition = nextObstaclePosition + distanceToNextObstacle + randomDistance;
 
         // Here we use an easing function to have a non linear progression
         // while having a min and max distance between obstacles. The easing
         // function can be defined at the top.
-        distanceToNextObstacle = map(difficultyCurve(localWindowTop / terrainLength) * -terrainLength,
-            terrainStart, -terrainLength,
+        distanceToNextObstacle = map(difficultyCurve(localWindowTop / terrainLength) * terrainLength,
+            terrainStart, terrainLength,
             maxDistanceBetweenObstacles, minDistanceBetweenObstacles)
         return nextPosition;
     }
