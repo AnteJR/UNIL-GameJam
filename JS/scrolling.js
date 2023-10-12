@@ -65,14 +65,13 @@ function registerDeadZone(assetName, backgroundPartPosition) {
     if (!deadZone) return;
 
     for (const zone of deadZone) {
+        // Translate the zone coordinates which are relative to parts
+        // into coordinates relative to the whole background
         terrainDeadZone = {
             start: backgroundPartPosition + zone.start,
             end: backgroundPartPosition + zone.end,
-            area: zone.side == "both" ? innerWidth : (zone.side == "right" || zone.side == "left" ? innerWidth / 2 : null),
-            startX: zone.side == "both" ? -innerWidth / 2 : (zone.side == "right" ? 0 : (zone.side == "left" ? -innerWidth / 2 : null)),
+            side: zone.side
         }
-
-        if (terrainDeadZone.area == null) continue;
 
         deadZones.push(terrainDeadZone);
 

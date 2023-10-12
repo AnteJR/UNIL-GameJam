@@ -1,7 +1,6 @@
-function randomObstacle(speed = 1, minWait = 0, randomWait = 0) {
+function randomObstacle(speed = 1, minWait = 0, randomWait = 0, side=1) {
     // obstacle that speeds up and slows down randomly
 
-    const side = Math.sign(Math.random() - 0.5);
     const perlinOffset = Math.random() * 8;
     let moveAfterMs = minWait + Math.floor(Math.random() * randomWait);
     const isStartOffset = Math.random() - 0.8 > 0;
@@ -38,9 +37,9 @@ function randomObstacle(speed = 1, minWait = 0, randomWait = 0) {
     }
 }
 
-function oneWayObstacle(speed = 0.5, minWait = 0, randomWait = 0) {
+function oneWayObstacle(speed = 0.5, minWait = 0, randomWait = 0, side=1) {
     // obstacle that moves only in one direction
-    const side = Math.sign(Math.random() - 0.5);
+
     let moveAfterMs = minWait + Math.floor(Math.random() * randomWait);
     let isMoving = false;
     const isStartOffset = Math.random() - 0.7 > 0;
