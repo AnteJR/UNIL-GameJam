@@ -6,6 +6,7 @@ scene("game", () => {
     acceleration = 0;
     friendsPlaced = 0;
     obstaclesPlaced = 0;
+    isGameOver = false;
     /*-----------------------
         MUSIC AND SOUNDS
     -----------------------*/
