@@ -1,8 +1,19 @@
 /*--------------------------------------------------------
     IMPORTATION DE KABOOM ET PARAMÉTRAGES DU CANVAS
 --------------------------------------------------------*/
-const innerWidth = window.innerWidth,
-    innerHeight = window.innerHeight;
+
+const MAX_RATIO = 0.7;
+
+let tempWidth = window.innerWidth,
+    tempHeight = window.innerHeight;
+const deviceRatio = tempWidth / tempHeight;
+
+if (deviceRatio > MAX_RATIO) {
+    tempWidth = tempHeight * MAX_RATIO;
+}
+
+const innerWidth = tempWidth,
+    innerHeight = tempHeight;
 
 let LANG = "ENG";
 let debugOn = true;

@@ -48,7 +48,8 @@ loadSprite("playing", "building_playing.png", { sliceX: 2, anims: { "default": {
 loadSprite("playing_ground", "building_playing_ground.png");
 loadSprite("fbm", "building_FBM.png", { anims: { "default": { from: 0, to: 0 } } });
 loadSprite("fbm_ground", "building_FBM_ground.png");
-loadSprite("fin", "WIP_building_fin.png", { anims: { "default": { from: 0, to: 0 } } });
+loadSprite("fin", "building_fin.png", { anims: { "default": { from: 0, to: 0 } } });
+loadSprite("fin_ground", "building_fin_ground.png", { anims: { "default": { from: 0, to: 0 } } });
 
 // CONSTANTES POUR LES BACKGROUNDS :
 // 1. listGroundAsset et listAsset listent le nom des textures des assets
@@ -58,7 +59,7 @@ const listGroundAsset = [
 	"start_ground", "anthropole_ground", "busstop_ground",
 	"vortex_ground", "busstop_right_ground", "forest_ground",
 	"river_ground", "metro_ground", "playing_ground",
-	"fbm_ground", "anthropole_ground"
+	"fbm_ground", "fin_ground"
 ];
 const listAsset = [
 	"start", "anthropole", "busstop",
