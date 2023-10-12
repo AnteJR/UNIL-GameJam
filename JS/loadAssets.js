@@ -108,8 +108,8 @@ const assetDeadZones = {
 	],
 	"fbm": [
 		{
-			start: 0,
-			end: -640
+			start: -74,
+			end: -571
 		}
 	]
 }
