@@ -44,6 +44,12 @@ let background,
     jaugeIn,
     fiendlySheep;
 
+/*----------------------------
+    DEBUG
+----------------------------*/
+let friendsPlaced = 0,
+    obstaclesPlaced = 0;
+
 /*--------------
     TEXTES
 --------------*/
