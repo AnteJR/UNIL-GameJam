@@ -85,10 +85,6 @@ function endMenu(e) {
     setTimeout(() => {
         if (e.role == "home") window.open("https://unil.ch/voeux", "_blank"); // change link if needed
         else if (e.role == "replay") {
-            firstPress = false;
-            speed = 0;
-            acceleration = 0;
-            isMousePressed = false;
             go("game", { playerSound: playerSound });
         }
     }, 250);

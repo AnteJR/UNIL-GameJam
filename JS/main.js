@@ -6,6 +6,7 @@ const MAX_RATIO = 0.7;
 
 let tempWidth = window.innerWidth,
     tempHeight = window.innerHeight;
+
 const deviceRatio = tempWidth / tempHeight;
 
 if (deviceRatio > MAX_RATIO) {

@@ -1,6 +1,9 @@
 scene("game", () => {
-
     // reinitialize global variables
+    firstPress = false;
+    isMousePressed = false;
+    speed = 0;
+    acceleration = 0;
     friendsPlaced = 0;
     obstaclesPlaced = 0;
     /*-----------------------
@@ -11,12 +14,6 @@ scene("game", () => {
     /*----------------
         BACKGROUND
     -----------------*/
-    // background for desktop overflow
-    const bg = add([
-        rect(innerWidth, innerHeight),
-        color(116, 183, 237)
-    ]);
-
     background = add([
         pos(innerWidth / 2, innerHeight),
         scale(proportion),

@@ -1,5 +1,4 @@
 scene("homeScreen", () => {
-    console.log(proportion)
     const bg = add([
         sprite("mainBG"),
         scale(Math.floor(actualProportion / 6)),
@@ -17,8 +16,6 @@ scene("homeScreen", () => {
         anchor("top"),
         scale(proportion < 5 ? proportion - 1 : (proportion < 7 ? 3 : 4))
     ]);
-
-    console.log(txtFR.scale)
 
     const txtENG = add([
         sprite("txtENG"),
