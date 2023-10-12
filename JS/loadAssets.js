@@ -48,8 +48,8 @@ loadSprite("playing", "building_playing.png", { sliceX: 2, anims: { "default": {
 loadSprite("playing_ground", "building_playing_ground.png");
 loadSprite("fbm", "building_FBM.png", { anims: { "default": { from: 0, to: 0 } } });
 loadSprite("fbm_ground", "building_FBM_ground.png");
-loadSprite("fin", "building_fin.png", { anims: { "default": { from: 0, to: 0 } } });
-loadSprite("fin_ground", "building_fin_ground.png", { anims: { "default": { from: 0, to: 0 } } });
+loadSprite("fin", "building_fin.png", { sliceX: 6, anims: { "default": { from: 0, to: 5, speed: 10, loop: true, } } });
+loadSprite("fin_ground", "building_fin_ground.png", { sliceX: 6, anims: { "default": { from: 0, to: 5, speed: 10, loop: true, } } });
 
 // CONSTANTES POUR LES BACKGROUNDS :
 // 1. listGroundAsset et listAsset listent le nom des textures des assets
@@ -98,6 +98,12 @@ const assetDeadZones = {
 		{
 			start: -300,
 			end: -386
+		}
+	],
+	"fin": [
+		{
+			start: 0,
+			end: -405
 		}
 	]
 }

@@ -28,13 +28,14 @@ scene("game", () => {
             b.pos.y = (terrainLength * (-1)) * proportion;
 
             playerSound.volume = 0;
-            
-            wait(3, () => {
+            player.play("idle");
+
+            wait(8, () => {
                 go("endScreen", { score: player.greetingsCaught });
             })
+        } else {
+            accelerate(b);
         }
-
-        accelerate(b);
     });
 
     addBackground();
