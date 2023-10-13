@@ -15,6 +15,7 @@ const playerSound = play('bike-roll-snow', {
 POLICES D'ÉCRITURE
 ---------------------------*/
 loadFont("pixelFont", "../assets/fonts/RetroGaming.ttf")
+loadFont("testFont", "../assets/fonts/PixelOperator8-Bold.ttf")
 
 
 /*---------------------------

@@ -10,10 +10,11 @@ scene("endScreen", ({ score }) => {
     -------------------------------*/
     const victoryTxtShadow = add([
         text(texte[LANG].final, {
-            font: "pixelFont",
+            font: "testFont",
             align: "center",
-            size: 12 * proportion,
-            width: 135 * (proportion - 1)
+            size: 9 * proportion,
+            width: 145 * (proportion - 1),
+            lineSpacing: 10
         }),
         pos(Math.floor(innerWidth / 2), Math.floor(innerHeight / 50)),
         anchor("top"),
@@ -22,10 +23,11 @@ scene("endScreen", ({ score }) => {
 
     const victoryTxt = victoryTxtShadow.add([
         text(texte[LANG].final, {
-            font: "pixelFont",
+            font: "testFont",
             align: "center",
-            size: 12 * proportion,
-            width: 135 * (proportion - 1)
+            size: 9 * proportion,
+            width: 145 * (proportion - 1),
+            lineSpacing: 10
         }),
         pos(-innerWidth / (1000 / proportion), -innerHeight / (1000 / proportion)),
         anchor("top"),
@@ -33,10 +35,11 @@ scene("endScreen", ({ score }) => {
 
     const smallVictoryTxtShadow = add([
         text(texte[LANG].finalSmall, {
-            font: "pixelFont",
+            font: "testFont",
             align: "center",
-            size: 8 * proportion,
-            width: 135 * (proportion - 1)
+            size: 6 * proportion,
+            width: 145 * (proportion - 1),
+            lineSpacing: 10
         }),
         pos(Math.floor(innerWidth / 2), Math.floor(innerHeight / 50 * 3) + victoryTxt.height),
         anchor("top"),
@@ -45,10 +48,11 @@ scene("endScreen", ({ score }) => {
 
     const smallVictoryTxt = smallVictoryTxtShadow.add([
         text(texte[LANG].finalSmall, {
-            font: "pixelFont",
+            font: "testFont",
             align: "center",
-            size: 8 * proportion,
-            width: 135 * (proportion - 1)
+            size: 6 * proportion,
+            width: 145 * (proportion - 1),
+            lineSpacing: 10
         }),
         pos(-innerWidth / (1200 / proportion), -innerHeight / (1200 / proportion)),
         anchor("top")
@@ -56,10 +60,11 @@ scene("endScreen", ({ score }) => {
 
     const scoreTxtShadow = add([
         text(texte[LANG].scoring + score + texte[LANG].objectif, {
-            font: "pixelFont",
+            font: "testFont",
             align: "center",
-            size: 8 * proportion,
-            width: 135 * (proportion - 1)
+            size: 6 * proportion,
+            width: 145 * (proportion - 1),
+            lineSpacing: 10
         }),
         pos(Math.floor(innerWidth / 2), Math.floor(innerHeight / 50 * 5) + victoryTxt.height + smallVictoryTxt.height),
         anchor("top"),
@@ -68,10 +73,11 @@ scene("endScreen", ({ score }) => {
 
     const scoreTxt = scoreTxtShadow.add([
         text(texte[LANG].scoring + score + texte[LANG].objectif, {
-            font: "pixelFont",
+            font: "testFont",
             align: "center",
-            size: 8 * proportion,
-            width: 135 * (proportion - 1)
+            size: 6 * proportion,
+            width: 145 * (proportion - 1),
+            lineSpacing: 10
         }),
         pos(-innerWidth / (1200 / proportion), -innerHeight / (1200 / proportion)),
         anchor("top")

@@ -17,10 +17,10 @@ function addControls() {
     // afficher un texte explicatif selon la langue choisie
     const controlTxt = add([
         text(texte[LANG].control, {
-            font: "pixelFont",
+            font: "testFont",
             align: "center",
-            size: proportion < 6 ? 8 * proportion : (proportion < 15 ? 6 * proportion : 3 * proportion),
-            width: 130 * (proportion - 1),
+            size: proportion < 5 ? 7 * proportion : (proportion < 15 ? 6 * proportion : 3 * proportion),
+            width: 140 * (proportion - 1),
         }),
         color(0, 0, 0),
         pos(Math.floor(innerWidth / 2), Math.floor(innerHeight / 50 * 5)),

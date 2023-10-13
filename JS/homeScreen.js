@@ -12,10 +12,11 @@ scene("homeScreen", () => {
     -------------------------------*/
     const txtFRShadow = add([
         text(texte.FR.accueil, {
-            font: "pixelFont",
+            font: "testFont",
             align: "center",
-            size: 10 * proportion,
-            width: 135 * (proportion - 1)
+            size: 8 * proportion,
+            width: 145 * (proportion - 1),
+            lineSpacing: 10
         }),
         pos(Math.floor(innerWidth / 2), Math.floor(innerHeight / 5 + innerHeight / 50)),
         anchor("top"),
@@ -24,10 +25,11 @@ scene("homeScreen", () => {
 
     const txtFR = txtFRShadow.add([
         text(texte.FR.accueil, {
-            font: "pixelFont",
+            font: "testFont",
             align: "center",
-            size: 10 * proportion,
-            width: 135 * (proportion - 1),
+            size: 8 * proportion,
+            width: 145 * (proportion - 1),
+            lineSpacing: 10
         }),
         pos(-innerWidth / (1000 / proportion), -innerHeight / (1000 / proportion)),
         anchor("top")
@@ -35,22 +37,24 @@ scene("homeScreen", () => {
 
     const txtENGShadow = add([
         text(texte.ENG.accueil, {
-            font: "pixelFont",
+            font: "testFont",
             align: "center",
-            size: 10 * proportion,
-            width: 135 * (proportion - 1)
+            size: 8 * proportion,
+            width: 150 * (proportion - 1),
+            lineSpacing: 10
         }),
-        pos(Math.floor(innerWidth / 2), Math.floor(innerHeight / 10 * 7 + innerHeight / 50)),
+        pos(Math.floor(innerWidth / 2), Math.floor(innerHeight / 10 * 6.5 + innerHeight / 50)),
         anchor("top"),
         color(0,0,0),
     ]);
 
     const txtENG = txtENGShadow.add([
         text(texte.ENG.accueil, {
-            font: "pixelFont",
+            font: "testFont",
             align: "center",
-            size: 10 * proportion,
-            width: 135 * (proportion - 1),
+            size: 8 * proportion,
+            width: 150 * (proportion - 1),
+            lineSpacing: 10
         }),
         pos(-innerWidth / (1000 / proportion), -innerHeight / (1000 / proportion)),
         anchor("top")
@@ -87,7 +91,7 @@ scene("homeScreen", () => {
     const flagENG = add([
         sprite("eng_btn", { anim: "default" }),
         anchor("bot"),
-        pos(innerWidth / 2, (innerHeight / 10) * 7),
+        pos(innerWidth / 2, (innerHeight / 10) * 6.5),
         scale(proportion < 6 ? (proportion - 1) : 4),
         area(),
         { value: "eng" },
