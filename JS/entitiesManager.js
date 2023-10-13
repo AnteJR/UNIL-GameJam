@@ -39,7 +39,7 @@ function setEntities() {
             randomWait: 2000,
             weight: () => map(localWindowTop,
                 terrainStart, terrainLength,
-                4, 1),
+                4, 2),
             offset: vec2(0, 5),
             shape: new Rect(vec2(0), 8, 5)
         },
@@ -51,7 +51,7 @@ function setEntities() {
             randomWait: 4000,
             weight: () => map(localWindowTop,
                 terrainStart, terrainLength,
-                2, 6),
+                1, 5),
             offset: vec2(0, 5),
             shape: new Rect(vec2(0), 10, 5)
         },
@@ -63,7 +63,7 @@ function setEntities() {
             randomWait: 1000,
             weight: () => map(localWindowTop,
                 terrainStart, terrainLength,
-                1, 4),
+                0.1, 3),
             offset: vec2(0, 5),
             shape: new Rect(vec2(0), 10, 5)
         }

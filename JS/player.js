@@ -24,7 +24,7 @@ function setPlayer() {
         play("daze_fear", { volume: 0.6 });
         player.isDazed = true;
         player.dazeTimer += dazeDurationSeconds;
-        speed = dazeSpeed;
+        if(speed >= dazeSpeed) speed = dazeSpeed;
         acceleration = 0;
         p.play("daze");
     });
