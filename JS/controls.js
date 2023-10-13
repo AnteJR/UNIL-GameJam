@@ -9,7 +9,7 @@ function addControls() {
         sprite(isPhone ? "phone_control" : "mouse_control", { anim: "tutorial" }),
         pos(Math.floor(innerWidth / 2), Math.floor(innerHeight / 2)),
         anchor("center"),
-        scale(proportion/2),
+        scale(proportion / 2),
         opacity(0),
         { waitTime: 1 },
         "controls"
@@ -21,9 +21,9 @@ function addControls() {
             font: "pixelFont",
             align: "center",
             size: proportion < 6 ? 8 * proportion : (proportion < 15 ? 6 * proportion : 3 * proportion),
-            width: 130 * (proportion -1),
+            width: 130 * (proportion - 1),
         }),
-        color(0,0,0),
+        color(0, 0, 0),
         pos(Math.floor(innerWidth / 2), Math.floor(innerHeight / 50 * 5)),
         anchor("top"),
         opacity(0)
@@ -31,15 +31,15 @@ function addControls() {
 
     // faire apparaître, puis disparaître le texte au premier input
     onUpdate("controls", (e) => {
-        if(firstPress) {
+        if (firstPress) {
             destroy(e);
             controlTxt.destroy();
         }
-        if (e.waitTime > 0.18) e.waitTime -= dt()*60;
+        if (e.waitTime > 0.18) e.waitTime -= dt() * 60;
         else {
-            if (e.opacity < 0.8) e.opacity += dt(); 
+            if (e.opacity < 0.8) e.opacity += dt();
             if (controlTxt.opacity < 0.8) controlTxt.opacity += dt();
-        }  
+        }
     });
 }
 

@@ -116,7 +116,7 @@ function setEntities() {
             if (currentDeadZone) {
                 // Don't care about right-sided deadzones, since friends always
                 // go left to right
-                if (currentDeadZone.side != "right"){
+                if (currentDeadZone.side != "right") {
                     // push the next friend to after the deadzone
                     const randomDistance = Math.floor(100 + Math.random() * spawnMargin);
                     nextFriendPosition = currentDeadZone.end - randomDistance;

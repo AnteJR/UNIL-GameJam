@@ -1,7 +1,7 @@
 /*---------------------------
 SONS ET MUSIQUES
 ---------------------------*/
-const liste_sons = ["bike-roll-snow", "woosh2", "sonnette-velo","sheep_bleat","daze_fear"];
+const liste_sons = ["bike-roll-snow", "woosh2", "sonnette-velo", "sheep_bleat", "daze_fear"];
 liste_sons.forEach(a => {
 	loadSound(a, `../assets/sounds/${a}.wav`);
 });
@@ -64,8 +64,8 @@ const listGroundAsset = [
 const listAsset = [
 	"start", "anthropole", "busstop",
 	"vortex", "busstop_right", "forest",
-	"river", "metro", "playing", "fbm", 
-	 "fin"];
+	"river", "metro", "playing", "fbm",
+	"fin"];
 const assetLength = [1, 3, 2, 6, 2, 3, 2, 3, 1, 5, 3];
 let totalLength = 0;
 assetLength.forEach((e) => { totalLength += e }); // 31

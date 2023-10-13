@@ -88,7 +88,7 @@ scene("game", () => {
         isMousePressed = true;
         playerSounds()
     }
-    
+
     function actionReleased() {
         isMousePressed = false;
         acceleration = 0.1;

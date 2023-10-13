@@ -34,7 +34,7 @@ kaboom({
 ------------------------------------------*/
 let acceleration = 0,
     speed = 0,
-    isMousePressed = false;
+    isMousePressed = false,
     firstPress = false,
     isGameOver = false;
 
