@@ -46,6 +46,7 @@ const accelerationRate = 0.015 * proportion,
     maxSpeed = 2 * proportion,
     dazeSpeed = 0.75 * proportion,
     dazeDurationSeconds = 1,
+    minFriendSpeed = 0.25,
     deadZones = [];
 
 /*----------------------------

@@ -77,7 +77,8 @@ function oneWayObstacle(speed = 0.5, minWait = 0, randomWait = 0, side = 1) {
 function friend(isEasy) {
     // moves from right to left
 
-    const speed = 0.5 - Math.random() * 0.3;
+    var friendSpeed = 0.5 - Math.random() * 0.3;
+    if (friendSpeed < minFriendSpeed) friendSpeed = minFriendSpeed;
 
     return {
 
@@ -91,7 +92,7 @@ function friend(isEasy) {
 
         update() {
             if (isEasy) return;
-            this.pos.x += speed;
+            this.pos.x += friendSpeed;
         }
     }
 }
