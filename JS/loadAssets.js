@@ -108,7 +108,7 @@ const assetDeadZones = {
 	],
 	"fin": [
 		{
-			start: 0,
+			start: -150,
 			end: -405,
 			side: "both",
 		}
