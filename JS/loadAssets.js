@@ -296,6 +296,21 @@ loadSprite("phone_control", "UI_control_phone.png", {
 		}
 	}
 });
+loadSprite("letterboxUI", "UI_letterbox.png", {
+	sliceX: 13,
+	anims: {
+		"static": {
+			from: 0,
+			to: 0,
+		},
+		"score": {
+			from: 1,
+			to: 12,
+			speed: 20,
+			loop: false
+		}
+	}
+})
 loadSprite("txtFR", "UI_text_FR.png");
 loadSprite("txtENG", "UI_text_ENG.png");
 loadSprite("mainBG", "computer_background.png");

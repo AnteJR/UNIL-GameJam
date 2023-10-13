@@ -1,5 +1,7 @@
 scene("game", () => {
-    // reinitialize global variables
+    /*-----------------------
+        VARIABLES
+    -----------------------*/
     firstPress = false;
     isMousePressed = false;
     speed = 0;
@@ -7,6 +9,9 @@ scene("game", () => {
     friendsPlaced = 0;
     obstaclesPlaced = 0;
     isGameOver = false;
+
+    let isLetterBox = false;
+
     /*-----------------------
         MUSIC AND SOUNDS
     -----------------------*/
@@ -30,6 +35,19 @@ scene("game", () => {
             player.play("idle");
             jaugeIn.destroy();
             jaugeOut.destroy();
+
+            if(!isLetterBox) {
+                isLetterBox = true;
+                letterbox = add([
+                    sprite("letterboxUI", { anim: "static"} ),
+                    pos(innerWidth / 10 * 6, innerHeight / 50 * 47),
+                    anchor("botleft"),
+                    scale(proportion-1),
+                    area(),
+                    "letterbox"
+                ]);
+                playAnimationEnoughTimes(player.greetingsCaught);
+            }
 
             wait(8, () => {
                 go("endScreen", { score: player.greetingsCaught });
@@ -106,4 +124,18 @@ function gameStartNow() {
     firstPress = true;
     player.play("up");
     playerSound.volume = 0.5;
+}
+
+function playAnimationEnoughTimes(x) {
+    if(x <= 0) {
+        letterbox.play("static");
+        return;
+    }
+    
+    x--;
+    letterbox.play("score");
+
+    wait(0.5, () => {
+        playAnimationEnoughTimes(x);
+    });
 }

@@ -17,7 +17,6 @@ const innerWidth = tempWidth,
     innerHeight = tempHeight;
 
 let LANG = "ENG";
-let debugOn = true;
 
 let scale_incomplete = innerWidth / 135;
 const proportion = Math.floor(scale_incomplete) >= 6 ? 7 : Math.floor(scale_incomplete) + 1,
@@ -56,13 +55,15 @@ let background,
     player,
     jaugeOut,
     jaugeIn,
-    fiendlySheep;
+    fiendlySheep,
+    letterbox;
 
 /*----------------------------
     DEBUG
 ----------------------------*/
 let friendsPlaced = 0,
-    obstaclesPlaced = 0;
+    obstaclesPlaced = 0,
+    debugOn = true;
 
 /*--------------
     TEXTES
