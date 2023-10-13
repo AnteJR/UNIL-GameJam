@@ -10,7 +10,53 @@ scene("homeScreen", () => {
     /*-------------------------------
         TEXTES ÉCRAN ACCUEIL
     -------------------------------*/
-    const txtFR = add([
+    const txtFRShadow = add([
+        text(texte.FR.accueil, {
+            font: "pixelFont",
+            align: "center",
+            size: 10 * proportion,
+            width: 135 * (proportion - 1)
+        }),
+        pos(Math.floor(innerWidth / 2), Math.floor(innerHeight / 5 + innerHeight / 50)),
+        anchor("top"),
+        color(0,0,0),
+    ]);
+
+    const txtFR = txtFRShadow.add([
+        text(texte.FR.accueil, {
+            font: "pixelFont",
+            align: "center",
+            size: 10 * proportion,
+            width: 135 * (proportion - 1),
+        }),
+        pos(-innerWidth / (1000 / proportion), -innerHeight / (1000 / proportion)),
+        anchor("top")
+    ]);
+
+    const txtENGShadow = add([
+        text(texte.ENG.accueil, {
+            font: "pixelFont",
+            align: "center",
+            size: 10 * proportion,
+            width: 135 * (proportion - 1)
+        }),
+        pos(Math.floor(innerWidth / 2), Math.floor(innerHeight / 10 * 7 + innerHeight / 50)),
+        anchor("top"),
+        color(0,0,0),
+    ]);
+
+    const txtENG = txtENGShadow.add([
+        text(texte.ENG.accueil, {
+            font: "pixelFont",
+            align: "center",
+            size: 10 * proportion,
+            width: 135 * (proportion - 1),
+        }),
+        pos(-innerWidth / (1000 / proportion), -innerHeight / (1000 / proportion)),
+        anchor("top")
+    ]);
+
+    /* const txtFR = add([
         sprite("txtFR"),
         pos(innerWidth / 2, proportion < 6 ? Math.floor(innerHeight / 5 + innerHeight / 100) : Math.floor(innerHeight / 4 + innerHeight / 50)),
         anchor("top"),
@@ -22,7 +68,7 @@ scene("homeScreen", () => {
         pos(innerWidth / 2, proportion < 6 ? Math.floor((innerHeight / 10) * 7 + innerHeight / 50) : Math.floor((innerHeight / 10) * 7 + innerHeight / 50)),
         anchor("top"),
         scale(proportion < 5 ? proportion - 1 : (proportion < 7 ? 3 : 4))
-    ]);
+    ]); */
 
     /*-------------------------------
         BOUTONS ÉCRAN ACCUEIL

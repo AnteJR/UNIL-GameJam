@@ -2,7 +2,7 @@
     AFFICHER L'EXPLICATION DES CONTRÔLES
 ---------------------------------------------*/
 function addControls() {
-    let isPhone = chooseControls();
+    let isPhone = checkDeviceType();
 
     // afficher le bon icone (téléphone ou souris)
     const gameControls = add([
@@ -11,7 +11,6 @@ function addControls() {
         anchor("center"),
         scale(proportion / 2),
         opacity(0),
-        { waitTime: 1 },
         "controls"
     ]);
 
@@ -35,18 +34,15 @@ function addControls() {
             destroy(e);
             controlTxt.destroy();
         }
-        if (e.waitTime > 0.18) e.waitTime -= dt() * 60;
-        else {
-            if (e.opacity < 0.8) e.opacity += dt();
-            if (controlTxt.opacity < 0.8) controlTxt.opacity += dt();
-        }
+        if (e.opacity < 0.8) e.opacity += dt();
+        if (controlTxt.opacity < 0.8) controlTxt.opacity += dt();
     });
 }
 
 /*------------------------------------
     CHECK SI C'EST SUR MOBILE
 ------------------------------------*/
-function chooseControls() {
+function checkDeviceType() {
     const regex = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
     return regex.test(navigator.userAgent);
 }
