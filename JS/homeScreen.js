@@ -1,9 +1,9 @@
 scene("homeScreen", () => {
     const bg = add([
-        sprite("mainBG"),
-        scale(Math.floor(proportion / 2)),
-        pos(innerWidth / 2, 0),
-        anchor("top")
+        sprite("mainBG", { anim: "homeScreen" }),
+        scale(proportion),
+        pos(innerWidth / 2, innerHeight),
+        anchor("bot")
 
     ]);
 
@@ -20,7 +20,7 @@ scene("homeScreen", () => {
         }),
         pos(Math.floor(innerWidth / 2), Math.floor(innerHeight / 5 + innerHeight / 50)),
         anchor("top"),
-        color(0,0,0),
+        color(0, 0, 0),
     ]);
 
     const txtFR = txtFRShadow.add([
@@ -45,7 +45,7 @@ scene("homeScreen", () => {
         }),
         pos(Math.floor(innerWidth / 2), Math.floor(innerHeight / 10 * 6.5 + innerHeight / 50)),
         anchor("top"),
-        color(0,0,0),
+        color(0, 0, 0),
     ]);
 
     const txtENG = txtENGShadow.add([

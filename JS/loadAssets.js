@@ -1,5 +1,5 @@
 /*---------------------------
-SONS ET MUSIQUES
+	SONS ET MUSIQUES
 ---------------------------*/
 const liste_sons = ["bike-roll-snow", "woosh2", "sonnette-velo", "sheep_bleat", "daze_fear"];
 liste_sons.forEach(a => {
@@ -12,21 +12,21 @@ const playerSound = play('bike-roll-snow', {
 });
 
 /*---------------------------
-POLICES D'ÉCRITURE
+	POLICES D'ÉCRITURE
 ---------------------------*/
 loadFont("pixelFont", "../assets/fonts/RetroGaming.ttf")
 loadFont("testFont", "../assets/fonts/PixelOperator8-Bold.ttf")
 
 
 /*---------------------------
-IMAGES DE FOND
+	IMAGES DE FOND
 ---------------------------*/
 
 // fond durant la scène de jeu
 loadSprite("computer_background", "../assets/images/UI/computer_background.png");
 
 /*---------------------------
-BATIMENTS/DECORS
+	BATIMENTS/DECORS
 ---------------------------*/
 loadRoot("../assets/images/buildings/");
 loadSprite("start", "building_start.png", { sliceX: 4, anims: { "default": { from: 0, to: 3, speed: 5, loop: true, } } });
@@ -123,7 +123,7 @@ const assetDeadZones = {
 }
 
 /*---------------------------
-PERSONNAGES
+	PERSONNAGES
 ---------------------------*/
 loadRoot("../assets/images/characters/");
 loadSprite("player", "character_sheepy.png", {
@@ -313,4 +313,19 @@ loadSprite("letterboxUI", "UI_letterbox.png", {
 })
 loadSprite("txtFR", "UI_text_FR.png");
 loadSprite("txtENG", "UI_text_ENG.png");
-loadSprite("mainBG", "computer_background.png");
+
+/*---------------------------
+	DECO/BACKGROUNDS
+---------------------------*/
+loadRoot("../assets/images/buildings/");
+loadSprite("mainBG", "WIP_background_start.png", {
+	sliceX: 12,
+	anims: {
+		"homeScreen": {
+			from: 0,
+			to: 11,
+			speed: 10,
+			loop: true,
+		}
+	}
+})
