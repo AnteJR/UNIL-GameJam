@@ -14,21 +14,13 @@ const playerSound = play('bike-roll-snow', {
 /*---------------------------
 	POLICES D'ÉCRITURE
 ---------------------------*/
-loadFont("pixelFont", "../assets/fonts/RetroGaming.ttf")
-loadFont("testFont", "../assets/fonts/PixelOperator8-Bold.ttf",{
+loadFont("pixelOutlined", "../assets/fonts/PixelOperator8-Bold.ttf",{
 	outline : {
-		width : 2,
+		width : 2 * proportion,
 		color : rgb(0,0,0)
 	}
-})
-
-
-/*---------------------------
-	IMAGES DE FOND
----------------------------*/
-
-// fond durant la scène de jeu
-loadSprite("computer_background", "../assets/images/UI/computer_background.png");
+});
+loadFont("pixel", "../assets/fonts/PixelOperator8-Bold.ttf")
 
 /*---------------------------
 	BATIMENTS/DECORS

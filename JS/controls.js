@@ -15,18 +15,9 @@ function addControls() {
     ]);
 
     // afficher un texte explicatif selon la langue choisie
-    const controlTxt = add([
-        text(texte[LANG].control, {
-            font: "testFont",
-            align: "center",
-            size: proportion < 5 ? 7 * proportion : (proportion < 15 ? 6 * proportion : 3 * proportion),
-            width: 140 * (proportion - 1),
-        }),
-        color(0, 0, 0),
-        pos(Math.floor(innerWidth / 2), Math.floor(innerHeight / 50 * 5)),
-        anchor("top"),
-        opacity(0)
-    ]);
+    const controlTxt = addTxtMenu(texte[LANG].control + ".", [Math.floor(innerWidth / 2), Math.floor(innerHeight / 50 * 5)], "pixel", "center", 5, "top", 5)
+    controlTxt.color = "black";
+    controlTxt.opacity = 0;
 
     // faire apparaître, puis disparaître le texte au premier input
     onUpdate("controls", (e) => {

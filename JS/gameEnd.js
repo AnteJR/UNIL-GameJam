@@ -4,15 +4,14 @@ scene("endScreen", ({ score }) => {
         scale(proportion),
         pos(innerWidth / 2, innerHeight),
         anchor("bot")
-
     ]);
 
     /*-------------------------------
         TEXTES ÉCRAN FINAL
     -------------------------------*/
-    const victoryTxt = addTxtMenu(texte[LANG].final, [Math.floor(innerWidth / 2), Math.floor(innerHeight / 50)], "testFont", "center", 9, "top", 9);
-    const smallVictoryTxt = addTxtMenu(texte[LANG].finalSmall, [Math.floor(innerWidth / 2), Math.floor(innerHeight / 50 * 3) + victoryTxt.height], "testFont", "center", 6, "top", 6);
-    addTxtMenu(texte[LANG].scoring + score + texte[LANG].objectif, [Math.floor(innerWidth / 2), Math.floor(innerHeight / 50 * 5) + victoryTxt.height + smallVictoryTxt.height], "testFont", "center", 6, "top", 6);
+    const victoryTxt = addTxtMenu(texte[LANG].final, [Math.floor(innerWidth / 2), Math.floor(innerHeight / 50)], "pixelOutlined", "center", 9, "top", 9);
+    const smallVictoryTxt = addTxtMenu(texte[LANG].finalSmall, [Math.floor(innerWidth / 2), Math.floor(innerHeight / 50 * 3) + victoryTxt.height], "pixeldOutlined", "center", 6, "top", 6);
+    const scoreTxt = addTxtMenu(texte[LANG].scoring + score + texte[LANG].objectif, [Math.floor(innerWidth / 2), Math.floor(innerHeight / 50 * 5) + victoryTxt.height + smallVictoryTxt.height], "pixeldOutlined", "center", 6, "top", 6);
 
     /*-------------------------------
         BOUTONS ÉCRAN FINAL

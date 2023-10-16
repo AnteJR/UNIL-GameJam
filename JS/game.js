@@ -59,14 +59,6 @@ scene("game", () => {
 
     addBackground();
 
-    // COMPUTER BACKGROUND IMAGE
-    add([
-        sprite("computer_background"),
-        fixed(),
-        scale(4),
-        z(-100)
-    ])
-
     /*-----------------------------------------------
         DEBUG MODE HERE
     ------------------------------------------------*/

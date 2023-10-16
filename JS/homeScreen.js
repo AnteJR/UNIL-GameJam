@@ -10,9 +10,9 @@ scene("homeScreen", () => {
     /*-------------------------------
         TEXTES ÉCRAN ACCUEIL
     -------------------------------*/
-    let size = proportion < 4 ? 6 : 5;
-    addTxtMenu(texte.FR.accueil, [Math.floor(innerWidth / 2), Math.floor((innerHeight / 5) + (innerHeight / 50))], "testFont", "center", size, "top", size);
-    addTxtMenu(texte.ENG.accueil, [Math.floor(innerWidth / 2), Math.floor(((innerHeight / 20) * 10) + (innerHeight / 50))], "testFont", "center", size, "top", size);
+    let taille = proportion < 4 ? 6 : 5;
+    const frTxt = addTxtMenu(texte.FR.accueil, [Math.floor(innerWidth / 2), Math.floor((innerHeight / 5) + (innerHeight / 50))], "pixelOutlined", "center", taille, "top", taille);
+    const engTxt = addTxtMenu(texte.ENG.accueil, [Math.floor(innerWidth / 2), Math.floor(((innerHeight / 20) * 10) + (innerHeight / 50))], "pixelOutlined", "center", taille, "top", taille);
 
     /*-------------------------------
         BOUTONS ÉCRAN ACCUEIL
