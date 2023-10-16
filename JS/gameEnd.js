@@ -8,80 +8,9 @@ scene("endScreen", ({ score }) => {
     /*-------------------------------
         TEXTES ÉCRAN FINAL
     -------------------------------*/
-    const victoryTxtShadow = add([
-        text(texte[LANG].final, {
-            font: "testFont",
-            align: "center",
-            size: 9 * proportion,
-            width: 145 * (proportion - 1),
-            lineSpacing: 10
-        }),
-        pos(Math.floor(innerWidth / 2), Math.floor(innerHeight / 50)),
-        anchor("top"),
-        color(0, 0, 0),
-    ]);
-
-    const victoryTxt = victoryTxtShadow.add([
-        text(texte[LANG].final, {
-            font: "testFont",
-            align: "center",
-            size: 9 * proportion,
-            width: 145 * (proportion - 1),
-            lineSpacing: 10
-        }),
-        pos(-innerWidth / (1000 / proportion), -innerHeight / (1000 / proportion)),
-        anchor("top"),
-    ]);
-
-    const smallVictoryTxtShadow = add([
-        text(texte[LANG].finalSmall, {
-            font: "testFont",
-            align: "center",
-            size: 6 * proportion,
-            width: 145 * (proportion - 1),
-            lineSpacing: 10
-        }),
-        pos(Math.floor(innerWidth / 2), Math.floor(innerHeight / 50 * 3) + victoryTxt.height),
-        anchor("top"),
-        color(0, 0, 0),
-    ]);
-
-    const smallVictoryTxt = smallVictoryTxtShadow.add([
-        text(texte[LANG].finalSmall, {
-            font: "testFont",
-            align: "center",
-            size: 6 * proportion,
-            width: 145 * (proportion - 1),
-            lineSpacing: 10
-        }),
-        pos(-innerWidth / (1200 / proportion), -innerHeight / (1200 / proportion)),
-        anchor("top")
-    ]);
-
-    const scoreTxtShadow = add([
-        text(texte[LANG].scoring + score + texte[LANG].objectif, {
-            font: "testFont",
-            align: "center",
-            size: 6 * proportion,
-            width: 145 * (proportion - 1),
-            lineSpacing: 10
-        }),
-        pos(Math.floor(innerWidth / 2), Math.floor(innerHeight / 50 * 5) + victoryTxt.height + smallVictoryTxt.height),
-        anchor("top"),
-        color(0, 0, 0)
-    ]);
-
-    const scoreTxt = scoreTxtShadow.add([
-        text(texte[LANG].scoring + score + texte[LANG].objectif, {
-            font: "testFont",
-            align: "center",
-            size: 6 * proportion,
-            width: 145 * (proportion - 1),
-            lineSpacing: 10
-        }),
-        pos(-innerWidth / (1200 / proportion), -innerHeight / (1200 / proportion)),
-        anchor("top")
-    ]);
+    const victoryTxt = addTxtMenu(texte[LANG].final, [Math.floor(innerWidth / 2), Math.floor(innerHeight / 50)], "testFont", "center", 9, "top", 9);
+    const smallVictoryTxt = addTxtMenu(texte[LANG].finalSmall, [Math.floor(innerWidth / 2), Math.floor(innerHeight / 50 * 3) + victoryTxt.height], "testFont", "center", 6, "top", 6);
+    addTxtMenu(texte[LANG].scoring + score + texte[LANG].objectif, [Math.floor(innerWidth / 2), Math.floor(innerHeight / 50 * 5) + victoryTxt.height + smallVictoryTxt.height], "testFont", "center", 6, "top", 6);
 
     /*-------------------------------
         BOUTONS ÉCRAN FINAL

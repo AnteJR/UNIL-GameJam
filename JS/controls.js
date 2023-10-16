@@ -9,7 +9,7 @@ function addControls() {
         sprite(isPhone ? "phone_control" : "mouse_control", { anim: "tutorial" }),
         pos(Math.floor(innerWidth / 2), Math.floor(innerHeight / 2)),
         anchor("center"),
-        scale(proportion / 2),
+        scale(proportion - 1),
         opacity(0),
         "controls"
     ]);
