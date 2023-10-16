@@ -63,4 +63,4 @@ let background,
 ----------------------------*/
 let friendsPlaced = 0,
     obstaclesPlaced = 0,
-    debugOn = true;
+    debugOn = false;

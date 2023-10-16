@@ -24,6 +24,7 @@ const texte = {
     FUNCTION TO OUTLINE TEXTS
 ---------------------------------*/
 function addTxtMenu(textToAdd, position, fontName, alignment, baseSize, anchorage, lineSpace) {
+    const mult = proportion < 4 ? 1500 : 2000;
     const txtShadowTopLeft = add([
         text(textToAdd, {
             font: fontName,
@@ -32,7 +33,7 @@ function addTxtMenu(textToAdd, position, fontName, alignment, baseSize, anchorag
             width: 145 * (proportion - 1),
             lineSpacing: lineSpace
         }),
-        pos(position[0] - innerWidth / (1000 / proportion), position[1] - innerHeight / (1000 / proportion)),
+        pos(Math.floor(position[0] - innerWidth / (mult / proportion)), Math.floor(position[1] - innerHeight / (mult / proportion))),
         anchor(anchorage),
         color(0, 0, 0),
         z(0)
@@ -46,7 +47,7 @@ function addTxtMenu(textToAdd, position, fontName, alignment, baseSize, anchorag
             width: 145 * (proportion - 1),
             lineSpacing: lineSpace
         }),
-        pos(position[0] - innerWidth / (1000 / proportion), position[1]),
+        pos(Math.floor(position[0] - innerWidth / (mult / proportion)), Math.floor(position[1])),
         anchor(anchorage),
         color(0, 0, 0),
         z(0)
@@ -60,7 +61,7 @@ function addTxtMenu(textToAdd, position, fontName, alignment, baseSize, anchorag
             width: 145 * (proportion - 1),
             lineSpacing: lineSpace
         }),
-        pos(position[0] - innerWidth / (1000 / proportion), position[1] + innerHeight / (1000 / proportion)),
+        pos(Math.floor(position[0] - innerWidth / (mult / proportion)), Math.floor(position[1] + innerHeight / (mult / proportion))),
         anchor(anchorage),
         color(0, 0, 0),
         z(0)
@@ -74,7 +75,7 @@ function addTxtMenu(textToAdd, position, fontName, alignment, baseSize, anchorag
             width: 145 * (proportion - 1),
             lineSpacing: lineSpace
         }),
-        pos(position[0], position[1] - innerHeight / (1000 / proportion)),
+        pos(Math.floor(position[0]), Math.floor(position[1] - innerHeight / (mult / proportion))),
         anchor(anchorage),
         color(0, 0, 0),
         z(0)
@@ -88,7 +89,7 @@ function addTxtMenu(textToAdd, position, fontName, alignment, baseSize, anchorag
             width: 145 * (proportion - 1),
             lineSpacing: lineSpace
         }),
-        pos(position[0], position[1] + innerHeight / (1000 / proportion)),
+        pos(Math.floor(position[0]), Math.floor(position[1] + innerHeight / (mult / proportion))),
         anchor(anchorage),
         color(0, 0, 0),
         z(0)
@@ -102,7 +103,7 @@ function addTxtMenu(textToAdd, position, fontName, alignment, baseSize, anchorag
             width: 145 * (proportion - 1),
             lineSpacing: lineSpace
         }),
-        pos(position[0] + innerWidth / (1000 / proportion), position[1] - innerHeight / (1000 / proportion)),
+        pos(Math.floor(position[0] + innerWidth / (mult / proportion)), Math.floor(position[1] - innerHeight / (mult / proportion))),
         anchor(anchorage),
         color(0, 0, 0),
         z(0)
@@ -116,7 +117,7 @@ function addTxtMenu(textToAdd, position, fontName, alignment, baseSize, anchorag
             width: 145 * (proportion - 1),
             lineSpacing: lineSpace
         }),
-        pos(position[0] + innerWidth / (1000 / proportion), position[1]),
+        pos(Math.floor(position[0] + innerWidth / (mult / proportion)), Math.floor(position[1])),
         anchor(anchorage),
         color(0, 0, 0),
         z(0)
@@ -130,7 +131,7 @@ function addTxtMenu(textToAdd, position, fontName, alignment, baseSize, anchorag
             width: 145 * (proportion - 1),
             lineSpacing: lineSpace
         }),
-        pos(position[0] + innerWidth / (1000 / proportion), position[1] + innerHeight / (1000 / proportion)),
+        pos(Math.floor(position[0] + innerWidth / (mult / proportion)), Math.floor(position[1] + innerHeight / (mult / proportion))),
         anchor(anchorage),
         color(0, 0, 0),
         z(0)
@@ -144,7 +145,7 @@ function addTxtMenu(textToAdd, position, fontName, alignment, baseSize, anchorag
             width: 145 * (proportion - 1),
             lineSpacing: lineSpace
         }),
-        pos(position[0], position[1]),
+        pos(Math.floor(position[0]), Math.floor(position[1])),
         anchor(anchorage),
         z(10)
     ]);

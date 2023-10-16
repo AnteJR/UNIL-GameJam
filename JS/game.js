@@ -70,9 +70,7 @@ scene("game", () => {
     /*-----------------------------------------------
         DEBUG MODE HERE
     ------------------------------------------------*/
-    if (debugOn) {
-        launchDebug();
-    }
+    if (debugOn) launchDebug();
 
     /*-----------------------------------------------
         PLAYER CHARACTER AND INTERACTIONS HERE
