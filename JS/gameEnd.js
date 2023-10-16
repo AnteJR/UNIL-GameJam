@@ -1,8 +1,10 @@
 scene("endScreen", ({ score }) => {
-    const bgEndScreen = add([
-        // custom background here
-        rect(innerWidth, innerHeight),
-        color(116, 183, 237)
+    const bg = add([
+        sprite("mainBG", { anim: "homeScreen" }),
+        scale(proportion),
+        pos(innerWidth / 2, innerHeight),
+        anchor("bot")
+
     ]);
 
     /*-------------------------------
