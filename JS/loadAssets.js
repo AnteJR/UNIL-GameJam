@@ -14,10 +14,10 @@ const playerSound = play('bike-roll-snow', {
 /*---------------------------
 	POLICES D'ÉCRITURE
 ---------------------------*/
-loadFont("pixelOutlined", "../assets/fonts/PixelOperator8-Bold.ttf",{
-	outline : {
-		width : 2 * proportion,
-		color : rgb(0,0,0)
+loadFont("pixelOutlined", "../assets/fonts/PixelOperator8-Bold.ttf", {
+	outline: {
+		width: 2 * proportion,
+		color: rgb(0, 0, 0)
 	}
 });
 loadFont("pixel", "../assets/fonts/PixelOperator8-Bold.ttf")
@@ -46,24 +46,43 @@ loadSprite("playing", "building_playing.png", { sliceX: 2, anims: { "default": {
 loadSprite("playing_ground", "building_playing_ground.png");
 loadSprite("fbm", "building_FBM.png", { anims: { "default": { from: 0, to: 0 } } });
 loadSprite("fbm_ground", "building_FBM_ground.png");
-loadSprite("fin", "building_fin.png", { sliceX: 6, anims: { "default": { from: 0, to: 5, speed: 10, loop: true, } } });
-loadSprite("fin_ground", "building_fin_ground.png", { sliceX: 6, anims: { "default": { from: 0, to: 5, speed: 10, loop: true, } } });
+loadSprite("banane", "building_banane.png", { sliceX: 6, anims: { "default": { from: 0, to: 5, speed: 10, loop: true, } } });
+loadSprite("banane_ground", "building_banane_ground.png");
+loadSprite("fin", "building_fin.png", { sliceX: 9, anims: { "default": { from: 0, to: 8, speed: 5, loop: true, } } });
+loadSprite("fin_ground", "building_fin_ground.png");
 
 // CONSTANTES POUR LES BACKGROUNDS :
 // 1. listGroundAsset et listAsset listent le nom des textures des assets
 // 2. assetLength liste la taille (en multiple de 135), des assets, afin de les placer correctement.
 // 3. terrainLength vaut la somme des valeurs de assetLength * -135, pour avoir la longueur totale du terrain de jeu.
 const listGroundAsset = [
-	"start_ground", "anthropole_ground", "busstop_ground",
-	"vortex_ground", "busstop_right_ground", "forest_ground",
-	"river_ground", "metro_ground", "playing_ground", "fbm_ground",
+	"start_ground",
+	"banane_ground",
+	"anthropole_ground",
+	"busstop_ground",
+	"vortex_ground",
+	"busstop_right_ground",
+	"forest_ground",
+	"river_ground",
+	"metro_ground",
+	"playing_ground",
+	"fbm_ground",
 	"fin_ground"
 ];
 const listAsset = [
-	"start", "anthropole", "busstop",
-	"vortex", "busstop_right", "forest",
-	"river", "metro", "playing", "fbm",
-	"fin"];
+	"start",
+	"banane",
+	"anthropole",
+	"busstop",
+	"vortex",
+	"busstop_right",
+	"forest",
+	"river",
+	"metro",
+	"playing",
+	"fbm",
+	"fin"
+];
 const assetLength = [1, 3, 2, 6, 2, 3, 2, 3, 1, 5, 3];
 let totalLength = 0;
 assetLength.forEach((e) => { totalLength += e }); // 31
@@ -317,10 +336,11 @@ loadSprite("txtENG", "UI_text_ENG.png");
 loadRoot("../assets/images/buildings/");
 loadSprite("mainBG", "WIP_background_start.png", {
 	sliceX: 12,
+	sliceY: 2,
 	anims: {
 		"homeScreen": {
 			from: 0,
-			to: 11,
+			to: 23,
 			speed: 10,
 			loop: true,
 		}
