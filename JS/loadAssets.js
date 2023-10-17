@@ -46,9 +46,9 @@ loadSprite("playing", "building_playing.png", { sliceX: 2, anims: { "default": {
 loadSprite("playing_ground", "building_playing_ground.png");
 loadSprite("fbm", "building_FBM.png", { anims: { "default": { from: 0, to: 0 } } });
 loadSprite("fbm_ground", "building_FBM_ground.png");
-loadSprite("banane", "building_banane.png", { sliceX: 6, anims: { "default": { from: 0, to: 5, speed: 10, loop: true, } } });
+loadSprite("banane", "building_banane.png", { sliceX: 9, anims: { "default": { from: 0, to: 8, speed: 10, loop: true, } } });
 loadSprite("banane_ground", "building_banane_ground.png");
-loadSprite("fin", "building_fin.png", { sliceX: 9, anims: { "default": { from: 0, to: 8, speed: 5, loop: true, } } });
+loadSprite("fin", "building_fin.png", { sliceX: 6, anims: { "default": { from: 0, to: 5, speed: 5, loop: true, } } });
 loadSprite("fin_ground", "building_fin_ground.png");
 
 // CONSTANTES POUR LES BACKGROUNDS :
@@ -83,7 +83,7 @@ const listAsset = [
 	"fbm",
 	"fin"
 ];
-const assetLength = [1, 3, 2, 6, 2, 3, 2, 3, 1, 5, 3];
+const assetLength = [1, 3, 3, 2, 6, 2, 3, 2, 3, 1, 5, 3];
 let totalLength = 0;
 assetLength.forEach((e) => { totalLength += e }); // 31
 const terrainLength = totalLength * - 135;

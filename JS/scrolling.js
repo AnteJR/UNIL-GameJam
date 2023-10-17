@@ -35,7 +35,7 @@ function accelerate(b) {
         if (acceleration > maxAccRate) {
             acceleration = maxAccRate;
         }
-        shake(1.5);
+        shake(mapc(acceleration, maxDecRate, maxAccRate, 0, 0.1));
     } else {
         // automatically slows down
         acceleration += decelerationRate;
