@@ -334,7 +334,7 @@ loadSprite("txtENG", "UI_text_ENG.png");
 	DECO/BACKGROUNDS
 ---------------------------*/
 loadRoot("../assets/images/buildings/");
-loadSprite("mainBG", "WIP_background_start.png", {
+loadSprite("mainBG", "background_start.png", {
 	sliceX: 12,
 	sliceY: 2,
 	anims: {
