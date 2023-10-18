@@ -3,7 +3,7 @@
 ---------------------*/
 const texte = {
     FR: {
-        final: "Récolte terminée !",
+        final: "Bravo !",
         finalSmall: "L'Université de Lausanne vous souhaite de belles fêtes et une bonne année 2024 !",
         scoring: "Vous avez récupéré ",
         objectif: " voeux de fin d'année !",
@@ -11,12 +11,12 @@ const texte = {
         accueil: "Aidez Sheepy à collecter les cartes de voeux de l'UNIL !"
     },
     ENG: {
-        final: "Gathering completed!",
+        final: "Well done!",
         finalSmall: "The University of Lausanne wishes you a wonderful holiday season and a happy new year!",
         scoring: "You managed to grab ",
         objectif: " holiday greetings cards!",
         control: "Press and hold to accelerate and release to slow down",
-        accueil: "Help Sheepy collect UNIL's holiday wishes cards!"
+        accueil: "Help Sheepy collect UNIL's holiday greetings cards!"
     }
 }
 

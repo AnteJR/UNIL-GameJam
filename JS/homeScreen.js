@@ -12,7 +12,7 @@ scene("homeScreen", () => {
     -------------------------------*/
     let taille = proportion < 4 ? 6 : 5;
     const frTxt = addTxtMenu(texte.FR.accueil, [Math.floor(innerWidth / 2), Math.floor((innerHeight / 5) + (innerHeight / 50))], "pixelOutlined", "center", taille, "top", taille);
-    const engTxt = addTxtMenu(texte.ENG.accueil, [Math.floor(innerWidth / 2), Math.floor(((innerHeight / 20) * 10) + (innerHeight / 50))], "pixelOutlined", "center", taille, "top", taille);
+    const engTxt = addTxtMenu(texte.ENG.accueil, [Math.floor(innerWidth / 2), Math.floor(((innerHeight / 20) * 11) + (innerHeight / 50))], "pixelOutlined", "center", taille, "top", taille);
 
     /*-------------------------------
         BOUTONS ÉCRAN ACCUEIL
@@ -31,7 +31,7 @@ scene("homeScreen", () => {
     const flagENG = add([
         sprite("eng_btn", { anim: "default" }),
         anchor("bot"),
-        pos(innerWidth / 2, (innerHeight / 20) * 10),
+        pos(innerWidth / 2, (innerHeight / 20) * 11),
         scale(proportion < 4 ? proportion : proportion -1),
         area(),
         { value: "eng" },
