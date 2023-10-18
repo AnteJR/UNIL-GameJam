@@ -139,6 +139,20 @@ const assetDeadZones = {
 			end: -571,
 			side: "right",
 		}
+	],
+	"start": [
+		{
+			start: 0,
+			end: -135,
+			side: "both",
+		}
+	],
+	"banane": [
+		{
+			start: 0,
+			end: -400,
+			side: "both",
+		}
 	]
 }
 
