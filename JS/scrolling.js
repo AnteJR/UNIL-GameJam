@@ -76,15 +76,14 @@ function registerDeadZone(assetName, backgroundPartPosition) {
         deadZones.push(terrainDeadZone);
 
         // debug: visualize deadzones
-        /*let zoneHeight = Math.abs(zone.end) - Math.abs(zone.start);
-        let zoneWidth = zone.side == "both" ? innerWidth : (zone.side == "right" || zone.side == "left" ? innerWidth / 2 : null);
-        let posX = zone.side == "both" || zone.side == "left" ? -innerWidth/2 : (zone.side == "right" ? 0 : null);
-        //console.log(zoneWidth);
-        background.add([
-            rect(zoneWidth, zoneHeight),
-            pos(posX, terrainDeadZone.end),
-            color(255, 0, 0),
-            z(999)
-        ]);*/
+        // let zoneHeight = Math.abs(zone.end) - Math.abs(zone.start);
+        // let zoneWidth = zone.side == "both" ? innerWidth : (zone.side == "right" || zone.side == "left" ? innerWidth / 2 : null);
+        // let posX = zone.side == "both" || zone.side == "left" ? -innerWidth/2 : (zone.side == "right" ? 0 : null);
+        // background.add([
+        //     rect(zoneWidth, zoneHeight),
+        //     pos(posX, terrainDeadZone.end),
+        //     color(255, 0, 0, 0.2),
+        //     z(999)
+        // ]);
     }
 }

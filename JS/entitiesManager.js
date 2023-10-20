@@ -35,8 +35,6 @@ function setEntities() {
             pattern: oneWayObstacle,
             sprite: "sprite_char_tel",
             speed: 0.5,
-            minWait: 500,
-            randomWait: 2000,
             weight: () => map(localWindowTop,
                 terrainStart, terrainLength,
                 4, 2),
@@ -47,8 +45,6 @@ function setEntities() {
             pattern: oneWayObstacle,
             sprite: "luge",
             speed: 0.9,
-            minWait: 500,
-            randomWait: 4000,
             weight: () => map(localWindowTop,
                 terrainStart, terrainLength,
                 1, 5),
@@ -59,8 +55,6 @@ function setEntities() {
             pattern: randomObstacle,
             sprite: "scientist",
             speed: 0.7,
-            minWait: 0,
-            randomWait: 1000,
             weight: () => map(localWindowTop,
                 terrainStart, terrainLength,
                 0.1, 3),
@@ -136,6 +130,7 @@ function setEntities() {
                 anchor("center"),
                 lifespan(15),
                 friend(isEasy),
+                z(60),
                 "friend",
                 "entity"
             ]);
@@ -154,8 +149,8 @@ function setEntities() {
 
             if (currentDeadZone) {
                 if (currentDeadZone.side == "both") {
-                    const randomDistance = Math.floor(Math.random() * distanceToNextObstacle + spawnMargin);
-                    nextObstaclePosition = currentDeadZone.end - randomDistance;
+                    //const randomDistance = Math.floor(Math.random() * distanceToNextObstacle + spawnMargin);
+                    nextObstaclePosition = currentDeadZone.end - spawnMargin;
                     return;
                 };
                 // side=-1 --->
@@ -177,9 +172,8 @@ function setEntities() {
                 z(50),
                 selectedObstacle.pattern(
                     selectedObstacle.speed,
-                    selectedObstacle.minWait,
-                    selectedObstacle.randomWait,
-                    side),
+                    side
+                ),
                 "obstacle",
                 "entity"
             ]);
@@ -191,8 +185,8 @@ function setEntities() {
     });
 
     function getNextObstaclePosition() {
-        let randomDistance = Math.floor(Math.random() * 200 - 100);
-        let nextPosition = nextObstaclePosition + distanceToNextObstacle + randomDistance;
+        //let randomDistance = Math.floor(Math.random() * 200 - 100);
+        let nextPosition = nextObstaclePosition + distanceToNextObstacle;
 
         // Here we use an easing function to have a non linear progression
         // while having a min and max distance between obstacles. The easing

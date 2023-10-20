@@ -1,10 +1,8 @@
-function randomObstacle(speed = 1, minWait = 0, randomWait = 0, side = 1) {
+function randomObstacle(speed = 1, side = 1) {
     // obstacle that speeds up and slows down randomly
-
-    const perlinOffset = Math.random() * 8;
-    let moveAfterMs = minWait + Math.floor(Math.random() * randomWait);
-    const isStartOffset = Math.random() - 0.8 > 0;
-    let isMoving = false;
+    const slowSpeed = 0.3 * speed;
+    const fastSpeed = 0.6 * speed;
+    const toggleChance = 0.0125
 
 
     return {
@@ -16,33 +14,29 @@ function randomObstacle(speed = 1, minWait = 0, randomWait = 0, side = 1) {
             // Make the sprite look in the direction of movement
             this.flipX = side > 0;
             // Set the original position, to the left or to the right of the road
-            let offset = 40;
-            if (isStartOffset) {
-                offset *= Math.random();
-                isMoving = true;
-            }
-
-            this.pos.x = side * Math.random() * 40;
-
-            if (!isStartOffset) {
-                setTimeout(() => isMoving = true, moveAfterMs);
-            }
+            let offset = 60;
+            this.pos.x = side * Math.random() * offset;
+            this.fast = false;
+            this.speed = slowSpeed;
         },
 
         update() {
-            if (isMoving) {
-                this.pos.x -= side * (0.5 + perlin.get(time() * 4, perlinOffset) / 2) * speed;
+            this.pos.x -= side * this.speed;
+
+            if (Math.random() < toggleChance) {
+                this.toggleSpeed();
             }
+        },
+
+        toggleSpeed() {
+            this.speed = this.fast ? fastSpeed : slowSpeed;
+            this.fast = !this.fast;
         }
     }
 }
 
-function oneWayObstacle(speed = 0.5, minWait = 0, randomWait = 0, side = 1) {
+function oneWayObstacle(speed = 0.5, side = 1) {
     // obstacle that moves only in one direction
-
-    let moveAfterMs = minWait + Math.floor(Math.random() * randomWait);
-    let isMoving = false;
-    const isStartOffset = Math.random() - 0.7 > 0;
 
     return {
 
@@ -53,23 +47,14 @@ function oneWayObstacle(speed = 0.5, minWait = 0, randomWait = 0, side = 1) {
             // Make the sprite look in the direction of movement
             this.flipX = side > 0;
             // Set the original position, to the left or to the right of the road
-            let offset = 40;
-            if (isStartOffset) {
-                offset *= Math.random();
-                isMoving = true;
-            }
+            let offset = 100;
 
-            this.pos.x = side * offset;
+            this.pos.x = side * Math.random() * offset;
 
-            if (!isStartOffset) {
-                setTimeout(() => isMoving = true, moveAfterMs)
-            }
         },
 
         update() {
-            if (isMoving) {
-                this.pos.x -= side * speed;
-            }
+            this.pos.x -= side * speed;
         }
     }
 }
@@ -77,8 +62,7 @@ function oneWayObstacle(speed = 0.5, minWait = 0, randomWait = 0, side = 1) {
 function friend(isEasy) {
     // moves from right to left
 
-    var friendSpeed = 0.5 - Math.random() * 0.3;
-    if (friendSpeed < minFriendSpeed) friendSpeed = minFriendSpeed;
+    var friendSpeed = 0.6 - Math.random() * 0.4;
 
     return {
 
@@ -87,7 +71,7 @@ function friend(isEasy) {
 
         add() {
             if (isEasy) return;
-            this.pos.x = -50;
+            this.pos.x = -60;
         },
 
         update() {
