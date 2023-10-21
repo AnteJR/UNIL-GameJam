@@ -1,7 +1,7 @@
 function randomObstacle(speed = 1, side = 1) {
     // obstacle that speeds up and slows down randomly
-    const slowSpeed = 0.3 * speed;
-    const fastSpeed = 0.6 * speed;
+    const slowSpeed = 0.15 * speed;
+    const fastSpeed = 0.5 * speed;
     const toggleChance = 0.0125
 
 
@@ -47,10 +47,9 @@ function oneWayObstacle(speed = 0.5, side = 1) {
             // Make the sprite look in the direction of movement
             this.flipX = side > 0;
             // Set the original position, to the left or to the right of the road
-            let offset = 100;
+            let offset = 250 * speed;
 
             this.pos.x = side * Math.random() * offset;
-
         },
 
         update() {

@@ -6,7 +6,7 @@ function setEntities() {
     const terrainStart = background.children[0].pos.y; // Should be 0
     // used to make the obstacles spawn just out of the screen: number of
     // pixels above the top of the screen
-    const spawnMargin = 70;
+    const spawnMargin = 20;
 
     // Obstacles
     const minDistanceBetweenObstacles = -60;
@@ -31,7 +31,7 @@ function setEntities() {
         { // Slow obstacle
             pattern: oneWayObstacle,
             sprite: "sprite_char_tel",
-            speed: 0.5,
+            speed: 0.4,
             weight: () => map(localWindowTop,
                 terrainStart, terrainLength,
                 4, 2),
@@ -101,7 +101,7 @@ function setEntities() {
             return;
         }
 
-        if (spawnPosition < -nextFriendPosition) {
+        if (spawnPosition <= -nextFriendPosition) {
             const currentDeadZone = getDeadZoneAtPosition(spawnPosition);
             // if we're in a dead zone
             if (currentDeadZone) {
@@ -109,8 +109,8 @@ function setEntities() {
                 // go left to right
                 if (currentDeadZone.side != "right") {
                     // push the next friend to after the deadzone
-                    const randomDistance = Math.floor(100 + Math.random() * spawnMargin);
-                    nextFriendPosition = currentDeadZone.end - randomDistance;
+                    //const randomDistance = Math.floor(100 + Math.random() * spawnMargin);
+                    nextFriendPosition = currentDeadZone.end;
                     return;
                 }
             }
@@ -119,7 +119,7 @@ function setEntities() {
 
             fiendlySheep = background.add([
                 sprite("friend", { anim: "bring" }),
-                pos(0, spawnPosition),
+                pos(0, spawnPosition - spawnMargin),
                 area({
                     offset: vec2(-4, 0),
                     shape: new Rect(vec2(0), 14, 12)
@@ -133,11 +133,17 @@ function setEntities() {
             ]);
 
             friendsPlaced += 1;
+
+            // hard set of the next position, to avoid a position that has been
+            // pushed back by a deadzone from delaying the whole stack of
+            // friends. Here we guarantee that there will be numFriends friends
+            // on the track.
             nextFriendPosition = -distanceBetweenFriends * (friendsPlaced + 1);
+            return;
         }
 
         // Spawn obstacles
-        if (spawnPosition < nextObstaclePosition) {
+        if (spawnPosition <= nextObstaclePosition) {
             // Select the type of obstacle to spawn
             const selectedObstacle = weightedRandom(weightedObstacleTypes);
             let side = Math.sign(Math.random() - 0.5);
@@ -147,9 +153,10 @@ function setEntities() {
             if (currentDeadZone) {
                 if (currentDeadZone.side == "both") {
                     //const randomDistance = Math.floor(Math.random() * distanceToNextObstacle + spawnMargin);
-                    nextObstaclePosition = currentDeadZone.end - spawnMargin;
+                    nextObstaclePosition = currentDeadZone.end;
                     return;
                 };
+                // otherwise just switch sides
                 // side=-1 --->
                 if (currentDeadZone.side == "right") side = -1;
                 // side=1  <---
@@ -159,7 +166,7 @@ function setEntities() {
             // Configure and spawn the obstacle
             background.add([
                 sprite(selectedObstacle.sprite, { anim: "walk" }),
-                pos(0, nextObstaclePosition),
+                pos(0, spawnPosition - spawnMargin),
                 area({
                     offset: selectedObstacle.offset,
                     shape: selectedObstacle.shape
@@ -188,7 +195,7 @@ function setEntities() {
         // Here we use an easing function to have a non linear progression
         // while having a min and max distance between obstacles. The easing
         // function can be defined at the top.
-        distanceToNextObstacle = map(difficultyCurve(localWindowTop / terrainLength) * terrainLength,
+        distanceToNextObstacle = mapc(difficultyCurve(localWindowTop / terrainLength) * terrainLength,
             terrainStart, terrainLength,
             maxDistanceBetweenObstacles, minDistanceBetweenObstacles);
         return nextPosition;
