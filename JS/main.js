@@ -48,6 +48,11 @@ const accelerationRate = 0.015 * proportion,
     minFriendSpeed = 0.25,
     deadZones = [];
 
+// Nombre de lettres à récupérer
+const numFriends = 10,
+    // Nombre de porteurs de courier qui ne bougent pas au début
+    numEasyFriends = 3;
+
 /*----------------------------
     ÉLÉMENTS DU JEU
 ----------------------------*/

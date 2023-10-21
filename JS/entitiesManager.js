@@ -19,10 +19,7 @@ function setEntities() {
     let nextObstaclePosition = -innerHeight / proportion - 40;
 
     // Friends
-    const numFriends = 10;
     const distanceBetweenFriends = terrainLength / (numFriends + 1);
-    // Number of friends which don't move at the start of the round
-    const numEasyFriends = 3;
     // Relative distances below and over the friend where no obstacle
     // can spawn
     const friendSafeZoneStart = 20; // number of pixels below the friend
