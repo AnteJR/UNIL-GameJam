@@ -3,7 +3,7 @@
 ---------------------------*/
 const liste_sons = ["bike-roll-snow", "woosh2", "sonnette-velo", "sheep_bleat", "daze_fear"];
 liste_sons.forEach(a => {
-	loadSound(a, `../assets/sounds/${a}.wav`);
+	loadSound(a, `assets/sounds/${a}.wav`);
 });
 
 const playerSound = play('bike-roll-snow', {
@@ -14,18 +14,18 @@ const playerSound = play('bike-roll-snow', {
 /*---------------------------
 	POLICES D'ÉCRITURE
 ---------------------------*/
-loadFont("pixelOutlined", "../assets/fonts/PixelOperator8-Bold.ttf", {
+loadFont("pixelOutlined", "assets/fonts/PixelOperator8-Bold.ttf", {
 	outline: {
 		width: 2 * proportion,
 		color: rgb(0, 0, 0)
 	}
 });
-loadFont("pixel", "../assets/fonts/PixelOperator8-Bold.ttf")
+loadFont("pixel", "assets/fonts/PixelOperator8-Bold.ttf")
 
 /*---------------------------
 	BATIMENTS/DECORS
 ---------------------------*/
-loadRoot("../assets/images/buildings/");
+loadRoot("assets/images/buildings/");
 loadSprite("start", "building_start.png", { sliceX: 4, anims: { "default": { from: 0, to: 3, speed: 5, loop: true, } } });
 loadSprite("start_ground", "building_start_ground.png");
 loadSprite("anthropole", "building_anthropole.png", { anims: { "default": { from: 0, to: 0 } } });
@@ -159,7 +159,7 @@ const assetDeadZones = {
 /*---------------------------
 	PERSONNAGES
 ---------------------------*/
-loadRoot("../assets/images/characters/");
+loadRoot("assets/images/characters/");
 loadSprite("player", "character_sheepy.png", {
 	sliceX: 17,
 	anims: {
@@ -247,7 +247,7 @@ loadSprite("friend_no_letter", "character_friendly_sheep-woletter.png", {
 /*---------------------------
 UI/BOUTONS
 ---------------------------*/
-loadRoot("../assets/images/UI/");
+loadRoot("assets/images/UI/");
 loadSprite("eng_btn", "UI_lang_ENG.png", {
 	sliceX: 3,
 	anims: {
@@ -351,7 +351,7 @@ loadSprite("txtENG", "UI_text_ENG.png");
 /*---------------------------
 	DECO/BACKGROUNDS
 ---------------------------*/
-loadRoot("../assets/images/buildings/");
+loadRoot("assets/images/buildings/");
 loadSprite("mainBG", "background_start.png", {
 	sliceX: 12,
 	sliceY: 2,
