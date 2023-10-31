@@ -1,11 +1,4 @@
 scene("endScreen", ({ score }) => {
-    const bg = add([
-        sprite("mainBG", { anim: "homeScreen" }),
-        scale(proportion),
-        pos(innerWidth / 2, innerHeight),
-        anchor("bot")
-    ]);
-
     /*-------------------------------
         TEXTES ÉCRAN FINAL
     -------------------------------*/

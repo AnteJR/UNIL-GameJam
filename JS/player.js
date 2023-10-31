@@ -49,7 +49,7 @@ function setPlayer() {
     player.onUpdate(() => {
         // Move the player each frame so that it stays at the same
         // spot on the screen, while being rendered below decor and above ground.
-        player.moveTo(0, localWindowTop + (innerHeight * 0.8) / proportion);
+        if (!isGameOver) player.moveTo(0, localWindowTop + (innerHeight * 0.8) / proportion);
 
         // the dazeTimer decreases over time, and is clamped at 0
         if (player.dazeTimer > 0.18) {

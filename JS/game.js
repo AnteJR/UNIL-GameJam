@@ -23,10 +23,12 @@ scene("game", () => {
     background = add([
         pos(innerWidth / 2, innerHeight),
         scale(proportion),
+        stay(['endScreen']),
         "background"
     ]);
 
     onUpdate("background", (b) => {
+        if (isGameOver) return;
         if (b.pos.y >= -terrainLength * proportion) {
             b.pos.y = -terrainLength * proportion;
 
@@ -49,8 +51,45 @@ scene("game", () => {
                 playAnimationEnoughTimes(player.greetingsCaught);
             }
 
-            wait(8, () => {
-                go("endScreen", { score: player.greetingsCaught });
+            wait(5, () => {
+                const sky = add([
+                    sprite('fin_sky', { anim: 'normal'}),
+                    pos(0, -156 * proportion),
+                    scale(proportion),
+                    stay(['endScreen']),
+                    'sky'
+                ]);
+
+                const skyInitialY = sky.pos.y;
+                const bgInitialY = b.pos.y;
+                const letterboyInitialY = letterbox.pos.y;
+
+                // Slide down the whole scene
+                tween(
+                    0,
+                    156 * proportion,
+                    6,
+                    (val) => {
+                        sky.pos.y = skyInitialY + val;
+                        b.pos.y = bgInitialY + val;
+                        letterbox.pos.y = letterboyInitialY + val;
+                    },
+                    easings['easeInOutSine'],
+                );
+
+                wait(6, () => {
+                    sky.play('shooting_star', {
+                        onEnd: () => setTimeout(showEndScreen, 0)
+                        // FIX: Won't play normal sky anim if called from here 
+                    });
+                });
+
+                function showEndScreen () {
+                    sky.play('normal');
+                    wait(1, () => {
+                        go("endScreen", { score: player.greetingsCaught });
+                    });
+                }
             })
         } else {
             accelerate(b);

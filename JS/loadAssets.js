@@ -52,6 +52,13 @@ loadSprite("beach", "building_beach.png", { sliceX: 2, anims: { "default": { fro
 loadSprite("beach_ground", "building_beach_ground.png");
 loadSprite("fin", "building_fin.png", { sliceX: 6, anims: { "default": { from: 0, to: 5, speed: 5, loop: true, } } });
 loadSprite("fin_ground", "building_fin_ground.png");
+loadSprite("fin_sky", "finish-sky-anim.png", {
+	sliceX: 6, sliceY: 2,
+	anims: {
+		"normal": { from: 0, to: 2, speed: 5, loop: true, },
+		"shooting_star": { from: 3, to: 6, speed: 10, loop: false, }
+	}
+});
 
 // CONSTANTES POUR LES BACKGROUNDS :
 // 1. listGroundAsset et listAsset listent le nom des textures des assets
