@@ -58,6 +58,7 @@ function setPlayer() {
         } else {
             // HAPPY FACE
             play(pickFromArray(sheepCollectSound), { volume: 0.6 });
+            displayHappyFace();
             player.greetingsCaught += 1;
             f.use(sprite('friend_no_letter', { anim: "delivered" }));
         }
@@ -79,5 +80,23 @@ function setPlayer() {
             player.isDazed = false;
             player.dazeTimer = 0;
         }
+    });
+}
+
+function displayHappyFace() {
+    const happyBadge = add([
+        sprite("happy_sheep"),
+        pos(innerWidth + 205, innerHeight/2 - 40),
+        anchor('botright'),
+        scale(.4),
+        z(100),
+        outline(10),
+    ]);
+
+    tween(happyBadge.pos.x, happyBadge.pos.x - 205 - 40, 0.5, (p) => happyBadge.pos.x = p, easings.easeOutBounce);
+
+    wait(1.5, () => {
+        tween(happyBadge.pos.x, happyBadge.pos.x + 205 + 40, 0.5, (p) => happyBadge.pos.x = p, easings.easeInQuad);
+        wait(0.5, () => happyBadge.destroy());
     });
 }

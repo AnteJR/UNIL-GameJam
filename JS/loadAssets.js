@@ -380,6 +380,9 @@ loadSprite("letterboxUI", "UI_letterbox.png", {
 loadSprite("txtFR", "UI_text_FR.png");
 loadSprite("txtENG", "UI_text_ENG.png");
 
+// Reaction badges
+loadSprite("happy_sheep", "happy_sheep.png");
+
 /*---------------------------
 	DECO/BACKGROUNDS
 ---------------------------*/
