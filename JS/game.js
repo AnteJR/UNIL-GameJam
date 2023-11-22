@@ -37,8 +37,8 @@ scene("game", () => {
             play('bike-breaking', { volume: 0.8 });
             wait(1, () => play('sheep-cheers', { volume: 0.8 }));
             player.play("idle");
-            jaugeIn.destroy();
-            jaugeOut.destroy();
+            // jaugeIn.destroy();
+            // jaugeOut.destroy();
 
             if(!isLetterBox) {
                 isLetterBox = true;
@@ -120,7 +120,7 @@ scene("game", () => {
     /*-----------------------------------------------
         SPEED-O-METER HERE
     ------------------------------------------------*/
-    speedOMeter();
+    // speedOMeter();
 
     /*-----------------------------------------------
         CONTROLS GO HERE
