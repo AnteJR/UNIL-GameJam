@@ -1,11 +1,36 @@
 /*---------------------------
 	SONS ET MUSIQUES
 ---------------------------*/
-const liste_sons = ["bike-roll-snow", "woosh2", "sonnette-velo", "sheep_bleat", "daze_fear"];
+const liste_sons = [
+	'bike-roll-snow',
+	//'bike-roll-dirtroad',
+	'woosh2',
+	'sonnette-velo',
+	//'sheep-bleat-fail-1',
+	//'sheep-bleat-fail-2',
+	'sheep-bleat-hit-1',
+	'sheep-bleat-hit-2',
+	'sheep-bleat-hit-3',
+	'sheep-bleat-success-1',
+	'sheep-bleat-success-2',
+	'sheep-bleat-success-3',
+	'people-ouch',
+	'glass-break',
+	'wood-hit',
+	'point-up',
+	'bike-breaking',
+	'sheep-cheers',
+	'music-1',
+];
 liste_sons.forEach(a => {
 	loadSound(a, `assets/sounds/${a}.wav`);
 });
 
+// TODO: Implement multiple rolling sound handling;
+// - multiple sound means multiple volumes, unless adding a gain node
+//   by fiddling with the Web Audio API. In that case, it may be better
+//   to play the sounds outside of Kaboom entirely
+// - Handle different zones for different sounds, crossfade between them
 const playerSound = play('bike-roll-snow', {
 	loop: true,
 	volume: 0,

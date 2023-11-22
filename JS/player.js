@@ -18,10 +18,15 @@ function setPlayer() {
     /*--------------------------
         OBSTACLE COLLIDING
     --------------------------*/
+    const sheepCollideSound = [
+        'sheep-bleat-hit-1',
+        'sheep-bleat-hit-2',
+        'sheep-bleat-hit-3',
+    ];
     onCollide("player", "obstacle", (p) => {
         // ADDA A COLLISION EFFECT
         shake(20);
-        play("daze_fear", { volume: 0.6 });
+        play(pickFromArray(sheepCollideSound), { volume: 0.6 });
         player.isDazed = true;
         player.dazeTimer += dazeDurationSeconds;
         if(speed >= dazeSpeed) speed = dazeSpeed;
@@ -29,15 +34,30 @@ function setPlayer() {
         p.play("daze");
     });
 
+    onCollide('sprite_char_tel', 'player', (p) => {
+        play('people-ouch', { volume: 0.6 });
+    });
+    onCollide('luge', 'player', (p) => {
+        play('wood-hit', { volume: 0.8 });
+    });
+    onCollide('scientist', 'player', (p) => {
+        wait(0.5, () => play('glass-break'));
+    });
+
     /*--------------------------
         GREETINGS COLLECTION
     --------------------------*/
+    const sheepCollectSound = [
+        'sheep-bleat-success-1',
+        'sheep-bleat-success-2',
+        'sheep-bleat-success-3',
+    ];
     onCollide("player", "friend", (p, f) => {
         if (player.dazeTimer > 0) {
             // SAD FACE
         } else {
             // HAPPY FACE
-            play("sheep_bleat");
+            play(pickFromArray(sheepCollectSound), { volume: 0.6 });
             player.greetingsCaught += 1;
             f.use(sprite('friend_no_letter', { anim: "delivered" }));
         }

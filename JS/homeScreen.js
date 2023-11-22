@@ -59,6 +59,7 @@ function launch(e) {
 
     setTimeout(() => {
         go("game");
+        // FIXME: play('music-1', { volume: 0.6 });
     }, 250);
 }
 

@@ -179,7 +179,8 @@ function setEntities() {
                     side
                 ),
                 "obstacle",
-                "entity"
+                "entity",
+                selectedObstacle.sprite, // For finding out which obstacle it is and playing the right sound
             ]);
 
             nextObstaclePosition = getNextObstaclePosition();

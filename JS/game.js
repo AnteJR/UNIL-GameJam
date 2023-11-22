@@ -34,6 +34,8 @@ scene("game", () => {
 
             isGameOver = true;
             playerSound.volume = 0;
+            play('bike-breaking', { volume: 0.8 });
+            wait(1, () => play('sheep-cheers', { volume: 0.8 }));
             player.play("idle");
             jaugeIn.destroy();
             jaugeOut.destroy();
@@ -48,10 +50,12 @@ scene("game", () => {
                     area(),
                     "letterbox"
                 ]);
-                playAnimationEnoughTimes(player.greetingsCaught);
+                wait(2, () => playAnimationEnoughTimes(player.greetingsCaught));
             }
 
-            wait(5, () => {
+            // FIXME: wait(7, () => play('music-1', { volume: 0.6 }));
+
+            wait(8, () => {
                 const sky = add([
                     sprite('fin_sky', { anim: 'normal'}),
                     pos(0, -156 * proportion),
@@ -163,6 +167,7 @@ function playAnimationEnoughTimes(x) {
     
     x--;
     letterbox.play("score");
+    play('point-up');
 
     wait(0.5, () => {
         playAnimationEnoughTimes(x);
