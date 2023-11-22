@@ -85,13 +85,23 @@ function setPlayer() {
 
 function displayHappyFace() {
     const happyBadge = add([
-        sprite("happy_sheep"),
-        pos(innerWidth + 205, innerHeight/2 - 40),
-        anchor('botright'),
-        scale(.4),
+        pos(innerWidth, innerHeight/2 - 200),
+        rect(214, 214),
         z(100),
         outline(10),
+        'happySheep',
     ]);
+
+    happyBadge.add([
+        sprite("happy_sheep"),
+        pos(5,5),
+        scale(.4),
+        z(101),
+    ]);
+
+    onUpdate("happySheep", (obj) => {
+        obj.outline.color = hsl2rgb(wave(0.4, 0.55, time() * 10), 0.8, 0.5)
+    })
 
     tween(happyBadge.pos.x, happyBadge.pos.x - 205 - 40, 0.5, (p) => happyBadge.pos.x = p, easings.easeOutBounce);
 
