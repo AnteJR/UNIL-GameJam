@@ -61,7 +61,7 @@ function oneWayObstacle(speed = 0.5, side = 1) {
 function friend(isEasy) {
     // moves from right to left
 
-    var friendSpeed = 0.6 - Math.random() * 0.4;
+    var friendSpeed = 0.5 - Math.random() * 0.2;
 
     return {
 
