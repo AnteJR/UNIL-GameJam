@@ -68,7 +68,8 @@ let background,
     jaugeOut,
     jaugeIn,
     fiendlySheep,
-    letterbox;
+    letterbox,
+    musicTrack;
 
 /*----------------------------
     DEBUG

@@ -59,7 +59,14 @@ function launch(e) {
 
     setTimeout(() => {
         go("game");
-        // FIXME: play('music-1', { volume: 0.6 });
+        play('intro-icta', { volume: 0.6 }).onEnd(() => {
+            musicTrack.play();
+        });
+        musicTrack = play('its-christmas-time-again', {
+            paused:true,
+            loop: true,
+            volume: 1
+        });
     }, 250);
 }
 

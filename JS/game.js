@@ -33,6 +33,7 @@ scene("game", () => {
             b.pos.y = -terrainLength * proportion;
 
             isGameOver = true;
+            musicTrack.volume = 1.0;
             playerSound.volume = 0;
             play('bike-breaking', { volume: 0.8 });
             wait(1, () => play('sheep-cheers', { volume: 0.8 }));
@@ -52,8 +53,6 @@ scene("game", () => {
                 ]);
                 wait(2, () => playAnimationEnoughTimes(player.greetingsCaught));
             }
-
-            // FIXME: wait(7, () => play('music-1', { volume: 0.6 }));
 
             wait(8, () => {
                 const sky = add([
@@ -157,6 +156,7 @@ function gameStartNow() {
     firstPress = true;
     player.play("up");
     playerSound.volume = 0.5;
+    musicTrack.volume = 0.6;
 }
 
 function playAnimationEnoughTimes(x) {

@@ -20,7 +20,8 @@ const liste_sons = [
 	'point-up',
 	'bike-breaking',
 	'sheep-cheers',
-	'music-1',
+	'intro-icta',
+	'its-christmas-time-again',
 ];
 liste_sons.forEach(a => {
 	loadSound(a, `assets/sounds/${a}.wav`);
