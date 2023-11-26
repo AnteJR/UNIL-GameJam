@@ -1,0 +1,27 @@
+{
+  "name": "unil-sheep-it",
+  "version": "1.0.0",
+  "description": "Un cadeau en pixels créé par nos étudiant·e·s UNIL pour la carte de voeux 2023",
+  "private": true,
+  "scripts": {
+    "build": "webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AnteJR/UNIL-GameJam.git"
+  },
+  "author": "UNIL",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AnteJR/UNIL-GameJam/issues"
+  },
+  "homepage": "https://voeux.unil.ch/2023",
+  "devDependencies": {
+    "copy-webpack-plugin": "^8.1.0",
+    "css-minimizer-webpack-plugin": "^5.0.1",
+    "html-minimizer-webpack-plugin": "^2.1.0",
+    "webpack": "^5.30.0",
+    "webpack-cli": "^4.6.0"
+  }
+}

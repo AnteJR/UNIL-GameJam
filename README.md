@@ -10,5 +10,17 @@ Développé par
 En collaboration avec le GameLab UNIL et UNICOM:
 * Isaac Pante (GameLab, supervision du développement)
 * David Javet (GameLab, supervision du game design)
-* Loïc Cattani (UNICOM, sons et musiques)
+* Loïc Cattani (UNICOM, optimisation, sons et musiques)
 * Raoul Ganty (UNICOM, graphismes)
+
+## Développement
+
+### Installation des dépendances de développement
+
+`npm install`
+
+### Préparation du code pour le déploiement (webpack)
+
+`npm run build`
+
+→ Code prêt au déploiment dans `/dist/`
