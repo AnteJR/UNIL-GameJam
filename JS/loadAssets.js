@@ -281,6 +281,21 @@ loadSprite("friend_no_letter", "character_friendly_sheep-woletter.png", {
 UI/BOUTONS
 ---------------------------*/
 loadRoot("assets/images/UI/");
+loadSprite("start_btn", "UI_start.png", {
+	sliceX: 3,
+	anims: {
+		"clicked": {
+			from: 0,
+			to: 2,
+			speed: 10,
+			loop: false
+		},
+		"default": {
+			from: 0,
+			to: 0
+		}
+	}
+});
 loadSprite("eng_btn", "UI_lang_ENG.png", {
 	sliceX: 3,
 	anims: {

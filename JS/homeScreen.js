@@ -59,35 +59,5 @@ function launch(e) {
 
     setTimeout(() => {
         go("game");
-        play('intro-icta', { volume: 0.6 }).onEnd(() => {
-            musicTrack.play();
-        });
-        musicTrack = play('its-christmas-time-again', {
-            paused:true,
-            loop: true,
-            volume: 1
-        });
     }, 250);
-}
-
-/*-------------------------------
-    GAME INITIALIZATION
--------------------------------*/
-function initGame() {
-    go("homeScreen");
-}
-
-function isLocalStorageAvailable() {
-    var test = 'test';
-    try {
-        localStorage.setItem("testLS", test);
-        localStorage.removeItem("testLS");
-        return true;
-    } catch (e) {
-        return false;
-    }
-}
-
-if (isLocalStorageAvailable()) {
-    initGame();
 }
