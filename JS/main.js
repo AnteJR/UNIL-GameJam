@@ -3,6 +3,7 @@
 --------------------------------------------------------*/
 
 const MAX_RATIO = 0.7;
+const MAX_WIDTH = 500;
 
 let tempWidth = window.innerWidth,
     tempHeight = window.innerHeight;
@@ -11,6 +12,12 @@ const deviceRatio = tempWidth / tempHeight;
 
 if (deviceRatio > MAX_RATIO) {
     tempWidth = tempHeight * MAX_RATIO;
+}
+
+// Limiting canvas size
+if (tempWidth > MAX_WIDTH) {
+    tempWidth = MAX_WIDTH;
+    tempHeight = tempWidth / Math.min(deviceRatio, MAX_RATIO);
 }
 
 const innerWidth = tempWidth,
