@@ -33,10 +33,9 @@ scene("game", () => {
             b.pos.y = -terrainLength * proportion;
 
             isGameOver = true;
-            musicTrack.volume = 1.0;
             playerSound.volume = 0;
-            play('bike-breaking', { volume: 0.8 });
-            wait(1, () => play('sheep-cheers', { volume: 0.8 }));
+            play('bike-breaking', { volume: 0.4 });
+            wait(1, () => play('sheep-cheers', { volume: 0.6 }));
             player.play("idle");
             // jaugeIn.destroy();
             // jaugeOut.destroy();
@@ -55,6 +54,7 @@ scene("game", () => {
             }
 
             wait(8, () => {
+                musicTrack.volume = 1.0;
                 const sky = add([
                     sprite('fin_sky', { anim: 'normal'}),
                     pos(0, -156 * proportion),

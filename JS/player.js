@@ -26,7 +26,7 @@ function setPlayer() {
     onCollide("player", "obstacle", (p) => {
         // ADDA A COLLISION EFFECT
         shake(20);
-        play(pickFromArray(sheepCollideSound), { volume: 0.6 });
+        play(pickFromArray(sheepCollideSound), { volume: 0.7 });
         player.isDazed = true;
         player.dazeTimer += dazeDurationSeconds;
         if(speed >= dazeSpeed) speed = dazeSpeed;
@@ -35,13 +35,13 @@ function setPlayer() {
     });
 
     onCollide('sprite_char_tel', 'player', (p) => {
-        play('people-ouch', { volume: 0.6 });
+        play('people-ouch', { volume: 0.4 });
     });
     onCollide('luge', 'player', (p) => {
-        play('wood-hit', { volume: 0.8 });
+        play('wood-hit', { volume: 0.4 });
     });
     onCollide('scientist', 'player', (p) => {
-        wait(0.5, () => play('glass-break'));
+        wait(0.5, () => play('glass-break', { volume: 1.1 }));
     });
 
     /*--------------------------
