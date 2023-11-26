@@ -29,6 +29,9 @@ function addBackground() {
 }
 
 function accelerate(b) {
+    // FIXME: acceleration should not be dependent on frame iterations
+    //        Done this way, acceleration is dependent on frame rate.
+    //        → It should be calculated with dt().
     if (isMousePressed) {
         // on mouse press player accelerate
         acceleration += accelerationRate;
