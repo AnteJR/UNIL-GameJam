@@ -69,7 +69,8 @@ let background,
     jaugeIn,
     fiendlySheep,
     letterbox,
-    musicTrack;
+    musicTrack,
+    timeLastAcceleration = 0;
 
 /*----------------------------
     DEBUG

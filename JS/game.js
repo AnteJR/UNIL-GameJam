@@ -146,10 +146,20 @@ scene("game", () => {
 });
 
 function playerSounds() {
-    if (!isGameOver) play('woosh2');
-    play('sonnette-velo', {
-        volume: 0.3
-    });
+    const now = time();
+    if (isGameOver) {
+        play('sonnette-velo', {
+            volume: 0.2
+        });
+    } else {
+        if (now - timeLastAcceleration > 2) {
+            play('woosh2');
+            play('sonnette-velo', {
+                volume: 0.2
+            });
+        }
+    }
+    timeLastAcceleration = now;
 }
 
 function gameStartNow() {
