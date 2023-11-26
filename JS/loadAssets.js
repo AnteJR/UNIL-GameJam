@@ -326,7 +326,7 @@ loadSprite("fr_btn", "UI_lang_FR.png", {
 		}
 	}
 });
-loadSprite("home_btn", "UI_home_button.png", {
+loadSprite("replay_FR", "UI_replay_FR.png", {
 	sliceX: 3,
 	anims: {
 		"clicked": {
@@ -341,7 +341,7 @@ loadSprite("home_btn", "UI_home_button.png", {
 		}
 	}
 });
-loadSprite("replay_btn", "UI_replay_button.png", {
+loadSprite("replay_ENG", "UI_replay_ENG.png", {
 	sliceX: 3,
 	anims: {
 		"clicked": {

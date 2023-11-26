@@ -32,6 +32,7 @@ const proportion = Math.floor(scale_incomplete) >= 6 ? 7 : Math.floor(scale_inco
 kaboom({
     width: innerWidth,
     height: innerHeight,
+    background: [0, 0, 0],
     clearColor: [0, 0, 0]
 });
 
