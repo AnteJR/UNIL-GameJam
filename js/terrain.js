@@ -119,14 +119,14 @@ function init() {
             }
             position = previousPos * 135
         }
-        const groundPart = background.add([
+        background.add([
             sprite(listGroundAsset[i]),
             pos(0, position),
             anchor("bot"),
             z(0)
         ]);
 
-        const bgPart = background.add([
+        background.add([
             sprite(listAsset[i]),
             pos(0, position),
             anchor("bot"),

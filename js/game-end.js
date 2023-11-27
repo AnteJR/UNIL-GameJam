@@ -17,7 +17,7 @@ function init() {
         wait(10, () => {
             line2.destroy();
     
-            const scoreTxt = addTxtMenu(texte[getLang()].scoring + score + texte[getLang()].objectif, [Math.floor(width() / 2), 40 + line1.pos.y + line1.height], "pixelOutlined", "center", 6, "top", 6);
+            addTxtMenu(texte[getLang()].scoring + score + texte[getLang()].objectif, [Math.floor(width() / 2), 40 + line1.pos.y + line1.height], "pixelOutlined", "center", 6, "top", 6);
     
             /*-------------------------------
                 BOUTONS ÉCRAN FINAL
@@ -39,7 +39,7 @@ function init() {
             ONCLICK ET ONTOUCH
         -------------------------------*/
         onClick("endButton", (e) => replay(e));
-        onTouchStart((i, p) => {
+        onTouchStart((i) => {
             if (replayBtn.hasPoint(i)) replay(replayBtn);
         });
     });

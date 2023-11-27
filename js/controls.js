@@ -14,7 +14,7 @@ function init() {
     let isPhone = checkDeviceType();
 
     // afficher le bon icone (téléphone ou souris)
-    const gameControls = add([
+    add([
         sprite(isPhone ? "phone_control" : "mouse_control", { anim: "tutorial" }),
         pos(Math.floor(width() / 2), Math.floor(height() / 2)),
         anchor("center"),

@@ -37,11 +37,6 @@ function init() {
     
         let isLetterBox = false;
     
-        /*-----------------------
-            MUSIC AND SOUNDS
-        -----------------------*/
-        // ADD MUSIC AND SOUNDS HERE (if they need to be triggered on scene load)
-    
         /*----------------
             BACKGROUND
         -----------------*/

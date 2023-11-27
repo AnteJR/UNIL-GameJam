@@ -9,7 +9,6 @@ export { init, reset, localWindowTop };
 let localWindowTop = 0;
 let currentScrollPosition = 0;
 let friendsPlaced = 0;
-let obstaclesPlaced = 0;
 
 // Nombre de lettres à récupérer
 const numFriends = 10;
@@ -132,7 +131,7 @@ function init() {
 
             let isEasy = friendsPlaced < numEasyFriends;
 
-            const fiendlySheep = background.add([
+            background.add([
                 sprite("friend", { anim: "bring" }),
                 pos(0, spawnPosition - spawnMargin),
                 area({
@@ -170,7 +169,7 @@ function init() {
                     //const randomDistance = Math.floor(Math.random() * distanceToNextObstacle + spawnMargin);
                     nextObstaclePosition = currentDeadZone.end;
                     return;
-                };
+                }
                 // otherwise just switch sides
                 // side=-1 --->
                 if (currentDeadZone.side == "right") side = -1;
@@ -199,8 +198,6 @@ function init() {
             ]);
 
             nextObstaclePosition = getNextObstaclePosition();
-
-            obstaclesPlaced += 1;
         }
     });
 
@@ -250,5 +247,4 @@ function reset() {
     localWindowTop = 0;
     currentScrollPosition = 0;
     friendsPlaced = 0;
-    obstaclesPlaced = 0;
 }

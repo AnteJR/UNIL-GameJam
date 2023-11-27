@@ -5,7 +5,7 @@ export { init };
 
 function init() {
     scene("startScreen", () => {
-        const bg = add([
+        add([
             sprite("mainBG", { anim: "homeScreen" }),
             scale(proportion),
             pos(width() / 2, height()),
@@ -29,7 +29,7 @@ function init() {
             ONCLICK ET ONTOUCH
         -------------------------------*/
         onClick("startButton", (e) => start(e));
-        onTouchStart((i, p) => {
+        onTouchStart((i) => {
             if (startBtn.hasPoint(i)) start(startBtn);
         });
     });

@@ -5,7 +5,7 @@ export { init };
 
 function init() {
     scene("homeScreen", () => {
-        const bg = add([
+        add([
             sprite("mainBG", { anim: "homeScreen" }),
             scale(proportion),
             pos(width() / 2, height()),
@@ -16,8 +16,8 @@ function init() {
             TEXTES ÉCRAN ACCUEIL
         -------------------------------*/
         let taille = proportion < 4 ? 6 : 5;
-        const frTxt = addTxtMenu(texte.FR.accueil, [Math.floor(width() / 2), Math.floor((height() / 5) + (height() / 50))], "pixelOutlined", "center", taille, "top", taille);
-        const engTxt = addTxtMenu(texte.ENG.accueil, [Math.floor(width() / 2), Math.floor(((height() / 20) * 11) + (height() / 50))], "pixelOutlined", "center", taille, "top", taille);
+        addTxtMenu(texte.FR.accueil, [Math.floor(width() / 2), Math.floor((height() / 5) + (height() / 50))], "pixelOutlined", "center", taille, "top", taille);
+        addTxtMenu(texte.ENG.accueil, [Math.floor(width() / 2), Math.floor(((height() / 20) * 11) + (height() / 50))], "pixelOutlined", "center", taille, "top", taille);
     
         /*-------------------------------
             BOUTONS ÉCRAN ACCUEIL
@@ -48,7 +48,7 @@ function init() {
             ONCLICK ET ONTOUCH
         -------------------------------*/
         onClick("startButton", (e) => launch(e));
-        onTouchStart((i, p) => {
+        onTouchStart((i) => {
             if (flagENG.hasPoint(i)) launch(flagENG);
             else if (flagFR.hasPoint(i)) launch(flagFR);
         });
