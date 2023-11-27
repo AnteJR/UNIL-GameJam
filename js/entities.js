@@ -1,3 +1,9 @@
+export {
+    randomObstacle,
+    oneWayObstacle,
+    friend,
+};
+
 function randomObstacle(speed = 1, side = 1) {
     // obstacle that speeds up and slows down randomly
     const slowSpeed = 0.15 * speed;

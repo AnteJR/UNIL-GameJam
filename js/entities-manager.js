@@ -1,7 +1,22 @@
+import { friend, oneWayObstacle, randomObstacle } from './entities.js';
+import { background } from './game.js';
+import { proportion } from './main.js';
+import { deadZones, length as terrainLength } from './terrain.js';
+
+export { init, reset, localWindowTop };
+
+// Variables
 let localWindowTop = 0;
 let currentScrollPosition = 0;
+let friendsPlaced = 0;
+let obstaclesPlaced = 0;
 
-function setEntities() {
+// Nombre de lettres à récupérer
+const numFriends = 10;
+// Nombre de porteurs de courier qui ne bougent pas au début
+const numEasyFriends = 3;
+
+function init() {
 
     const terrainStart = background.children[0].pos.y; // Should be 0
     // used to make the obstacles spawn just out of the screen: number of
@@ -16,7 +31,7 @@ function setEntities() {
 
     let distanceToNextObstacle = maxDistanceBetweenObstacles;
     // Set the first obstacle just above the top of the screen
-    let nextObstaclePosition = -innerHeight / proportion - 40;
+    let nextObstaclePosition = -height() / proportion - 40;
 
     // Friends
     const distanceBetweenFriends = terrainLength / (numFriends + 1);
@@ -66,9 +81,9 @@ function setEntities() {
 
     // We use a marker to catch obstacles that leave the screen from the bottom
     add([
-        rect(innerWidth, 1),
+        rect(width(), 1),
         area(),
-        pos(innerWidth / 2, innerHeight + 200),
+        pos(width() / 2, height() + 200),
         anchor("center"),
         "bottomMarker"
     ]);
@@ -117,7 +132,7 @@ function setEntities() {
 
             let isEasy = friendsPlaced < numEasyFriends;
 
-            fiendlySheep = background.add([
+            const fiendlySheep = background.add([
                 sprite("friend", { anim: "bring" }),
                 pos(0, spawnPosition - spawnMargin),
                 area({
@@ -203,7 +218,6 @@ function setEntities() {
     }
 }
 
-
 function weightedRandom(items) {
     const totalWeight = items.reduce((sum, item) => sum + item.weight(), 0);
     const randomValue = Math.random() * totalWeight;
@@ -222,7 +236,7 @@ function weightedRandom(items) {
 }
 
 function getDeadZoneAtPosition(position) {
-    for (zone of deadZones) {
+    for (let zone of deadZones) {
         if (position < zone.end) continue;
         //if (Math.abs(position) > Math.abs(zone.start) && Math.abs(position) < Math.abs(zone.end)) {
         if (position < zone.start && position > zone.end) {
@@ -230,4 +244,11 @@ function getDeadZoneAtPosition(position) {
         }
     }
     return null;
+}
+
+function reset() {
+    localWindowTop = 0;
+    currentScrollPosition = 0;
+    friendsPlaced = 0;
+    obstaclesPlaced = 0;
 }

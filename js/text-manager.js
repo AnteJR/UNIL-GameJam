@@ -1,3 +1,7 @@
+import { proportion } from './main.js';
+
+export { addTxtMenu, texte };
+
 /*---------------------
     TEXT CONSTANT
 ---------------------*/

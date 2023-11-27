@@ -1,4 +1,33 @@
-function setPlayer() {
+import { localWindowTop } from './entities-manager.js';
+import { gameOver, firstPress, background, mousePressed } from './game.js';
+import { proportion } from './main.js';
+
+export {
+    init,
+    accelerate,
+    speed,
+    setAcceleration,
+    reset,
+    player as obj,
+    sound,
+};
+
+let speed = 0;
+let acceleration = 0;
+let dazeDurationSeconds = 1;
+
+let accelerationRate;
+let decelerationRate;
+let maxAccRate;
+let maxDecRate;
+let minSpeed;
+let maxSpeed;
+let dazeSpeed;
+
+let player;
+let sound;
+
+function init() {
     player = background.add([
         sprite("player", { anim: "idle" }),
         pos(0, -50),
@@ -70,7 +99,7 @@ function setPlayer() {
     player.onUpdate(() => {
         // Move the player each frame so that it stays at the same
         // spot on the screen, while being rendered below decor and above ground.
-        if (!isGameOver) player.moveTo(0, localWindowTop + (innerHeight * 0.8) / proportion);
+        if (!gameOver) player.moveTo(0, localWindowTop + (height() * 0.8) / proportion);
 
         // the dazeTimer decreases over time, and is clamped at 0
         if (player.dazeTimer > 0.18) {
@@ -81,11 +110,78 @@ function setPlayer() {
             player.dazeTimer = 0;
         }
     });
+
+    /*--------------------------
+        ACCELERATION
+    --------------------------*/
+    accelerationRate = 0.015 * proportion;
+    decelerationRate = -0.025 * proportion;
+    maxAccRate = 0.15 * proportion;
+    maxDecRate = -0.07 * proportion;
+    minSpeed = 0.35 * proportion;
+    maxSpeed = 2 * proportion;
+    dazeSpeed = 0.75 * proportion;
+
+
+    /*--------------------------
+        SOUND
+    --------------------------*/
+	sound = play('bike-roll-snow', {
+		loop: true,
+		volume: 0,
+	});
+}
+
+function accelerate(b) {
+    // FIXME: acceleration should not be dependent on frame iterations
+    //        Done this way, acceleration is dependent on frame rate.
+    //        → It should be calculated with dt().
+    if (mousePressed) {
+        // on mouse press player accelerate
+        acceleration += accelerationRate;
+        if (acceleration > maxAccRate) {
+            acceleration = maxAccRate;
+        }
+        //shake(mapc(acceleration, maxDecRate, maxAccRate, 0, 0.1));
+    } else {
+        // automatically slows down
+        acceleration += decelerationRate;
+        if (acceleration < maxDecRate) {
+            acceleration = maxDecRate;
+        }
+    }
+
+    if (firstPress && player.dazeTimer == 0) {
+        // Vary speed
+        speed = speed + acceleration;
+        // Clamp speed
+        if (speed > maxSpeed) {
+            speed = maxSpeed;
+        } else if (speed < minSpeed) {
+            speed = minSpeed;
+        }
+    }
+
+    // Apply speed to screen scrolling
+    b.pos.y += speed * 60 * dt(); // use dt for framerate invariant speed !
+}
+
+function setAcceleration(a) {
+    acceleration = a;
+}
+
+function pickFromArray(array) {
+    return array[Math.floor(Math.random() * array.length)];
+}
+
+function reset() {
+    speed = 0;
+    acceleration = 0;
 }
 
 function displayHappyFace() {
     const happyBadge = add([
-        pos(innerWidth, innerHeight/2 - 100),
+        pos(width(), height()/2 - 100),
         rect(106, 106),
         z(100),
         outline(6),

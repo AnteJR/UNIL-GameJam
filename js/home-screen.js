@@ -1,59 +1,65 @@
-scene("homeScreen", () => {
-    const bg = add([
-        sprite("mainBG", { anim: "homeScreen" }),
-        scale(proportion),
-        pos(innerWidth / 2, innerHeight),
-        anchor("bot")
+import { setLang, proportion } from './main.js';
+import { addTxtMenu, texte } from './text-manager.js';
 
-    ]);
+export { init };
 
-    /*-------------------------------
-        TEXTES ÉCRAN ACCUEIL
-    -------------------------------*/
-    let taille = proportion < 4 ? 6 : 5;
-    const frTxt = addTxtMenu(texte.FR.accueil, [Math.floor(innerWidth / 2), Math.floor((innerHeight / 5) + (innerHeight / 50))], "pixelOutlined", "center", taille, "top", taille);
-    const engTxt = addTxtMenu(texte.ENG.accueil, [Math.floor(innerWidth / 2), Math.floor(((innerHeight / 20) * 11) + (innerHeight / 50))], "pixelOutlined", "center", taille, "top", taille);
-
-    /*-------------------------------
-        BOUTONS ÉCRAN ACCUEIL
-    -------------------------------*/
-    const flagFR = add([
-        sprite("fr_btn", { anim: "default" }),
-        anchor("bot"),
-        pos(Math.floor(innerWidth / 2), Math.floor(innerHeight / 5)),
-        scale(proportion < 4 ? proportion : proportion -1),
-        area(),
-        { value: "fr" },
-        "french",
-        "startButton"
-    ]);
-
-    const flagENG = add([
-        sprite("eng_btn", { anim: "default" }),
-        anchor("bot"),
-        pos(innerWidth / 2, (innerHeight / 20) * 11),
-        scale(proportion < 4 ? proportion : proportion -1),
-        area(),
-        { value: "eng" },
-        "english",
-        "startButton"
-    ]);
-
-    /*-------------------------------
-        ONCLICK ET ONTOUCH
-    -------------------------------*/
-    onClick("startButton", (e) => launch(e));
-    onTouchStart((i, p) => {
-        if (flagENG.hasPoint(i)) launch(flagENG);
-        else if (flagFR.hasPoint(i)) launch(flagFR);
+function init() {
+    scene("homeScreen", () => {
+        const bg = add([
+            sprite("mainBG", { anim: "homeScreen" }),
+            scale(proportion),
+            pos(width() / 2, height()),
+            anchor("bot")
+        ]);
+    
+        /*-------------------------------
+            TEXTES ÉCRAN ACCUEIL
+        -------------------------------*/
+        let taille = proportion < 4 ? 6 : 5;
+        const frTxt = addTxtMenu(texte.FR.accueil, [Math.floor(width() / 2), Math.floor((height() / 5) + (height() / 50))], "pixelOutlined", "center", taille, "top", taille);
+        const engTxt = addTxtMenu(texte.ENG.accueil, [Math.floor(width() / 2), Math.floor(((height() / 20) * 11) + (height() / 50))], "pixelOutlined", "center", taille, "top", taille);
+    
+        /*-------------------------------
+            BOUTONS ÉCRAN ACCUEIL
+        -------------------------------*/
+        const flagFR = add([
+            sprite("fr_btn", { anim: "default" }),
+            anchor("bot"),
+            pos(Math.floor(width() / 2), Math.floor(height() / 5)),
+            scale(proportion < 4 ? proportion : proportion -1),
+            area(),
+            { value: "fr" },
+            "french",
+            "startButton"
+        ]);
+    
+        const flagENG = add([
+            sprite("eng_btn", { anim: "default" }),
+            anchor("bot"),
+            pos(width() / 2, (height() / 20) * 11),
+            scale(proportion < 4 ? proportion : proportion -1),
+            area(),
+            { value: "eng" },
+            "english",
+            "startButton"
+        ]);
+    
+        /*-------------------------------
+            ONCLICK ET ONTOUCH
+        -------------------------------*/
+        onClick("startButton", (e) => launch(e));
+        onTouchStart((i, p) => {
+            if (flagENG.hasPoint(i)) launch(flagENG);
+            else if (flagFR.hasPoint(i)) launch(flagFR);
+        });
     });
-});
+}
 
 /*-------------------------------
     GAME LAUNCH
 -------------------------------*/
 function launch(e) {
-    LANG = e.value.toUpperCase();
+    setLang(e.value.toUpperCase());
 
     e.play("clicked")
 

@@ -1,3 +1,17 @@
+import kaboom from '../vendor/kaboom.mjs';
+
+import * as startScreen from './start-screen.js';
+import * as loadAssets from './load-assets.js';
+import * as homeScreen from './home-screen.js';
+import * as game from './game.js';
+import * as gameEnd from './game-end.js';
+
+export {
+    setLang,
+    getLang,
+    proportion,
+}
+
 /*--------------------------------------------------------
     IMPORTATION DE KABOOM ET PARAMÉTRAGES DU CANVAS
 --------------------------------------------------------*/
@@ -5,80 +19,64 @@
 const MAX_RATIO = 0.7;
 const MAX_WIDTH = 500;
 
-let tempWidth = window.innerWidth,
-    tempHeight = window.innerHeight;
+let width = window.innerWidth,
+    height = window.innerHeight;
 
-const deviceRatio = tempWidth / tempHeight;
+const deviceRatio = width / height;
 
 if (deviceRatio > MAX_RATIO) {
-    tempWidth = tempHeight * MAX_RATIO;
+    width = height * MAX_RATIO;
 }
 
 // Limiting canvas size
-if (tempWidth > MAX_WIDTH) {
-    tempWidth = MAX_WIDTH;
-    tempHeight = tempWidth / Math.min(deviceRatio, MAX_RATIO);
+if (width > MAX_WIDTH) {
+    width = MAX_WIDTH;
+    height = width / Math.min(deviceRatio, MAX_RATIO);
 }
 
-const innerWidth = tempWidth,
-    innerHeight = tempHeight;
+let lang = "ENG";
 
-let LANG = "ENG";
-
-let scale_incomplete = innerWidth / 135;
-const proportion = Math.floor(scale_incomplete) >= 6 ? 7 : Math.floor(scale_incomplete) + 1,
-    actualProportion = Math.floor(scale_incomplete) + 1;
-
-kaboom({
-    width: innerWidth,
-    height: innerHeight,
-    background: [0, 0, 0],
-    clearColor: [0, 0, 0],
-    // Limit pixel density to avoid low frame rate on mobile devices
-    pixelDensity: Math.min(devicePixelRatio, 2),
-});
-
-/*------------------------------------------
-    VARIABLES POUR INTERACTIONS
-------------------------------------------*/
-let acceleration = 0,
-    speed = 0,
-    isMousePressed = false,
-    firstPress = false,
-    isGameOver = false;
-
-const accelerationRate = 0.015 * proportion,
-    decelerationRate = -0.025 * proportion,
-    maxAccRate = 0.15 * proportion,
-    maxDecRate = -0.07 * proportion,
-    minSpeed = 0.35 * proportion,
-    maxSpeed = 2 * proportion,
-    dazeSpeed = 0.75 * proportion,
-    dazeDurationSeconds = 1,
-    minFriendSpeed = 0.25,
-    deadZones = [];
-
-// Nombre de lettres à récupérer
-const numFriends = 10,
-    // Nombre de porteurs de courier qui ne bougent pas au début
-    numEasyFriends = 3;
+let scale_incomplete = width / 135;
+const proportion = Math.floor(scale_incomplete) >= 6 ? 7 : Math.floor(scale_incomplete) + 1;
 
 /*----------------------------
-    ÉLÉMENTS DU JEU
+    FUNCTIONS
 ----------------------------*/
-let background,
-    player,
-    jaugeOut,
-    jaugeIn,
-    fiendlySheep,
-    letterbox,
-    musicTrack,
-    timeLastAcceleration = 0;
+function setLang(l) {
+    lang = l;
+}
 
-/*----------------------------
-    DEBUG
-----------------------------*/
-let friendsPlaced = 0,
-    obstaclesPlaced = 0,
-    debugOn = false;
-debug.inspect = false;
+function getLang() {
+    return lang;
+}
+
+/*-------------------------------
+    GAME INITIALIZATION
+-------------------------------*/
+function initKaboom() {
+    kaboom({
+        width: width,
+        height: height,
+        background: [0, 0, 0],
+        clearColor: [0, 0, 0],
+        // Limit pixel density to avoid low frame rate on mobile devices
+        pixelDensity: Math.min(devicePixelRatio, 2),
+    });
+}    
+
+function initModules() {
+    // This is necessary as those modules require kaboom to be initialized (global variables)
+    startScreen.init();
+    loadAssets.init();
+    homeScreen.init();
+    game.init();
+    gameEnd.init();
+}
+
+function initGame() {
+    go("startScreen");
+}
+
+initKaboom(); // This need to happen before modules initialization
+initModules();
+initGame();
