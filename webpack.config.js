@@ -10,7 +10,7 @@ module.exports = {
     entry: './js/main.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'js/bundle.js',
+        filename: 'js/main.js',
         clean: true,
         publicPath: '/sheepit/',
     },
