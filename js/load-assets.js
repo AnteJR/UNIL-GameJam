@@ -280,7 +280,7 @@ loadSprite("friend_no_letter", "character_friendly_sheep-woletter.png", {
 /*---------------------------
 UI/BOUTONS
 ---------------------------*/
-loadRoot("assets/images/UI/");
+loadRoot("assets/images/ui/");
 loadSprite("start_btn", "UI_start.png", {
 	sliceX: 3,
 	anims: {
