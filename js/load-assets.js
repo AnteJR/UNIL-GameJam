@@ -289,7 +289,39 @@ function init() {
 	loadSprite("txtENG", "UI_text_ENG.png");
 
 	// Reaction badges
-	loadSprite("happy_sheep", "happy_sheep.png");
+	loadSprite("ui_happy_sheep_1", "ui_happy_sheep_1.png", {
+		sliceX: 2,
+		anims: {
+			'idle': {
+				from: 0,
+				to: 1,
+				speed: 5,
+				loop: true,
+			}
+		}
+	});
+	loadSprite("ui_happy_sheep_2", "ui_happy_sheep_2.png", {
+		sliceX: 2,
+		anims: {
+			'idle': {
+				from: 0,
+				to: 1,
+				speed: 2,
+				loop: true,
+			}
+		}
+	});
+	loadSprite("ui_happy_sheep_3", "ui_happy_sheep_3.png", {
+		sliceX: 2,
+		anims: {
+			'idle': {
+				from: 0,
+				to: 1,
+				speed: 3,
+				loop: true,
+			}
+		}
+	});
 
 	/*---------------------------
 		DECO/BACKGROUNDS

@@ -180,18 +180,22 @@ function reset() {
 }
 
 function displayHappyFace() {
+    // Randomly from left or right
+    const side = (Math.round(Math.random())) ? 1 : -1;
+
     const happyBadge = add([
-        pos(width(), height()/2 - 100),
-        rect(106, 106),
+        pos(width()/2 + (width()/2 * side), height()/2 - 100),
+        rect(134, 134),
         z(100),
         outline(6),
+        rotate(10 * side),
+        anchor('center'),
         'happySheep',
     ]);
 
     happyBadge.add([
-        sprite("happy_sheep"),
-        pos(3,3),
-        scale(.1953),
+        sprite(choose(['ui_happy_sheep_1', 'ui_happy_sheep_2', 'ui_happy_sheep_3']), { anim: 'idle' }),
+        anchor('center'),
         z(101),
     ]);
 
@@ -199,10 +203,11 @@ function displayHappyFace() {
         obj.outline.color = hsl2rgb(wave(0.4, 0.55, time() * 10), 0.9, 0.5)
     })
 
-    tween(happyBadge.pos.x, happyBadge.pos.x - 104 - 10, 0.5, (p) => happyBadge.pos.x = p, easings.easeOutBounce);
+    tween(happyBadge.pos.x, happyBadge.pos.x - 60 * side, 0.5, (p) => happyBadge.pos.x = p, easings.easeOutBounce);
+    tween(happyBadge.angle, happyBadge.angle - 20 * side, 0.5, (p) => happyBadge.angle = p, easings.easeOutBounce);
 
     wait(1.5, () => {
-        tween(happyBadge.pos.x, happyBadge.pos.x + 104 + 10, 0.5, (p) => happyBadge.pos.x = p, easings.easeInQuad);
+        tween(happyBadge.pos.x, happyBadge.pos.x + 120 * side, 0.5, (p) => happyBadge.pos.x = p, easings.easeInQuad);
         wait(0.5, () => happyBadge.destroy());
     });
 }
