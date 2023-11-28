@@ -12,6 +12,18 @@ function init() {
             anchor("bot"),
             color(20, 100, 200)
         ]);
+
+        /*-------------------------------
+            LOGO ACCUEIL
+        -------------------------------*/
+        add([
+            sprite("sheepit_logo"),
+            anchor("center"),
+            pos(Math.floor(width() / 2), Math.floor(height() / 4)),
+            scale(proportion < 4 ? proportion - .5 : proportion - 1),
+            area(),
+            "startButton"
+        ]);
     
         /*-------------------------------
             BOUTONS ÉCRAN ACCUEIL
