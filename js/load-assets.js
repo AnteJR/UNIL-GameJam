@@ -173,7 +173,8 @@ function init() {
 	UI/BOUTONS
 	---------------------------*/
 	loadRoot("assets/images/ui/");
-	loadSprite("start_btn", "UI_start.png", {
+	loadSprite("sheepit_logo", "ui_sheepit_logo.png");
+	loadSprite("start_btn", "ui_start.png", {
 		sliceX: 3,
 		anims: {
 			"clicked": {
@@ -188,7 +189,7 @@ function init() {
 			}
 		}
 	});
-	loadSprite("eng_btn", "UI_lang_ENG.png", {
+	loadSprite("eng_btn", "ui_lang_ENG.png", {
 		sliceX: 3,
 		anims: {
 			"clicked": {
@@ -203,7 +204,7 @@ function init() {
 			}
 		}
 	});
-	loadSprite("fr_btn", "UI_lang_FR.png", {
+	loadSprite("fr_btn", "ui_lang_FR.png", {
 		sliceX: 3,
 		anims: {
 			"clicked": {
@@ -218,7 +219,7 @@ function init() {
 			}
 		}
 	});
-	loadSprite("replay_FR", "UI_replay_FR.png", {
+	loadSprite("replay_FR", "ui_replay_FR.png", {
 		sliceX: 3,
 		anims: {
 			"clicked": {
@@ -233,7 +234,7 @@ function init() {
 			}
 		}
 	});
-	loadSprite("replay_ENG", "UI_replay_ENG.png", {
+	loadSprite("replay_ENG", "ui_replay_ENG.png", {
 		sliceX: 3,
 		anims: {
 			"clicked": {
@@ -248,7 +249,7 @@ function init() {
 			}
 		}
 	});
-	loadSprite("mouse_control", "UI_control_mouse.png", {
+	loadSprite("mouse_control", "ui_control_mouse.png", {
 		sliceX: 13,
 		anims: {
 			"tutorial": {
@@ -259,7 +260,7 @@ function init() {
 			}
 		}
 	});
-	loadSprite("phone_control", "UI_control_phone.png", {
+	loadSprite("phone_control", "ui_control_phone.png", {
 		sliceX: 15,
 		anims: {
 			"tutorial": {
@@ -270,7 +271,7 @@ function init() {
 			}
 		}
 	});
-	loadSprite("letterboxUI", "UI_letterbox.png", {
+	loadSprite("letterboxUI", "ui_letterbox.png", {
 		sliceX: 13,
 		anims: {
 			"static": {
@@ -285,8 +286,8 @@ function init() {
 			}
 		}
 	})
-	loadSprite("txtFR", "UI_text_FR.png");
-	loadSprite("txtENG", "UI_text_ENG.png");
+	loadSprite("txtFR", "ui_text_FR.png");
+	loadSprite("txtENG", "ui_text_ENG.png");
 
 	// Reaction badges
 	loadSprite("ui_happy_sheep_1", "ui_happy_sheep_1.png", {
