@@ -189,7 +189,7 @@ function init() {
 			}
 		}
 	});
-	loadSprite("eng_btn", "ui_lang_ENG.png", {
+	loadSprite("eng_btn", "ui_lang_eng.png", {
 		sliceX: 3,
 		anims: {
 			"clicked": {
@@ -204,7 +204,7 @@ function init() {
 			}
 		}
 	});
-	loadSprite("fr_btn", "ui_lang_FR.png", {
+	loadSprite("fr_btn", "ui_lang_fr.png", {
 		sliceX: 3,
 		anims: {
 			"clicked": {
@@ -219,7 +219,7 @@ function init() {
 			}
 		}
 	});
-	loadSprite("replay_FR", "ui_replay_FR.png", {
+	loadSprite("replay_FR", "ui_replay_fr.png", {
 		sliceX: 3,
 		anims: {
 			"clicked": {
@@ -234,7 +234,7 @@ function init() {
 			}
 		}
 	});
-	loadSprite("replay_ENG", "ui_replay_ENG.png", {
+	loadSprite("replay_ENG", "ui_replay_eng.png", {
 		sliceX: 3,
 		anims: {
 			"clicked": {
@@ -286,8 +286,8 @@ function init() {
 			}
 		}
 	})
-	loadSprite("txtFR", "ui_text_FR.png");
-	loadSprite("txtENG", "ui_text_ENG.png");
+	loadSprite("txtFR", "ui_text_fr.png");
+	loadSprite("txtENG", "ui_text_eng.png");
 
 	// Reaction badges
 	loadSprite("ui_happy_sheep_1", "ui_happy_sheep_1.png", {
