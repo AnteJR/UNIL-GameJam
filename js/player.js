@@ -63,13 +63,13 @@ function init() {
         p.play("daze");
     });
 
-    onCollide('sprite_char_tel', 'player', (p) => {
+    onCollide('sprite_char_tel', 'player', () => {
         play('people-ouch', { volume: 0.4 });
     });
-    onCollide('luge', 'player', (p) => {
+    onCollide('luge', 'player', () => {
         play('wood-hit', { volume: 0.4 });
     });
-    onCollide('scientist', 'player', (p) => {
+    onCollide('scientist', 'player', () => {
         wait(0.5, () => play('glass-break', { volume: 1.1 }));
     });
 
