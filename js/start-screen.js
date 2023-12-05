@@ -6,7 +6,7 @@ export { init };
 function init() {
     scene("startScreen", () => {
         add([
-            sprite("mainBG", { anim: "homeScreen" }),
+            sprite("mainBG", { frame: 8 }),
             scale(proportion),
             pos(width() / 2, height()),
             anchor("bot"),
