@@ -323,6 +323,17 @@ function init() {
 			}
 		}
 	});
+	loadSprite("ui_sheepy_glass", "ui_sheepy_glass.png", {
+		sliceX: 9,
+		anims: {
+			'idle': {
+				from: 0,
+				to: 8,
+				speed: 8,
+				loop: false,
+			}
+		}
+	});
 
 	/*---------------------------
 		DECO/BACKGROUNDS

@@ -194,7 +194,8 @@ function displayHappyFace() {
     ]);
 
     happyBadge.add([
-        sprite(choose(['ui_happy_sheep_1', 'ui_happy_sheep_2', 'ui_happy_sheep_3']), { anim: 'idle' }),
+        sprite(choose(['ui_sheepy_glass']), { anim: 'idle' }),
+        scale(2.8444),
         anchor('center'),
         z(101),
     ]);
