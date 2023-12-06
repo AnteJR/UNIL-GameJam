@@ -180,8 +180,7 @@ function reset() {
 }
 
 function displayHappyFace() {
-    // Randomly from left or right
-    const side = (Math.round(Math.random())) ? 1 : -1;
+    const side = 1; // Only from right
 
     const happyBadge = add([
         pos(width()/2 + (width()/2 * side), height()/2 - 100),
