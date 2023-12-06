@@ -185,9 +185,9 @@ function displayHappyFace() {
 
     const happyBadge = add([
         pos(width()/2 + (width()/2 * side), height()/2 - 100),
-        rect(134, 134),
+        //rect(134, 134),
         z(100),
-        outline(6),
+        //outline(6),
         rotate(10 * side),
         anchor('center'),
         'happySheep',
@@ -201,7 +201,7 @@ function displayHappyFace() {
     ]);
 
     onUpdate("happySheep", (obj) => {
-        obj.outline.color = hsl2rgb(wave(0.4, 0.55, time() * 10), 0.9, 0.5)
+        //obj.outline.color = hsl2rgb(wave(0.4, 0.55, time() * 10), 0.9, 0.5)
     })
 
     tween(happyBadge.pos.x, happyBadge.pos.x - 60 * side, 0.5, (p) => happyBadge.pos.x = p, easings.easeOutBounce);
