@@ -61,6 +61,7 @@ function initKaboom() {
         clearColor: [0, 0, 0],
         // Limit pixel density to avoid low frame rate on mobile devices
         pixelDensity: Math.min(devicePixelRatio, 2),
+        //maxFPS: 5, // To try out frame invariant speeds
     });
 }    
 

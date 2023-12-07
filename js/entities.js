@@ -27,7 +27,7 @@ function randomObstacle(speed = 1, side = 1) {
         },
 
         update() {
-            this.pos.x -= side * this.speed; //FIXME: add dt()
+            this.pos.x -= side * this.speed * 60 * dt(); // use dt for framerate invariant speed !
 
             if (Math.random() < toggleChance) {
                 this.toggleSpeed();
@@ -59,7 +59,7 @@ function oneWayObstacle(speed = 0.5, side = 1) {
         },
 
         update() {
-            this.pos.x -= side * speed;
+            this.pos.x -= side * speed * 60 * dt(); // use dt for framerate invariant speed !
         }
     }
 }
@@ -81,7 +81,7 @@ function friend(isEasy) {
 
         update() {
             if (isEasy) return;
-            this.pos.x += friendSpeed;
+            this.pos.x += friendSpeed * 60 * dt(); // use dt for framerate invariant speed !
         }
     }
 }

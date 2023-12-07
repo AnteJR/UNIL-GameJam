@@ -133,9 +133,6 @@ function init() {
 }
 
 function accelerate(b) {
-    // FIXME: acceleration should not be dependent on frame iterations
-    //        Done this way, acceleration is dependent on frame rate.
-    //        → It should be calculated with dt().
     if (mousePressed) {
         // on mouse press player accelerate
         acceleration += accelerationRate;
@@ -153,7 +150,7 @@ function accelerate(b) {
 
     if (firstPress && player.dazeTimer == 0) {
         // Vary speed
-        speed = speed + acceleration;
+        speed = speed + acceleration * 60 * dt();
         // Clamp speed
         if (speed > maxSpeed) {
             speed = maxSpeed;
