@@ -18,9 +18,7 @@ function init() {
         let taille = proportion < 4 ? 6 : 5;
         addTxtMenu(texte.FR.accueil, [Math.floor(width() / 2), Math.floor((height() / 5) + (height() / 50))], "pixelOutlined", "center", taille, "top", taille);
         addTxtMenu(texte.ENG.accueil, [Math.floor(width() / 2), Math.floor(((height() / 20) * 11) + (height() / 50))], "pixelOutlined", "center", taille, "top", taille);
-    
-        console.log(proportion, width());
-        
+            
         /*-------------------------------
             BOUTONS ÉCRAN ACCUEIL
         -------------------------------*/
