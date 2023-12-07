@@ -360,6 +360,7 @@ function init() {
 			}
 		}
 	});
+	loadSprite("ui_sheepy", "ui_sheepy.png");
 
 	/*---------------------------
 		DECO/BACKGROUNDS

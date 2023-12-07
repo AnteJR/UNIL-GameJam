@@ -190,7 +190,7 @@ function displayHappyFace() {
     ]);
 
     happyBadge.add([
-        sprite(choose(['ui_sheepy_glass']), { anim: 'idle' }),
+        sprite(choose(['ui_sheepy'])),
         scale(2.8444),
         anchor('center'),
         z(101),
@@ -200,8 +200,8 @@ function displayHappyFace() {
         //obj.outline.color = hsl2rgb(wave(0.4, 0.55, time() * 10), 0.9, 0.5)
     })
 
-    tween(happyBadge.pos.x, happyBadge.pos.x - 60 * side, 0.5, (p) => happyBadge.pos.x = p, easings.easeOutBounce);
-    tween(happyBadge.angle, happyBadge.angle - 20 * side, 0.5, (p) => happyBadge.angle = p, easings.easeOutBounce);
+    tween(happyBadge.pos.x, happyBadge.pos.x - 60 * side, 0.5, (p) => happyBadge.pos.x = p, easings.easeOutQuad);
+    tween(happyBadge.angle, happyBadge.angle - 20 * side, 0.5, (p) => happyBadge.angle = p, easings.easeOutQuad);
 
     wait(1.5, () => {
         tween(happyBadge.pos.x, happyBadge.pos.x + 120 * side, 0.5, (p) => happyBadge.pos.x = p, easings.easeInQuad);
