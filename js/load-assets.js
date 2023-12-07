@@ -264,6 +264,17 @@ function init() {
 			}
 		}
 	});
+	loadSprite("credits", "ui_credits.png", {
+		sliceX: 6,
+		anims: {
+			"default": {
+				from: 0,
+				to: 5,
+				speed: 5,
+				loop: true
+			},
+		}
+	});
 	loadSprite("mouse_control", "ui_control_mouse.png", {
 		sliceX: 13,
 		anims: {
