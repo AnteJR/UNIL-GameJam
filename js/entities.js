@@ -27,7 +27,7 @@ function randomObstacle(speed = 1, side = 1) {
         },
 
         update() {
-            this.pos.x -= side * this.speed;
+            this.pos.x -= side * this.speed; //FIXME: add dt()
 
             if (Math.random() < toggleChance) {
                 this.toggleSpeed();
