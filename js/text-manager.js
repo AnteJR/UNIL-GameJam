@@ -33,7 +33,7 @@ function addTxtMenu(textToAdd, position, fontName, alignment, baseSize, anchorag
             font: fontName,
             align: alignment,
             size: baseSize * proportion,
-            width: 145 * (proportion - 1),
+            width: 140 * (proportion - 1),
             lineSpacing: lineSpace
         }),
         pos(Math.floor(position[0]), Math.floor(position[1])),
