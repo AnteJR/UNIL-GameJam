@@ -173,22 +173,6 @@ function init() {
 	UI/BOUTONS
 	---------------------------*/
 	loadRoot("assets/images/ui/");
-	loadSprite("sheepit_logo", "ui_sheepit_logo.png");
-	loadSprite("start_btn", "ui_start.png", {
-		sliceX: 3,
-		anims: {
-			"clicked": {
-				from: 0,
-				to: 2,
-				speed: 10,
-				loop: false
-			},
-			"default": {
-				from: 0,
-				to: 0
-			}
-		}
-	});
 	loadSprite("start_btn_2", "ui_start2.png", {
 		sliceX: 3,
 		anims: {
@@ -315,51 +299,7 @@ function init() {
 	loadSprite("txtFR", "ui_text_fr.png");
 	loadSprite("txtENG", "ui_text_eng.png");
 
-	// Reaction badges
-	loadSprite("ui_happy_sheep_1", "ui_happy_sheep_1.png", {
-		sliceX: 2,
-		anims: {
-			'idle': {
-				from: 0,
-				to: 1,
-				speed: 5,
-				loop: true,
-			}
-		}
-	});
-	loadSprite("ui_happy_sheep_2", "ui_happy_sheep_2.png", {
-		sliceX: 2,
-		anims: {
-			'idle': {
-				from: 0,
-				to: 1,
-				speed: 2,
-				loop: true,
-			}
-		}
-	});
-	loadSprite("ui_happy_sheep_3", "ui_happy_sheep_3.png", {
-		sliceX: 2,
-		anims: {
-			'idle': {
-				from: 0,
-				to: 1,
-				speed: 3,
-				loop: true,
-			}
-		}
-	});
-	loadSprite("ui_sheepy_glass", "ui_sheepy_glass.png", {
-		sliceX: 9,
-		anims: {
-			'idle': {
-				from: 0,
-				to: 8,
-				speed: 8,
-				loop: false,
-			}
-		}
-	});
+	// Reaction badge
 	loadSprite("ui_sheepy", "ui_sheepy.png");
 
 	/*---------------------------
