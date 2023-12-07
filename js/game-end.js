@@ -39,7 +39,7 @@ function init() {
                     replayBtn = add([
                         sprite(`replay_${getLang()}`, { anim: "default" }),
                         anchor("center"),
-                        pos(Math.floor(width() / 2), Math.floor(height() / 50 * 30)),
+                        pos(Math.floor(width() / 2), Math.floor(height() / 50 * 32)),
                         scale(proportion < 4 ? proportion : proportion -1),
                         area(),
                         "replay",
