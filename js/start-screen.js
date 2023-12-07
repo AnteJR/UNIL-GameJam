@@ -17,7 +17,7 @@ function init() {
             BOUTONS ÉCRAN ACCUEIL
         -------------------------------*/
         const startBtn = add([
-            sprite("start_btn", { anim: "default" }),
+            sprite("start_btn_2", { anim: "default" }),
             anchor("center"),
             pos(Math.floor(width() / 2), Math.floor(height() / 2)),
             scale(proportion < 4 ? proportion : proportion -1),

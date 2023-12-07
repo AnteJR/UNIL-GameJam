@@ -189,6 +189,21 @@ function init() {
 			}
 		}
 	});
+	loadSprite("start_btn_2", "ui_start2.png", {
+		sliceX: 3,
+		anims: {
+			"clicked": {
+				from: 0,
+				to: 2,
+				speed: 10,
+				loop: false
+			},
+			"default": {
+				from: 0,
+				to: 0
+			}
+		}
+	});
 	loadSprite("eng_btn", "ui_lang_eng.png", {
 		sliceX: 3,
 		anims: {
