@@ -16,11 +16,15 @@ function init() {
         /*-------------------------------
             BOUTONS ÉCRAN ACCUEIL
         -------------------------------*/
+
+        let scaleFactor = proportion < 4 ? proportion : proportion - 1;
+        if (width() < 350) scaleFactor = 2;
+
         const startBtn = add([
             sprite("start_btn_2", { anim: "default" }),
             anchor("center"),
             pos(Math.floor(width() / 2), Math.floor(height() / 2)),
-            scale(proportion < 4 ? proportion : proportion -1),
+            scale(scaleFactor),
             area(),
             "startButton"
         ]);

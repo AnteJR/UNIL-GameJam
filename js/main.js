@@ -34,7 +34,7 @@ if (width > MAX_WIDTH) {
     height = width / Math.min(deviceRatio, MAX_RATIO);
 }
 
-let lang = "ENG";
+let lang = "FR";
 
 let scale_incomplete = width / 135;
 const proportion = Math.floor(scale_incomplete) >= 6 ? 7 : Math.floor(scale_incomplete) + 1;
