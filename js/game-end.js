@@ -35,7 +35,7 @@ function init() {
                 continueBtn.destroy();
         
                 wait(1, () => {
-                    addTxtMenu(texte[getLang()].scoring + score + texte[getLang()].objectif, [Math.floor(width() / 2), 40 + line1.pos.y + line1.height], "pixelOutlined", "center", 6, "top", 6);
+                    addTxtMenu(texte[getLang()].scoring + score + '/10' + texte[getLang()].objectif, [Math.floor(width() / 2), 40 + line1.pos.y + line1.height], "pixelOutlined", "center", 6, "top", 6);
                     if (score == 10) {
                         addConfetti({ pos: vec2(Math.floor(width() / 2), Math.floor(height() / 50 * 48)) });
                         wait(0.6, () => addConfetti({ pos: vec2(Math.floor(width() / 2), Math.floor(height() / 50 * 48)) }));
