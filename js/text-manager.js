@@ -22,7 +22,7 @@ const texte = {
         control: "Press and hold to accelerate and release to slow down",
         accueil: "Help Sheepy collect UNIL's holiday greetings cards!"
     }
-}
+};
 
 /*---------------------------------
     FUNCTION TO OUTLINE TEXTS

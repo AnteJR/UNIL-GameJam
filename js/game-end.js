@@ -80,7 +80,7 @@ function init() {
             
     
             //returnToWebPageTimer = wait(10, () => window.open('https://unil.ch/voeux', '_self'));
-        })
+        });
     
         
     });
@@ -90,7 +90,7 @@ function init() {
     BUTTONS' INTERACTIONS
 -------------------------------*/
 function replay(e) {
-    e.play("clicked")
+    e.play("clicked");
     setTimeout(() => {
         go("game");
     }, 250);

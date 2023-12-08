@@ -10,7 +10,7 @@ export {
     setLang,
     getLang,
     proportion,
-}
+};
 
 /*--------------------------------------------------------
     IMPORTATION DE KABOOM ET PARAMÉTRAGES DU CANVAS

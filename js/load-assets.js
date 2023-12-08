@@ -41,7 +41,7 @@ function init() {
 			color: rgb(0, 0, 0)
 		}
 	});
-	loadFont("pixel", "assets/fonts/PixelOperator8-Bold.ttf")
+	loadFont("pixel", "assets/fonts/PixelOperator8-Bold.ttf");
 
 	/*---------------------------
 		BATIMENTS/DECORS
@@ -295,7 +295,7 @@ function init() {
 				loop: false
 			}
 		}
-	})
+	});
 	loadSprite("txtFR", "ui_text_fr.png");
 	loadSprite("txtENG", "ui_text_eng.png");
 
@@ -317,5 +317,5 @@ function init() {
 				loop: true,
 			}
 		}
-	})
+	});
 }

@@ -8,8 +8,7 @@ function randomObstacle(speed = 1, side = 1) {
     // obstacle that speeds up and slows down randomly
     const slowSpeed = 0.15 * speed;
     const fastSpeed = 0.5 * speed;
-    const toggleChance = 0.0125
-
+    const toggleChance = 0.0125;
 
     return {
 
@@ -38,7 +37,7 @@ function randomObstacle(speed = 1, side = 1) {
             this.speed = this.fast ? fastSpeed : slowSpeed;
             this.fast = !this.fast;
         }
-    }
+    };
 }
 
 function oneWayObstacle(speed = 0.5, side = 1) {
@@ -61,7 +60,7 @@ function oneWayObstacle(speed = 0.5, side = 1) {
         update() {
             this.pos.x -= side * speed * 60 * dt(); // use dt for framerate invariant speed !
         }
-    }
+    };
 }
 
 function friend(isEasy) {
@@ -83,5 +82,5 @@ function friend(isEasy) {
             if (isEasy) return;
             this.pos.x += friendSpeed * 60 * dt(); // use dt for framerate invariant speed !
         }
-    }
+    };
 }

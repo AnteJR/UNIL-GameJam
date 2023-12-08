@@ -64,7 +64,7 @@ function init() {
 function launch(e) {
     setLang(e.value.toUpperCase());
 
-    e.play("clicked")
+    e.play("clicked");
 
     setTimeout(() => {
         go("game");

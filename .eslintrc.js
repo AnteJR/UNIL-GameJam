@@ -1,3 +1,4 @@
+/* eslint-env node */
 module.exports = {
     "env": {
         "browser": true,
@@ -247,5 +248,7 @@ module.exports = {
         "sourceType": "module"
     },
     "rules": {
+        "semi": ["error", "always"],
+        "semi-style": ["error", "last"],
     }
 };

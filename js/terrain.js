@@ -38,7 +38,7 @@ const listAsset = [
 ];
 const assetLength = [1, 3, 3, 2, 2, 6, 2, 3, 2, 3, 1, 5, 3];
 let totalLength = 0;
-assetLength.forEach((e) => { totalLength += e }); // 31
+assetLength.forEach((e) => { totalLength += e; }); // 31
 const length = totalLength * - 135;
 
 // Liste des zones où aucune entité ne peut spawner, par asset
@@ -103,7 +103,7 @@ const assetDeadZones = {
             side: "both",
         }
     ]
-}
+};
 
 const deadZones = [];
 
@@ -117,7 +117,7 @@ function init() {
                 if (j >= i) break;
                 previousPos -= assetLength[j];
             }
-            position = previousPos * 135
+            position = previousPos * 135;
         }
         background.add([
             sprite(listGroundAsset[i]),
@@ -149,7 +149,7 @@ function registerDeadZone(assetName, backgroundPartPosition) {
             start: backgroundPartPosition + zone.start,
             end: backgroundPartPosition + zone.end,
             side: zone.side
-        }
+        };
 
         deadZones.push(terrainDeadZone);
 

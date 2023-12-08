@@ -196,9 +196,9 @@ function displayHappyFace() {
         z(101),
     ]);
 
-    onUpdate("happySheep", (obj) => {
+    onUpdate("happySheep", () => {
         //obj.outline.color = hsl2rgb(wave(0.4, 0.55, time() * 10), 0.9, 0.5)
-    })
+    });
 
     tween(happyBadge.pos.x, happyBadge.pos.x - 60 * side, 0.5, (p) => happyBadge.pos.x = p, easings.easeOutQuad);
     tween(happyBadge.angle, happyBadge.angle - 20 * side, 0.5, (p) => happyBadge.angle = p, easings.easeOutQuad);

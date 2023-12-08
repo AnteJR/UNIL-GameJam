@@ -111,7 +111,7 @@ function init() {
                             go("endScreen", { score: player.obj.greetingsCaught });
                         });
                     }
-                })
+                });
             } else {
                 player.accelerate(b);
             }
@@ -144,7 +144,7 @@ function init() {
         function actionPressed() {
             if (!firstPress) gameStartNow();
             mousePressed = true;
-            playerSounds()
+            playerSounds();
         }
     
         function actionReleased() {

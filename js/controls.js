@@ -5,7 +5,7 @@ import { addTxtMenu, texte } from './text-manager.js';
 export {
     init,
     checkDeviceType
-}
+};
 
 /*---------------------------------------------
     AFFICHER L'EXPLICATION DES CONTRÔLES
@@ -24,7 +24,7 @@ function init() {
     ]);
     
     // afficher un texte explicatif selon la langue choisie
-    const controlTxt = addTxtMenu(texte[getLang()].control + ".", [Math.floor(width() / 2), Math.floor(height() / 50 * 5)], "pixel", "center", 5, "top", 5)
+    const controlTxt = addTxtMenu(texte[getLang()].control + ".", [Math.floor(width() / 2), Math.floor(height() / 50 * 5)], "pixel", "center", 5, "top", 5);
     controlTxt.use(color(0, 0, 0));
     controlTxt.opacity = 0;
 

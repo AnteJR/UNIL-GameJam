@@ -43,7 +43,7 @@ function init() {
     GAME LAUNCH
 -------------------------------*/
 function start(e) {
-    e.play("clicked")
+    e.play("clicked");
 
     setTimeout(() => {
         go("homeScreen");
