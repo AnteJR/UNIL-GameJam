@@ -1,5 +1,4 @@
-/* global kaboom */
-
+import kaboom from '../vendor/kaboom.mjs';
 import * as startScreen from './start-screen.js';
 import * as loadAssets from './load-assets.js';
 import * as homeScreen from './home-screen.js';
