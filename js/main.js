@@ -69,7 +69,7 @@ function initKaboom() {
             //maxFPS: 5, // To try out frame invariant speeds
         });
     } catch (e) {
-        alert("Malheureusement, votre navigateur ne supporte pas ce jeu. Nous en sommes désolés. Veuillez utiliser un navigateur plus récent.");
+        alert("Malheureusement, votre navigateur ne supporte pas ce jeu ! Veuillez utiliser un navigateur plus récent.\n\nUnfortunately, your browser does not support this game! Please use a more recent browser.");
     }
 }    
 
