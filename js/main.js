@@ -68,6 +68,14 @@ function initKaboom() {
             //maxFPS: 5, // To try out frame invariant speeds
         });
     } catch (e) {
+        console.error(e);
+        document.getElementsByTagName("canvas")[0].remove();
+        let errorTxt = "Reason: " + e + " (from: " + e.stack.split('@')[0] + ")<br><br>";
+        errorTxt += navigator.userAgent;
+        const el = document.createElement("div");
+        el.style.textAlign = "center";
+        el.innerHTML = errorTxt;
+        document.body.appendChild(el);
         alert("Malheureusement, votre navigateur ne supporte pas ce jeu ! Veuillez utiliser un navigateur plus récent.\n\nUnfortunately, your browser does not support this game! Please use a more recent browser.");
     }
 }    
