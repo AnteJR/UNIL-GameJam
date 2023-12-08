@@ -98,7 +98,7 @@ function replay(e) {
 
 function goToCredits() {
     setTimeout(() => {
-        window.open('https://unil.ch/voeux/sheep-it.html', '_self');
+        window.open('https://unil.ch/voeux/2023/sheep-it.html', '_self');
     }, 250);
 }
 
