@@ -1,4 +1,5 @@
-import kaboom from '../vendor/kaboom.mjs';
+/* global kaboom */
+//import kaboom from 'https://unpkg.com/kaboom@3000.1.12/dist/kaboom.mjs';
 
 import * as startScreen from './start-screen.js';
 import * as loadAssets from './load-assets.js';
@@ -54,6 +55,7 @@ function getLang() {
     GAME INITIALIZATION
 -------------------------------*/
 function initKaboom() {
+    if (!window.kaboom) alert("Kaboom not loaded");
     kaboom({
         width: width,
         height: height,
