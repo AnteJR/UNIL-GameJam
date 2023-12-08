@@ -15,7 +15,7 @@ function init() {
     
 
         let scaleFactor = proportion < 4 ? proportion : proportion - 1;
-        if (width() < 350) scaleFactor = 2;
+        if (width() < 350 || height() < 600) scaleFactor = 2;
 
         continueBtn = add([
             sprite('start_btn_2', { anim: "default" }),

@@ -23,7 +23,7 @@ function init() {
             BOUTONS ÉCRAN ACCUEIL
         -------------------------------*/
         let scaleFactor = proportion < 4 ? proportion : proportion - 1;
-        if (width() < 350) scaleFactor = 2;
+        if (width() < 350 || height() < 600) scaleFactor = 2;
 
         const flagFR = add([
             sprite("fr_btn", { anim: "default" }),
