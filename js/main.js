@@ -1,5 +1,4 @@
 /* global kaboom */
-//import kaboom from 'https://unpkg.com/kaboom@3000.1.12/dist/kaboom.mjs';
 
 import * as startScreen from './start-screen.js';
 import * as loadAssets from './load-assets.js';
@@ -55,16 +54,23 @@ function getLang() {
     GAME INITIALIZATION
 -------------------------------*/
 function initKaboom() {
-    if (!window.kaboom) alert("Kaboom not loaded");
-    kaboom({
-        width: width,
-        height: height,
-        background: [0, 0, 0],
-        clearColor: [0, 0, 0],
-        // Limit pixel density to avoid low frame rate on mobile devices
-        pixelDensity: Math.min(devicePixelRatio, 2),
-        //maxFPS: 5, // To try out frame invariant speeds
-    });
+    // Older Safari versions don't support AudioContext.decodeAudioData as a Promise
+    // This is a workaround to display an alert message to the user
+    // Remove this try catch to see the error in the console, which is:
+    // "TypeError: Not enough arguments" in decodeAudioData - kaboom.ts:2277
+    try {
+        kaboom({
+            width: width,
+            height: height,
+            background: [0, 0, 0],
+            clearColor: [0, 0, 0],
+            // Limit pixel density to avoid low frame rate on mobile devices
+            pixelDensity: Math.min(devicePixelRatio, 2),
+            //maxFPS: 5, // To try out frame invariant speeds
+        });
+    } catch (e) {
+        alert("Malheureusement, votre navigateur ne supporte pas ce jeu. Nous en sommes désolés. Veuillez utiliser un navigateur plus récent.");
+    }
 }    
 
 function initModules() {
